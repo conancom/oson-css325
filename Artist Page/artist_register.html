@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>oson Artist Registration</title>
+	<link rel="stylesheet" href="register.css">
+</head>
+
+
+<div class="headerartist">
+	<div class="headerContentArtist">oson - For Artists</div>
+</div>
+
+<body>
+	<div class="div_content" class="form">
+		<form name="artist-registration" action="main-artist.php" method="post">
+			<div class="text_wrapper">
+            <label class="text_email">Email Address</label>
+            </div><br>
+            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+
+
+			<div id="text_wrapper">
+                <label class="text_pw">Password</label>
+            </div>
+            <input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+
+			<div class="text_wrapper">
+                <label class="text_conpw">Confirm Password</label>
+            </div><br>
+            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+
+			
+
+			<div class="text_wrapper">
+			<label class="text_artistname">Artist Name</label>
+			</div><br>
+			<input type="text" name="username" class="text_field" placeholder=" Artist Name"><br>
+			
+			<div class="text_wrapper">
+				<label class="text_genre">Genre</label>
+			</div><br>
+			<select name="genre" class="genrebox" aria-placeholder="Genre">
+            </select><br>
+
+			<div class="text_wrapper">
+				<label class="text_name">Name</label>
+				
+				<label class="text_surname">Surname</label>
+				
+			</div><br>
+			
+			<input type="text" name="name" class="box_name">
+			<input type="text" name="Surname" class="box_surname">
+			<br>
+			<div class="text_wrapper">
+				<label class="country_text">Country</label>
+				</div><br>
+				<select name="country" class="countrybox">
+	
+				</select><br>
+
+			<div class="text_wrapper">
+			<label class="text_bank">Bank</label>
+			</div><br>
+			<select name="bank" class="bankbox">
+
+			</select><br>
+			
+			<div class="text_wrapper">
+			<label class="text_banknumber">Bank Account Number</label>
+			</div><br>
+			<input type="text" name="bankaccountnumber" class="text_field"><br>
+
+			<div class="button">
+				<input type="submit" name="submit" value="Register" class="button_orange">
+			</div>
+		</form>
+
+		<div id="div_footer">
+
+		</div>
+
+	</div>
+</body>
+
+</html>

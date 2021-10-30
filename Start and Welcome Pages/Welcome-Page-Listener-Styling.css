@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Header-Listener,
+.Creator-Select-Listener {
+    background-color: #232020;
+}
+
+.Welcome-Image-Listener img {
+    width: 1491px;
+    height: 980px;
+    object-fit: cover;
+}
+
+.Login-Button-Listener,
+.Register-Button-Listener {
+    color: black;
+}
+
+.Register-Button-Listener {
+    background-color: orange;
+}
+
+.Login-Button-Listener,
+.Artist-Button-Listener {
+    background-color: #5C636E;
+}
+
+.Header-Listener header h1 {
+    color: white;
+}

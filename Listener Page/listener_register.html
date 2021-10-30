@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Oson Registration</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<div class="headerlistener">
+    <div class="headerContentListener">oson</div>
+</div>
+
+<body>
+    <div class="div_content" class="form">
+
+        <form name="listener-registration" action="main-listener.php" method="post">
+            <div class="text_wrapper">
+                <label class="text_email">Email Address</label>
+            </div><br>
+            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+
+            <div id="text_wrapper">
+                <label class="text_pw">Password</label>
+            </div>
+            <input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+
+            <div class="text_wrapper">
+                <label class="text_conpw">Confirm Password</label>
+            </div><br>
+            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+
+            <div class="text_wrapper">
+            <label class="text_username">Username</label>
+            </div><br>
+            <input type="text" name="username" class="text_field" placeholder=" Username"><br>
+            <div class="text_wrapper">
+            <label class="text_gender">Gender</label>
+            </div><br>
+            <input type="radio" class="radio_gender" name="gender" value="male" id="male" />
+            <label for="male">Male</label>
+            <input type="radio" class="radio_gender" name="gender" value="female" id="female" />
+            <label for="female">Female</label>
+            <input type="radio" class="radio_gender" name="gender" value="others" id="others" />
+            <label for="others">Others</label>
+            <br>
+            <div class="text_wrapper">
+            <label class="text_dateofbirth">Date of Birth</label>
+            </div><br>
+
+            <div class="text_wrapper">
+            <label class="text_day">Day</label>
+            <label class="text_month">Month</label>
+            <label class="text_year">Year</label>
+            </div><br>
+
+
+            <input type="text" name="day" class="daybox" >
+            
+            <select name="month" class="monthbox" aria-placeholder="month">
+            </select>
+
+
+            
+            <input type="text" name="year" class="yearbox">
+            <br>
+            
+            <div class="text_wrapper">
+            <label class="country_text">Country</label>
+            </div><br>
+            <select name="country" class="countrybox">
+
+            </select><br>
+
+            <div class="button">
+                <input type="submit" name="submit" value="Register" class="button_orange">
+            </div>
+        </form>
+
+        <div id="div_footer">
+
+        </div>
+
+    </div>
+</body>
+
+</html>

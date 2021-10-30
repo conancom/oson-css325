@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Header-Artist,
+.Creator-Select-Artist {
+    background-color: #232020;
+}
+
+.Welcome-Image-Artist img {
+    width: 1491px;
+    height: 980px;
+    object-fit: cover;
+}
+
+.Login-Button-Artist,
+.Register-Button-Artist {
+    color: black;
+}
+
+.Register-Button-Artist {
+    background-color: orange;
+}
+
+.Login-Button-Artist,
+.Artist-Button-Artist {
+    background-color: #5C636E;
+}
+
+.Header-Artist header h1 {
+    color: white;
+}
