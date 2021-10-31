@@ -34,15 +34,29 @@
             </div><br>
             <input type="text" name="username" class="text_field" placeholder=" Username"><br>
             <div class="text_wrapper">
+                
             <label class="text_gender">Gender</label>
             </div><br>
-            <input type="radio" class="radio_gender" name="gender" value="male" id="male" />
-            <label for="male">Male</label>
-            <input type="radio" class="radio_gender" name="gender" value="female" id="female" />
-            <label for="female">Female</label>
-            <input type="radio" class="radio_gender" name="gender" value="others" id="others" />
-            <label for="others">Others</label>
+
+            <div class ="genderchoose">
+            <label class="radiocontainer">Male
+                <input type="radio" name="gender" value="male" id="male">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="radiocontainer">Female
+                <input type="radio" name="gender" value="female" id="female">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="radiocontainer">Others
+                <input type="radio" name="gender" value="others" id="others">
+                <span class="checkmark"></span>
+            </label>
+            </div>
+
             <br>
+
             <div class="text_wrapper">
             <label class="text_dateofbirth">Date of Birth</label>
             </div><br>
