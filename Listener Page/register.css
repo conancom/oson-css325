@@ -154,7 +154,7 @@ body{
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
-    margin-right: 140px;
+    margin-right: 150px;
 }
 .text_genre{
     margin-bottom: 7px;
@@ -187,13 +187,16 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
 }
+.dob_wrapper{
+    margin-bottom: 3%;
+}
 .text_dateofbirth{
-    margin-bottom: 7px;
+    margin-bottom: 50px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
-    margin-right: 105px;
+    margin-right: 115px;
     
 }
 .text_day{
@@ -237,7 +240,7 @@ body{
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
     border-style: solid;
-    height: 31.5px;
+    height: 32px;
     width: 75px;
     margin-bottom: 10px;
     padding-bottom: 2.5px;
@@ -269,7 +272,7 @@ body{
     border-color: rgba(255, 255, 255, 1);
     border-style: solid;
     height: 23px;
-    width: 60px;
+    width: 35px;
     margin-bottom: 10px;
     padding-bottom: 2.5px;
     padding-top: 2.5px;
@@ -289,6 +292,10 @@ body{
     padding-bottom: 2.5px;
     padding-top: 2.5px;
     margin-top: 3px;
+}
+.dobin_wrapper{
+    margin-right: 12%;
+    margin-bottom: 1%;
 }
 .country_text{
     margin-bottom: 7px;
@@ -401,19 +408,21 @@ body{
     margin-right: 133px;
 }
 .genderchoose{
-    margin-top: 2%;
+    margin-top: 3%;
     margin-bottom: 1%;
+    margin-right: 1%;
+    margin-bottom: 3%;
 }
  /* Customize the label (the container) */
  .radiocontainer {
 
     display: inline;
     position: relative;
-    padding-left: 35px;
+    padding-left: 26px;
     margin-top: 3.5%;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
@@ -421,7 +430,7 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding-top: 5%;
+    padding-top: 4%;
   }
   
   /* Hide the browser's default radio button */
