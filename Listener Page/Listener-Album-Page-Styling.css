@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .row {
     width: 100%;
     display: flex;
@@ -13,7 +17,12 @@
 }
 
 .columntest-artist {
+    position: relative;
+    margin-left: -190px;
+    margin-right: -20px;
+    padding-bottom: 20px;
     flex: 80%;
+    background-color: #372F2F;
 }
 
 
@@ -27,7 +36,7 @@
     z-index: -1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #232020;
     transition: 0.5s;
     padding: 50px;
 }
@@ -36,7 +45,7 @@
     /*padding: 8px 8px 8px 32px;*/
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -62,7 +71,7 @@
     width: 100%;
     height: 12%;
     padding: 60px 60px;
-    background-color: black;
+    background-color: #232020;
 }
 
 .music-data {
@@ -129,4 +138,11 @@
 }
 */
 
-.Album-Pic {}
+.Artist-Name h3,
+.Playlist-Type p {
+    color: white;
+}
+
+.columntest-artist {
+    margin-bottom: 130px;
+}
