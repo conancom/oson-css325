@@ -8,12 +8,21 @@
     display: flex;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .columntest-side {
     flex: 20%;
 }
 
 .columntest-artist {
+    position: relative;
+    margin-left: -190px;
+    margin-right: -20px;
+    padding-bottom: 60px;
     flex: 80%;
+    background-color: #372F2F;
 }
 
 
@@ -129,4 +138,28 @@
 }
 */
 
-.Album-Pic {}
+.SearchRow {
+    position: relative;
+    padding-top: 30px;
+}
+
+.SearchRow input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    margin-left: 10px;
+    font-size: 17px;
+    color: #FF7315;
+    background-color: #372F2F;
+}
+
+.Artist-Name h3,
+.Playlist-Type p {
+    color: white;
+}
+
+.columntest-artist {
+    margin-bottom: 130px;
+}
