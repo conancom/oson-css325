@@ -1,0 +1,182 @@
+
+body{
+
+    background-color: rgba(44, 38, 38, 1);
+    display:flex;
+    height:100%;
+    width:100%;
+    margin:0;
+
+    
+}
+.menu_head{
+    overflow: hidden;
+    width:100%;
+    background-color:rgba(35, 32, 32, 1);
+    position:fixed;
+    height: 12%;
+
+}
+.menu_head a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: 17%;
+    margin-top: 1.7%;
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    
+  }
+.menu_button_group{
+    align-items: center;
+    align-content: center ;
+}
+.menu_button{
+    align-self: center;
+    margin-right: 23%;
+}
+.headerlistener{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background: rgba(35, 32, 32, 1);
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    list-style-type: none;
+    margin-top: -10px;
+    position: fixed;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.headerartist{
+    padding-top: 35px;
+    padding-bottom: 20px;
+    background: rgba(35, 32, 32, 1);
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    list-style-type: none;
+    margin-top: -10px;
+    position: fixed;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.headerContentListener{
+    margin: 0 auto; 
+    text-align: center;
+    background-color: rgba(35, 32, 32, 1);
+    color: rgba(217, 217, 217, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    border-color: rgba(35, 32, 32, 1);
+    letter-spacing: 10px;
+    font-size: 50px;
+    margin-left: 17.5px;
+
+}
+.headerContentArtist{
+    margin: 0 auto; 
+    text-align: center;
+    background-color: rgba(35, 32, 32, 1);
+    color: rgba(217, 217, 217, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    border-color: rgba(35, 32, 32, 1);
+    letter-spacing: 10px;
+    font-size: 30px;
+    margin-left: 21px;
+}
+.div_content{
+   
+    text-align: center;
+    margin: auto;
+    text-align:center;
+    padding-top: 200px;
+   
+    
+    
+}
+.button_orange{
+    background-color: rgba(255, 115, 21, 1);
+    margin: 0;
+    border-radius: 20px;
+    border-color: rgba(255, 115, 21, 1);
+    border-style: solid;
+    width: 200px;
+    height: 45;
+    margin: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+
+}
+.button_dark{
+    background-color: rgba(35, 32, 32, 1);
+    margin: 0;
+    border-radius: 20px;
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    color: rgba(255, 255, 255, 1);
+    width: 300px;
+    height: 45;
+    margin: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+
+}
+.text_email{
+
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    margin-bottom: 15px;
+    margin-right: 105px;
+   
+}    
+.text_pw{
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    margin-bottom: 15px;
+    margin-right: 135px;
+}
+.text_wrapper{
+    display: inline-block;
+    text-align: left;
+}
+.text_field{
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    background-color: rgba(35, 32, 32, 1);
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    height: 23px;
+    width: 200px;
+    margin-bottom: 10px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+    margin-top: 3px;
+}
+
+
+.label_text{
+  
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+   
+}
