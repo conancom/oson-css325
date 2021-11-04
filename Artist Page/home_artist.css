@@ -33,7 +33,7 @@ body{
 .wrapper_main{
     
     margin: auto;
-    margin-top: 5%;
+    margin-top: 8%;
     margin-left: 5%;
 
 }
@@ -196,4 +196,27 @@ body{
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
    
+}
+.grid-container {
+    display: grid;
+    height: 100px;
+    grid-column: auto;
+    grid-auto-flow: row;
+    column-gap: 350px;
+    margin-top: 95px;
+    margin-left: 75px ;
+
+}
+
+.grid-stat{
+    grid-column: 1;
+}
+.grid-trendsong{
+    grid-column: 2;
+}
+.grid-trendalbum{
+    grid-column: 3;
+}
+.header_details{
+    margin-left: 250px;
 }
