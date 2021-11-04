@@ -30,6 +30,24 @@ body{
     font-weight: lighter;
     
   }
+.wrapper_main{
+    
+    margin: auto;
+    margin-top: 5%;
+    margin-left: 5%;
+
+}
+.main_table{
+    border-spacing: 250px 0;
+    margin-top: 10%;
+    margin-right: 25%;
+    width: 100%;
+}
+
+.hear_details{
+    display:flex;
+}
+
 .menu_button_group{
     align-items: center;
     align-content: center ;
@@ -97,7 +115,6 @@ body{
    
     text-align: center;
     margin: auto;
-    text-align:center;
     padding-top: 200px;
    
     
