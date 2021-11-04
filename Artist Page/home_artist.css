@@ -1,3 +1,9 @@
+:root {
+    --main-font:'Typo Round Regular Demo';
+    --main-color-dark: rgba(35, 32, 32, 1);
+    --main-color-orange: rgba(255, 115, 21, 1);
+  }
+  
 
 body{
 
@@ -14,7 +20,9 @@ body{
     width:100%;
     background-color:rgba(35, 32, 32, 1);
     position:fixed;
-    height: 12%;
+    height: 95px;
+    position: fixed;
+    z-index: 1;
 
 }
 .menu_head a {
@@ -33,7 +41,7 @@ body{
 .wrapper_main{
     
     margin: auto;
-    margin-top: 8%;
+    margin-top: 175px;
     margin-left: 5%;
 
 }
@@ -200,23 +208,270 @@ body{
 .grid-container {
     display: grid;
     height: 100px;
-    grid-column: auto;
-    grid-auto-flow: row;
     column-gap: 350px;
     margin-top: 95px;
     margin-left: 75px ;
+    color: white;
+    font-family: var(--main-font);
+    font-weight: lighter;
 
+
+}
+.grid-subcontainer1{
+    display: grid;
+    
 }
 
 .grid-stat{
     grid-column: 1;
+    padding-right: 80px;
 }
 .grid-trendsong{
     grid-column: 2;
+    padding-right: 80px;
+   
+    
 }
 .grid-trendalbum{
     grid-column: 3;
+    padding-right: 80px;
+}
+.underline1 {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: var(--main-color-orange); /* old IE */
+    background-color: var(--main-color-orange); /* Modern Browsers */
+    grid-row: 2;
+    grid-column: 1;
+    padding-right: 80px;
+    margin-bottom: 60px;
+}
+.underline2 {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: var(--main-color-orange); /* old IE */
+    background-color: var(--main-color-orange); /* Modern Browsers */
+    grid-row: 2;
+    grid-column: 2;
+    padding-right: 80px;
+    margin-bottom: 60px;
+}
+.underline3 {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: var(--main-color-orange); /* old IE */
+    background-color: var(--main-color-orange); /* Modern Browsers */
+    grid-row: 2;
+    grid-column: 3;
+    padding-right: 80px;
+    margin-bottom: 60px;
 }
 .header_details{
+    font-family: var(--main-font);
+    font-weight: lighter;
+    color: white;
     margin-left: 250px;
 }
+.subheader{
+    font-size: 18px;
+}
+
+.profilepic{
+    position: absolute;
+    width: 173px;
+    height: 173px;
+    left: 126px;
+    top: 198px;
+    background: url(img/500x500.jpg);
+    border-radius: 202px;
+    background-size: contain;
+    /*margin-top: -45px;*/
+    margin-top: -2.25%;
+}
+.newlisteners{
+    grid-row: 3;
+    grid-column: 1;
+    text-align: right;
+    margin-right: 40px;
+    vertical-align:middle; 
+    display:inline;
+    height: 100px;
+    margin-top: -50px;
+   
+}
+.newlistenersimg{
+    grid-row: 3;
+    grid-column: 1;
+    margin-right: 70px;
+    vertical-align:middle;
+    
+}
+.streams{
+    grid-row: 4;
+    grid-column: 2;
+    text-align: right;
+    vertical-align:middle; 
+    display:inline;
+    margin-right: 40px;
+    
+    
+}
+.streamsimg{
+    grid-row: 4;
+    grid-column: 1;
+    margin-right: 70px;
+    vertical-align:middle; 
+    
+ 
+   
+}
+.newfollows{
+    grid-row: 5;
+    grid-column: 2;
+    text-align: right;
+    margin-right: 40px;
+    vertical-align:middle; 
+    display:inline;
+    
+
+}
+.newfollowsimg{
+    grid-row: 5;
+    grid-column:1;
+    text-align: right;
+    margin-right:70px;
+   
+    vertical-align:middle; 
+   
+    
+}
+.donations{
+    grid-row: 6;
+    grid-column: 2;
+    text-align: right;
+    margin-right: 40px;
+    vertical-align:middle; 
+    display:inline;
+}
+.donationsimg{
+    grid-row: 6;
+    grid-column: 1;
+    text-align: right;
+    margin-right: 70px;
+    vertical-align:middle; 
+    
+}
+.trendingsongs1{
+    grid-column: 2;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 70px;
+    
+}
+.dessong1{
+    grid-row: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-top: -90%;
+}
+.trendingsongs2{
+    
+    grid-column: 2;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 65px;
+    
+}
+.dessong2{
+    grid-row: 7;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-bottom: 125px;
+}
+.trendingsongs3{
+    grid-column: 2;
+    grid-row-start: 9;
+    grid-row-end: 11;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 65px;
+    
+}
+.dessong3{
+    grid-row: 10;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-bottom: 125px;
+}
+.trendingalbums1{
+    grid-column: 3;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 65px;
+    
+}
+.desalbums1{
+    grid-row: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-top: -90%;
+}
+.trendingalbums2{
+    grid-column: 3;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 65px;
+    
+}
+.desalbums2{
+    grid-row: 7;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-bottom: 125px;
+}
+.trendingalbums3{
+    grid-column: 3;
+    grid-row-start: 9;
+    grid-row-end: 11;
+    margin-top: -27.5px;
+    text-align: right;
+    margin-bottom: 65px;
+    
+}
+.desalbums3{
+    grid-row: 10;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    margin-left: 110%;
+    margin-top: -90px;
+    width: 125%;
+    margin-bottom: 125px;
+}
+/*src="/img/down_arrow.jpg"*/
+
