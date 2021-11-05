@@ -1,8 +1,8 @@
 :root {
-    --main-font:'Typo Round Regular Demo';
+    --main-font:'Kanit';
     --main-color-dark: rgba(35, 32, 32, 1);
     --main-color-orange: rgba(255, 115, 21, 1);
-  }
+}
   
 
 body{
@@ -17,7 +17,7 @@ body{
 }.menu_head{
     overflow: hidden;
     width:100%;
-    background-color:rgba(35, 32, 32, 1);
+    background-color:var(--main-color-dark);
     position:fixed;
     height: 95px;
     position: fixed;
@@ -33,7 +33,7 @@ body{
     text-decoration: none;
     margin-left: 17%;
     margin-top: 1.7%;
-    font-family: 'Typo Round Regular Demo';
+    font-family: 'Typo Round Regular';
     font-weight: lighter;
     
   }
@@ -57,7 +57,7 @@ body{
     margin: 20px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-family: 'Typo Round Regular Demo';
+    font-family: 'Typo Round Regular';
     font-weight: lighter;
 
 }
@@ -73,7 +73,7 @@ body{
     margin: 20px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-family: 'Typo Round Regular Demo';
+    font-family: 'Typo Round Regular';
     font-weight: lighter;
 
 }
@@ -90,6 +90,7 @@ body{
     font-weight: lighter;
     color: white;
     margin-left: 190px;
+
     
 }
 .profilepic{
