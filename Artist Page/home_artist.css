@@ -138,10 +138,11 @@ body{
     height: 45;
     margin: 20px;
     padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 30px;
+    margin-top: -50px;
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
-
+    cursor: pointer;
 }
 .button_dark{
     background-color: rgba(35, 32, 32, 1);

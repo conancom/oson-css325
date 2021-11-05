@@ -59,8 +59,10 @@ body{
     padding-bottom: 7px;
     font-family: 'Typo Round Regular';
     font-weight: lighter;
-
+    cursor: pointer;
+    ;
 }
+
 .button_dark{
     background-color: rgba(35, 32, 32, 1);
     margin: 0;
@@ -77,6 +79,10 @@ body{
     font-weight: lighter;
 
 }
+.duobutton{
+    margin-top: 10px;
+    margin-left: 75px;
+}
 .menu_button_group{
     align-items: center;
     align-content: center ;
@@ -90,6 +96,7 @@ body{
     font-weight: lighter;
     color: white;
     margin-left: 190px;
+    display: flex;
 
     
 }
@@ -118,6 +125,17 @@ body{
     text-align: center;
 
     
+}
+.songtableedit{
+    margin: auto;
+    width: 130%;
+    margin-left: 100px;
+    margin-top: 55px;
+    font-family: var(--main-font);
+    color: white;
+    font-weight: lighter;
+    border-spacing:0;
+    text-align: center;
 }
 th{
     
