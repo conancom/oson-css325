@@ -3,9 +3,14 @@
     margin: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .row {
     width: 100%;
     display: flex;
+    color: white;
 }
 
 .columntest-side {
@@ -13,7 +18,17 @@
 }
 
 .columntest-artist {
+    position: relative;
+    margin-left: -190px;
+    padding-left: 10px;
+    margin-right: -20px;
+    padding-bottom: 230px;
     flex: 80%;
+    background-color: #372F2F;
+}
+
+.PlaylistContainer {
+    padding-left: 50px;
 }
 
 
@@ -128,5 +143,3 @@
 clip-path: circle(36.9% at 50% 50%);
 }
 */
-
-.Album-Pic {}
