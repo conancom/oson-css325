@@ -1,0 +1,132 @@
+:root {
+    --main-font:'Kanit';
+    --main-color-dark: rgba(35, 32, 32, 1);
+    --main-color-orange: rgba(255, 115, 21, 1);
+}
+  
+
+body{
+
+    background-color: rgba(44, 38, 38, 1);
+    display:flex;
+    height:100%;
+    width:100%;
+    margin:0;
+
+    
+}.menu_head{
+    overflow: hidden;
+    width:100%;
+    background-color:var(--main-color-dark);
+    position:fixed;
+    height: 95px;
+    position: fixed;
+    z-index: 1;
+
+}
+.menu_head a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: 17%;
+    margin-top: 1.7%;
+    font-family: 'Typo Round Regular';
+    font-weight: lighter;
+    
+  }
+.wrapper_main{
+    
+    margin: auto;
+    margin-top: 150px;
+    margin-left: 5%;
+    margin-top: px;
+
+
+}
+.button_orange{
+    background-color: rgba(255, 115, 21, 1);
+    margin: 0;
+    border-radius: 20px;
+    border-color: rgba(255, 115, 21, 1);
+    border-style: solid;
+    width: 200px;
+    height: 45;
+    margin: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-family: 'Typo Round Regular';
+    font-weight: lighter;
+
+}
+.button_dark{
+    background-color: rgba(35, 32, 32, 1);
+    margin: 0;
+    border-radius: 20px;
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    color: rgba(255, 255, 255, 1);
+    width: 300px;
+    height: 45;
+    margin: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-family: 'Typo Round Regular';
+    font-weight: lighter;
+
+}
+.menu_button_group{
+    align-items: center;
+    align-content: center ;
+}
+.menu_button{
+    align-self: center;
+    margin-right: 23%;
+}
+.header_details{
+    font-family: var(--main-font);
+    font-weight: lighter;
+    color: white;
+    margin-left: 190px;
+
+    
+}
+.profilepic{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    left: 126px;
+    top: 198px;
+    background: url(img/500x500.jpg);
+    border-radius: 202px;
+    background-size: contain;
+    /*margin-top: -45px;*/
+    margin-top: -2.25%;
+}
+.songtable{
+    
+    margin: auto;
+    width: 130%;
+    margin-left: 160px;
+    margin-top: 55px;
+    font-family: var(--main-font);
+    color: white;
+    font-weight: lighter;
+    border-spacing:0;
+    text-align: center;
+
+    
+}
+th{
+    
+    border-bottom:1px solid var(--main-color-orange);
+    margin-bottom:10px;
+    
+}
+th, td {
+    width:125px;
+    text-align:center;
+    padding-top:25px;
+}
