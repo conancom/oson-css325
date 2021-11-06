@@ -60,7 +60,26 @@ body{
     font-family: 'Typo Round Regular';
     font-weight: lighter;
     cursor: pointer;
-    ;
+    
+}
+.button_grey{
+
+        background-color: rgba(92, 99, 110, 1);
+        margin: 0;
+        border-radius: 20px;
+        border-color: rgba(92, 99, 110, 1);
+        border-style: solid;
+        width: 200px;
+        height: 45;
+        margin: 20px;
+        padding-top: 7px;
+        color: white;
+        padding-bottom: 7px;
+        font-family: 'Typo Round Regular';
+        font-weight: lighter;
+        cursor: pointer;
+        
+    
 }
 
 .button_dark{
