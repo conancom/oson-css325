@@ -3,24 +3,51 @@
     margin: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
+.Title-Name-Listener-Container {
+    background-color: #232020;
+    width: 100%;
+    padding-left: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .Header-Listener,
 .Creator-Select-Listener {
     background-color: #232020;
 }
 
 .Welcome-Image-Listener img {
-    width: 1491px;
-    height: 980px;
+    width: 2000px;
+    height: 900px;
     object-fit: cover;
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-20deg) saturate(500%) contrast(0.8);
 }
 
 .Login-Button-Listener,
 .Register-Button-Listener {
     color: black;
+    border-radius: 36px;
+    padding: 7px;
+    width: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
 }
 
 .Register-Button-Listener {
-    background-color: orange;
+    background-color: #FF7315;
+    border-radius: 36px;
+    padding: 7px;
+    width: 120px;
+    border: none;
+}
+
+.Login-Button-Listener {
+    color: white;
 }
 
 .Login-Button-Listener,
@@ -28,6 +55,24 @@
     background-color: #5C636E;
 }
 
+.Artist-Button-Listener {
+    margin: 10px;
+    color: white;
+    border-radius: 36px;
+    padding: 7px;
+    width: 120px;
+    border: none;
+}
+
 .Header-Listener header h1 {
     color: white;
+}
+
+.Creator-Text-Listener {
+    color: white;
+    padding: 10px;
+}
+
+.Creator-Select-Listener {
+    text-align: center;
 }
