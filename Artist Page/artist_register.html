@@ -2,45 +2,49 @@
 <html>
 
 <head>
-	<title>oson Artist Registration</title>
-	<link rel="stylesheet" href="register.css">
+    <title>oson Artist Registration</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 
 
 <div class="headerartist">
-	<div class="headerContentArtist">oson - For Artists</div>
+    <div class="headerContentArtist">oson - For Artists</div>
 </div>
 
 <body>
-	<div class="div_content" class="form">
-		<form name="artist-registration" action="main-artist.php" method="post">
-			<div class="text_wrapper">
-				<label class="text_email">Email Address</label>
-			</div><br>
-			<input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+    <div class="div_content" class="form">
+        <form name="artist-registration" action="main-artist.php" method="post">
 
+            <div class="text_wrapper">
+                <label class="text_email">Email Address</label>
+            </div>
+            <br>
 
-			<div id="text_wrapper">
-				<label class="text_pw">Password</label>
-			</div>
-			<input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
 
-			<div class="text_wrapper">
-				<label class="text_conpw">Confirm Password</label>
-			</div><br>
-			<input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+            <div id="text_wrapper">
+                <label class="text_pw">Password</label>
+            </div>
+            <input type="password" name="password" class="text_field" placeholder=" ***********"><br>
 
+            <div class="text_wrapper">
+                <label class="text_conpw">Confirm Password</label>
+            </div>
+            <br>
 
+            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
 
-			<div class="text_wrapper">
-				<label class="text_artistname">Artist Name</label>
-			</div><br>
-			<input type="text" name="artistname" class="text_field" placeholder=" Artist Name"><br>
+            <div class="text_wrapper">
+                <label class="text_artistname">Artist Name</label>
+            </div>
+            <br>
 
-			<div class="text_wrapper">
-				<label class="text_genre">Genre</label>
-			</div><br>
-			<select name="genre" class="genrebox">
+            <input type="text" name="artistname" class="text_field" placeholder=" Artist Name"><br>
+
+            <div class="text_wrapper">
+                <label class="text_genre">Genre</label>
+            </div><br>
+            <select name="genre" class="genrebox">
 				<option>-</option>
 				<option value="pop">Pop</option>
 				<option value="rap">Rap</option>
@@ -57,22 +61,25 @@
 				<option value="blues">Blues</option>
 				<option value="folk">Folk</option>
 				<option value="indie">Indie</option>
-			</select><br>
+			</select>
+            <br>
 
-			<div class="text_wrapper">
-				<label class="text_name">Name</label>
+            <div class="text_wrapper">
+                <label class="text_name">Name</label>
+                <label class="text_surname">Surname</label>
+            </div>
+            <br>
 
-				<label class="text_surname">Surname</label>
+            <input type="text" name="name" class="box_name" placeholder=" Name">
+            <input type="text" name="Surname" class="box_surname" placeholder=" Surname">
+            <br>
 
-			</div><br>
+            <div class="text_wrapper">
+                <label class="country_text">Country</label>
+            </div>
+            <br>
 
-			<input type="text" name="name" class="box_name" placeholder=" Name">
-			<input type="text" name="Surname" class="box_surname" placeholder=" Surname">
-			<br>
-			<div class="text_wrapper">
-				<label class="country_text">Country</label>
-			</div><br>
-			<select name="country" class="countrybox">
+            <select name="country" class="countrybox">
 				<option>-</option>
 				<option value="Afganistan">Afghanistan</option>
 				<option value="Albania">Albania</option>
@@ -322,10 +329,12 @@
 				<option value="Zimbabwe">Zimbabwe</option>
 			</select><br>
 
-			<div class="text_wrapper">
-				<label class="text_bank">Bank</label>
-			</div><br>
-			<select name="bank" class="bankbox">
+            <div class="text_wrapper">
+                <label class="text_bank">Bank</label>
+            </div>
+            <br>
+
+            <select name="bank" class="bankbox">
 				<option >-</option>
 				<option value="bbl">BBL</option>
 				<option value="kbank">KBANK</option>
@@ -337,23 +346,23 @@
 				<option value="scib">SCIB</option>
 				<option value="scn">SCN</option>
 				<option value="uob">UOB</option>
-			</select><br>
+			</select>
+            <br>
 
-			<div class="text_wrapper">
-				<label class="text_banknumber">Bank Account Number</label>
-			</div><br>
-			<input type="text" name="bankaccountnumber" class="text_field" placeholder=" Bank Account Number"><br>
+            <div class="text_wrapper">
+                <label class="text_banknumber">Bank Account Number</label>
+            </div>
+            <br>
 
-			<div class="button">
-				<input type="submit" name="submit" value="Register" class="button_orange">
-			</div>
-		</form>
+            <input type="text" name="bankaccountnumber" class="text_field" placeholder=" Bank Account Number"><br>
 
-		<div id="div_footer">
+            <div class="button">
+                <input type="submit" name="submit" value="Register" class="button_orange">
+            </div>
 
-		</div>
-
-	</div>
+        </form>
+        <div id="div_footer"></div>
+    </div>
 </body>
 
 </html>
