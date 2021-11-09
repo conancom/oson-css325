@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2021 at 05:01 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Nov 09, 2021 at 03:24 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `oson`
+-- Database: `oson-v2`
 --
 
 -- --------------------------------------------------------
@@ -67,7 +67,15 @@ CREATE TABLE `artist` (
 
 INSERT INTO `artist` (`idArtist`, `ArtistEmail`, `ArtistPassword`, `ArtistName`, `ArtistGenre`, `AmountOfFollowers`, `Banking_Information`, `Country`, `CreationTimeStamp`, `ArtistRealNames`, `profile_url`) VALUES
 (1, 'palewaves@gmail.com', 'palewaves', 'Pale Waves', 'Indie', 6000, 'KGB-0123456789', 'United Kingdom', '2021-11-07 04:00:21.16', 'Heather Baron-Gracie', 'img/1'),
-(2, 'drake@gmail.com', 'drake', 'Drake', 'Rap', 120000, 'UOB-0987654321', 'United States', '2021-11-07 03:59:41.35', 'Aubrey Drake Graham', 'img/2');
+(2, 'drake@gmail.com', 'drake', 'Drake', 'Rap', 120000, 'UOB-0987654321', 'United States', '2021-11-07 03:59:41.35', 'Aubrey Drake Graham', 'img/2'),
+(3, 'taylorswift@gmail.com', 'taylorswift', 'Taylor Swift', 'Pop', 500000, 'KGB-5633218459', 'United States', '2021-11-09 14:01:15.61', 'Taylor Alison Swift', 'img/3'),
+(4, 'brunomars@gmail.com', 'brunomars', 'Bruno Mars', 'Pop', 45200, 'TMB-1855632485', 'United States', '2021-11-09 14:01:15.62', 'Peter Gene Hernandez', 'img/4'),
+(5, 'rihanna@gmail.com', 'rihanna', 'Rihanna', 'R&B', 498330, 'AYT-655321578', 'Barbados', '2021-11-09 14:01:15.63', 'Robyn Rihanna Fenty', 'img/5'),
+(6, 'justinbieber@gmail.com', 'justinbieber', 'Justin Bieber', 'Pop', 8022230, 'TCB-6328865482', 'Canada', '2021-11-09 14:01:15.64', 'Justin Drew Bieber', 'img/6'),
+(7, 'postmalone@gmail.com', 'postmalone', 'Post Malone', 'Rap', 792236, 'KTB-9965321548', 'United States', '2021-11-09 14:01:15.65', 'Austin Richard Post', 'img/7'),
+(8, 'eminem@gmail.com', 'eminem', 'Eminem', 'Rap', 3566698, '-', 'United States', '2021-11-09 14:01:15.66', 'Marshall Bruce Mathers III', 'img/8'),
+(9, 'kendricklamar@gmail.com', 'kendricklamar', 'Kendrick Lamar', 'Rap', 2365532, 'UOB-6333268545', 'United States', '2021-11-09 14:01:15.67', 'Kendrick Lamar Duckworth', 'img/9'),
+(10, 'travisscott@gmail.com', 'travisscott', 'Travis Scott', 'Rap', 69420, 'KGB-986632354', 'United States', '2021-11-09 14:01:15.68', 'Jacques Bermon Webster II', 'img/10');
 
 -- --------------------------------------------------------
 
@@ -170,6 +178,15 @@ CREATE TABLE `listener` (
   `Country` varchar(255) NOT NULL,
   `profile_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `listener`
+--
+
+INSERT INTO `listener` (`idListener`, `UserEmail`, `UserPassword`, `Gender`, `UserName`, `UserDateOfBirth`, `PreferredGenre`, `CreationTimeStamp`, `Country`, `profile_url`) VALUES
+(1, 'leon@gmail.com', 'leon', 'Male', 'leonardo', '2000-06-26', 'Indie', '2021-11-09 14:17:11.09', 'Germany', 'img/1'),
+(2, 'junior@gmail.com', 'junior', 'Male', 'floyd', '2002-09-07', 'Rap', '2021-11-09 14:21:35.47', 'North Korea', 'img/2'),
+(3, 'fluke@gmail.com', 'fluke', 'Male', 'fussgy', '2000-12-25', 'Indie', '2021-11-09 14:21:35.48', 'Thailand', 'img/3');
 
 -- --------------------------------------------------------
 
@@ -327,7 +344,7 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `idArtist` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idArtist` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `consistalbum`
@@ -369,7 +386,7 @@ ALTER TABLE `followarist`
 -- AUTO_INCREMENT for table `listener`
 --
 ALTER TABLE `listener`
-  MODIFY `idListener` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idListener` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `listentosong`
