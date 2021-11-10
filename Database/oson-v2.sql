@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 03:24 PM
+-- Generation Time: Nov 10, 2021 at 12:58 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -227,7 +227,7 @@ CREATE TABLE `playlist` (
 
 CREATE TABLE `song` (
   `idSong` bigint(20) NOT NULL,
-  `Duration` int(11) NOT NULL,
+  `Duration` float NOT NULL,
   `Genre` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Language` varchar(255) NOT NULL,
@@ -237,6 +237,15 @@ CREATE TABLE `song` (
   `song_url` varchar(255) NOT NULL,
   `cover_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `song`
+--
+
+INSERT INTO `song` (`idSong`, `Duration`, `Genre`, `Name`, `Language`, `Popularity`, `Explicity`, `ReleaseDate`, `song_url`, `cover_url`) VALUES
+(1, 2.49, 'Rap', 'God\'s plan', 'English', 0, 'E', '2018-01-19', 'song/1', 'cover/1'),
+(2, 4, 'Pop', 'Red', 'English', 0, '-', '2012-10-22', 'song/2', 'cover/2'),
+(3, 3, 'R&B', 'Love On the Brain', 'English', 0, 'E', '2016-06-26', 'song/3', 'cover/3');
 
 --
 -- Indexes for dumped tables
@@ -404,7 +413,7 @@ ALTER TABLE `playlist`
 -- AUTO_INCREMENT for table `song`
 --
 ALTER TABLE `song`
-  MODIFY `idSong` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSong` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
