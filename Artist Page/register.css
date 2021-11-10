@@ -1,16 +1,22 @@
-
-body{
-
-    background-color: rgba(44, 38, 38, 1);
-    display:flex;
-    height:100%;
-    width:100%;
-    margin:0;
-
-    
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.headerlistener{
+body {
+    background-color: rgba(44, 38, 38, 1);
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-row-gap: 50px;
+}
+
+.headerlistener {
     padding-top: 10px;
     padding-bottom: 20px;
     background: rgba(35, 32, 32, 1);
@@ -25,7 +31,8 @@ body{
     background-size: contain;
     background-position: center;
 }
-.headerartist{
+
+.headerartist {
     padding-top: 35px;
     padding-bottom: 20px;
     background: rgba(35, 32, 32, 1);
@@ -40,8 +47,9 @@ body{
     background-size: contain;
     background-position: center;
 }
-.headerContentListener{
-    margin: 0 auto; 
+
+.headerContentListener {
+    margin: 0 auto;
     text-align: center;
     background-color: rgba(35, 32, 32, 1);
     color: rgba(217, 217, 217, 1);
@@ -51,10 +59,10 @@ body{
     letter-spacing: 10px;
     font-size: 50px;
     margin-left: 17.5px;
-
 }
-.headerContentArtist{
-    margin: 0 auto; 
+
+.headerContentArtist {
+    margin: 0 auto;
     text-align: center;
     background-color: rgba(35, 32, 32, 1);
     color: rgba(217, 217, 217, 1);
@@ -65,17 +73,15 @@ body{
     font-size: 30px;
     margin-left: 21px;
 }
-.div_content{
-   
+
+.div_content {
     text-align: center;
     margin: auto;
-    text-align:center;
+    text-align: center;
     padding-top: 135px;
-   
-    
-    
 }
-.button_orange{
+
+.button_orange {
     background-color: rgba(255, 115, 21, 1);
     margin: 0;
     border-radius: 20px;
@@ -88,9 +94,9 @@ body{
     padding-bottom: 7px;
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
-
 }
-.button_dark{
+
+.button_dark {
     background-color: rgba(35, 32, 32, 1);
     margin: 0;
     border-radius: 20px;
@@ -104,19 +110,18 @@ body{
     padding-bottom: 7px;
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
-
 }
-.text_email{
 
+.text_email {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 105px;
-   
-}    
-.text_pw{
+}
+
+.text_pw {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -124,7 +129,8 @@ body{
     margin-bottom: 15px;
     margin-right: 135px;
 }
-.text_conpw{
+
+.text_conpw {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -132,7 +138,8 @@ body{
     margin-bottom: 15px;
     margin-right: 75px;
 }
-.text_username{
+
+.text_username {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -140,7 +147,8 @@ body{
     margin-bottom: 15px;
     margin-right: 133px;
 }
-.text_artistname{
+
+.text_artistname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -148,7 +156,8 @@ body{
     margin-bottom: 15px;
     margin-right: 124px;
 }
-.text_gender{
+
+.text_gender {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -156,7 +165,8 @@ body{
     margin-bottom: 15px;
     margin-right: 140px;
 }
-.text_genre{
+
+.text_genre {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -164,15 +174,17 @@ body{
     margin-bottom: 15px;
     margin-right: 160px;
 }
-.radio_gender{
-    border-color: rgba(255, 255, 255, 1);
 
+.radio_gender {
+    border-color: rgba(255, 255, 255, 1);
 }
-.text_wrapper{
+
+.text_wrapper {
     display: inline-block;
     text-align: left;
 }
-.text_field{
+
+.text_field {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -187,7 +199,8 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
 }
-.text_dateofbirth{
+
+.text_dateofbirth {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -195,7 +208,8 @@ body{
     margin-bottom: 15px;
     margin-right: 105px;
 }
-.text_day{
+
+.text_day {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -203,16 +217,8 @@ body{
     margin-bottom: 15px;
     margin-right: 0px;
 }
-.text_month{
-    margin-bottom: 7px;
-    color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
-    font-weight: lighter;
-    margin-bottom: 15px;
-    margin-right: 0px;
-    margin-left: 30px;
-}
-.text_year{
+
+.text_month {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -221,14 +227,24 @@ body{
     margin-right: 0px;
     margin-left: 30px;
 }
-.label_text{
-  
+
+.text_year {
+    margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
-   
+    margin-bottom: 15px;
+    margin-right: 0px;
+    margin-left: 30px;
 }
-.monthbox{
+
+.label_text {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+}
+
+.monthbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -243,7 +259,8 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
 }
-.genrebox{
+
+.genrebox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -259,7 +276,8 @@ body{
     margin-top: 3px;
     margin-right: 135px;
 }
-.daybox{
+
+.daybox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -274,7 +292,8 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
 }
-.yearbox{
+
+.yearbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -289,16 +308,17 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
 }
-.country_text{
+
+.country_text {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 153px;
-    
 }
-.countrybox{
+
+.countrybox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -314,7 +334,8 @@ body{
     margin-top: 3px;
     margin-right: 90px;
 }
-.text_name{
+
+.text_name {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -324,7 +345,8 @@ body{
     margin-left: 30px;
     margin-right: 60px;
 }
-.text_surname{
+
+.text_surname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -333,7 +355,8 @@ body{
     margin-right: 70px;
     margin-left: 0px;
 }
-.box_name{
+
+.box_name {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -348,9 +371,9 @@ body{
     padding-top: 2.5px;
     margin-top: 3px;
     margin-right: 5px;
-    
 }
-.box_surname{
+
+.box_surname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -367,7 +390,8 @@ body{
     margin-left: px;
     margin-right: 4px;
 }
-.text_banknumber{
+
+.text_banknumber {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -375,7 +399,8 @@ body{
     margin-bottom: 15px;
     margin-right: 52px;
 }
-.text_bank{
+
+.text_bank {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';
@@ -383,7 +408,8 @@ body{
     margin-bottom: 15px;
     margin-right: 170px;
 }
-.bankbox{
+
+.bankbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Typo Round Regular Demo';

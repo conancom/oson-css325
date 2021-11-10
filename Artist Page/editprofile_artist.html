@@ -1,76 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Album List</title>
-<link rel="stylesheet" href="default.css">
+    <title>Album List</title>
+    <link rel="stylesheet" href="lists_artist.css">
+    <link rel="stylesheet" href="register.css">
 </head>
-
-
 
 <body>
 
-<div id="menu_head">
-    <button type="button">Home</button> 
-    <button type="button">Songs</button> 
-    <button type="button">Albums</button> 
-    <button type="button">Settings</button> 
-</div>
-
-
-<div id="header_details" class="form">
-		<h1>Pale Waves - Account Settings
-        
-		  
-        </h1>
-        <form name ="artist-registration" action="main-artist.php" method="post">
-            <label>Email Address</label>
-            <input type="text" name="emailaddress"><br>
-
-            <label>Password</label>
-            <input type="text" name="passoword"><br>
-            
-            <label>Change Password</label>
-            <button type="button">Change</button><br>
-
-            <label>Arist Name</label>
-            <input type="text" name="aristname"><br>
-            
-            <label>Genre</label>
-            <select name="genre">
-
-            </select><br>
-
-            <label>Name</label>
-            <input type="text" name="name">
-            <label>Surname</label>
-            <input type="text" name="Surname"><br>
-
-            <label>Country</label>
-            <select name="country">
-
-            </select><br>
-
-            <label>Bank</label>
-            <select name="bank">
-
-            </select><br>
-            
-            <label>Bank Account Number</label>
-            <input type="text" name="bankaccountnumber"><br>
-
-            <div class="button">
-                <input type="submit" name="submit" value="Confirm Edit"><br>
-                <button type="button" id="button_dark"> Cancel </button> 								
+    <section class="Header">
+        <nav class="menu_head">
+            <div class="menu_button_group">
+                <a href="#home">Home</a>
+                <a href="#songs">Songs</a>
+                <a href="#albums">Albums</a>
+                <a href="#settings">Settings</a>
             </div>
+        </nav>
+
+        <div class="wrapper_main ">
+            <div class=" profilepic ">
+            </div>
+            <div id="menu_head " class="header_details ">
+                <h1>Pale Waves - Account Settings</h1>
+            </div>
+        </div>
+    </section>
+    <div class="AccountForm">
+        <div id="header_details" class="form">
+
+            <form name="artist-registration" action="main-artist.php" method="post">
+                <label style="margin-left: 15%; margin-right: 10%">Email Address</label>
+                <input type="text" name="emailaddress"><br>
+
+                <label style="margin-left: 15%; margin-right: 17%">Password</label>
+                <input type="text" name="passoword"><br>
+
+                <label style="margin-left: 15%;  margin-right: 2%">Change Password</label>
+                <button type="button" class="button_orange" style="width: 75px;">Change</button><br>
+
+                <label style="margin-left: 15%;  margin-right: 13%">Artist Name</label>
+                <input type="text" name="aristname"><br>
+
+                <label style="margin-left: 15%;  margin-right: 22%">Genre</label>
+                <select name="genre">
+
+            </select><br>
+
+                <label style="margin-left: 15%;  margin-right: 22%">Name</label>
+                <input type="text" name="name">
+                <label style="margin-left: 15%;  margin-right: 18%">Surname</label>
+                <input type="text" name="Surname"><br>
+
+                <label style="margin-left: 15%;  margin-right: 18%">Country</label>
+                <select name="country">
+
+            </select><br>
+
+                <label style="margin-left: 15%;  margin-right: 22%">Bank</label>
+                <select name="bank">
+
+            </select><br>
+
+                <label style="margin-left: 15%;  margin-right: 9%">Bank Account </label>
+                <input type="text" name="bankaccountnumber"><br>
+
+                <div class="button">
+                    <button type="submit" name="submit" value="Confirm Edit" style="margin-left: 32%; padding: 8px" class="button_orange">Confirm Edit</button><br>
+                    <button type="button" class="button_dark" style="margin-left: 22%;"> Cancel </button>
+                </div>
             </form>
+        </div>
+    </div>
 
+    <div id="div_footer">
 
-<div id="div_footer">  
-		
-
-
-</div>
+    </div>
 </body>
+
 </html>
-
-

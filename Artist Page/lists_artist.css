@@ -1,29 +1,27 @@
 :root {
-    --main-font:'Kanit';
+    --main-font: 'Kanit';
     --main-color-dark: rgba(35, 32, 32, 1);
     --main-color-orange: rgba(255, 115, 21, 1);
 }
-  
 
-body{
-
+body {
     background-color: rgba(44, 38, 38, 1);
-    display:flex;
-    height:100%;
-    width:100%;
-    margin:0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
 
-    
-}.menu_head{
+.menu_head {
     overflow: hidden;
-    width:100%;
-    background-color:var(--main-color-dark);
-    position:fixed;
+    width: 100%;
+    background-color: var(--main-color-dark);
+    position: fixed;
     height: 95px;
     position: fixed;
     z-index: 1;
-
 }
+
 .menu_head a {
     float: left;
     font-size: 16px;
@@ -35,18 +33,19 @@ body{
     margin-top: 1.7%;
     font-family: 'Typo Round Regular';
     font-weight: lighter;
-    
-  }
-.wrapper_main{
-    
+}
+
+.wrapper_main {
     margin: auto;
     margin-top: 150px;
     margin-left: 5%;
     margin-top: px;
-
-
+    padding-left: 100px;
+    padding-top: 37px;
+    width: 100%;
 }
-.button_orange{
+
+.button_orange {
     background-color: rgba(255, 115, 21, 1);
     margin: 0;
     border-radius: 20px;
@@ -60,29 +59,26 @@ body{
     font-family: 'Typo Round Regular';
     font-weight: lighter;
     cursor: pointer;
-    
-}
-.button_grey{
-
-        background-color: rgba(92, 99, 110, 1);
-        margin: 0;
-        border-radius: 20px;
-        border-color: rgba(92, 99, 110, 1);
-        border-style: solid;
-        width: 200px;
-        height: 45;
-        margin: 20px;
-        padding-top: 7px;
-        color: white;
-        padding-bottom: 7px;
-        font-family: 'Typo Round Regular';
-        font-weight: lighter;
-        cursor: pointer;
-        
-    
 }
 
-.button_dark{
+.button_grey {
+    background-color: rgba(92, 99, 110, 1);
+    margin: 0;
+    border-radius: 20px;
+    border-color: rgba(92, 99, 110, 1);
+    border-style: solid;
+    width: 200px;
+    height: 45;
+    margin: 20px;
+    padding-top: 7px;
+    color: white;
+    padding-bottom: 7px;
+    font-family: 'Typo Round Regular';
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.button_dark {
     background-color: rgba(35, 32, 32, 1);
     margin: 0;
     border-radius: 20px;
@@ -96,43 +92,44 @@ body{
     padding-bottom: 7px;
     font-family: 'Typo Round Regular';
     font-weight: lighter;
-
 }
-.duobutton{
+
+.duobutton {
     margin-top: 10px;
     margin-left: 75px;
 }
-.menu_button_group{
+
+.menu_button_group {
     align-items: center;
-    align-content: center ;
+    align-content: center;
 }
-.menu_button{
+
+.menu_button {
     align-self: center;
     margin-right: 23%;
 }
-.header_details{
+
+.header_details {
     font-family: var(--main-font);
     font-weight: lighter;
     color: white;
     margin-left: 190px;
     display: flex;
-
-    
+    margin-top: -30px;
 }
-.profilepic{
+
+.profilepic {
     position: absolute;
     width: 110px;
     height: 110px;
-    left: 126px;
-    top: 198px;
     background: url(img/500x500.jpg);
     border-radius: 202px;
     background-size: contain;
     /*margin-top: -45px;*/
     margin-top: -2.25%;
 }
-.songtable{
-    
+
+.songtable {
     margin: auto;
     width: 130%;
     margin-left: 160px;
@@ -140,12 +137,11 @@ body{
     font-family: var(--main-font);
     color: white;
     font-weight: lighter;
-    border-spacing:0;
+    border-spacing: 0;
     text-align: center;
-
-    
 }
-.songtableedit{
+
+.songtableedit {
     margin: auto;
     width: 130%;
     margin-left: 100px;
@@ -153,17 +149,130 @@ body{
     font-family: var(--main-font);
     color: white;
     font-weight: lighter;
-    border-spacing:0;
+    border-spacing: 0;
     text-align: center;
 }
-th{
-    
-    border-bottom:1px solid var(--main-color-orange);
-    margin-bottom:10px;
-    
+
+th {
+    border-bottom: 1px solid var(--main-color-orange);
+    margin-bottom: 10px;
 }
-th, td {
-    width:125px;
-    text-align:center;
-    padding-top:25px;
+
+th,
+td {
+    width: 125px;
+    text-align: center;
+    padding-top: 25px;
+}
+
+
+/*
+.hrContainer {
+    height: 2px;
+    background-color: var(--main-color-orange);
+    width: 100%;
+    padding-top: 100px;
+}*/
+
+.AlbumForm {
+    border: 2px solid rgba(255, 115, 21, 1);
+    padding: 25px;
+    margin-top: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AlbumForm label {
+    color: white;
+    font-family: 'Typo Round Regular';
+    font-size: 19px;
+}
+
+.AlbumForm input,
+.AlbumForm select {
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    background-color: rgba(35, 32, 32, 1);
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    height: 23px;
+    width: 200px;
+    margin-bottom: 10px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+    margin-top: 3px;
+}
+
+.AccountForm {
+    border: 2px solid rgba(255, 115, 21, 1);
+    padding: 25px;
+    margin-top: 350px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AccountForm label {
+    color: white;
+    font-family: 'Typo Round Regular';
+    font-size: 19px;
+}
+
+.AccountForm input,
+.AccountForm select {
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    background-color: rgba(35, 32, 32, 1);
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    height: 23px;
+    width: 200px;
+    margin-bottom: 10px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+    margin-top: 3px;
+}
+
+.EditSongForm {
+    border: 2px solid rgba(255, 115, 21, 1);
+    padding: 25px;
+    margin-top: 350px;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EditSongForm label {
+    color: white;
+    font-family: 'Typo Round Regular';
+    font-size: 19px;
+}
+
+.EditSongForm h1 {
+    color: white;
+    font-family: 'Typo Round Regular';
+}
+
+.EditSongForm input,
+.EditSongForm select {
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Typo Round Regular Demo';
+    font-weight: lighter;
+    background-color: rgba(35, 32, 32, 1);
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    height: 23px;
+    width: 200px;
+    margin-bottom: 10px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+    margin-top: 3px;
 }
