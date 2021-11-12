@@ -1,3 +1,37 @@
+<?php
+    session_start();
+    $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+
+
+    if ($mysqli->connect_errno) {
+    echo $mysqli->connect_error;
+    }
+
+    if (isset($_POST["submit-register"])){
+        $emailaddress = $_POST['emailaddress'];
+        $password = $_POST['password'];
+        $confirmpassword = $_POST['confirmpassword'];
+        $artistname = $_POST['artistname'];
+        $artistgenre = $_POST['genre'];
+		$name =  $_POST['name'];
+		$surname = $_POST['surname'];
+        $artistrealnames = "$name $surname";
+        $country = $_POST['country'];
+		$bank = $_POST['bank'];
+		$banknumber = $_POST['banknumber'];
+		$bankinginformation = "$bank-$banknumber";
+        $query = "INSERT INTO `artist`(`ArtistEmail`, `ArtistPassword`, `ArtistName`, `ArtistGenre`, `Banking_Information`, `Country`, `ArtistRealNames`) VALUES ('$emailaddress', '$password', '$artistname', '$artistgenre', '$bankinginformation', '$country', '$artistrealnames' )";
+        print $query;
+        $insert = $mysqli->query($query);
+        if (!$insert) {
+            echo $mysqli->error;
+        }
+        else {
+            header("Location: artist_login.php");
+        }
+
+    }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -13,8 +47,8 @@
 </div>
 
 <body>
-    <div class="div_content" class="form">
-        <form name="artist-registration" action="main-artist.php" method="post">
+    <div class="div_content">
+        <form name="submit-registration" action="#" method="post">
 
             <div class="text_wrapper">
                 <label class="text_email">Email Address</label>
@@ -72,7 +106,7 @@
             <br>
 
             <input type="text" name="name" class="box_name" placeholder=" Name">
-            <input type="text" name="Surname" class="box_surname" placeholder=" Surname">
+            <input type="text" name="surname" class="box_surname" placeholder=" Surname">
             <br>
 
             <div class="text_wrapper">
@@ -351,14 +385,14 @@
             <br>
 
             <div class="text_wrapper">
-                <label class="text_banknumber">Bank Account Number</label>
+                <label class="text_banknumber" >Bank Account Number</label>
             </div>
             <br>
 
-            <input type="text" name="bankaccountnumber" class="text_field" placeholder=" Bank Account Number"><br>
+            <input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
 
             <div class="button">
-                <input type="submit" name="submit" value="Register" class="button_orange">
+                <input type="submit" name="submit-register" value="Register" class="button_orange">
             </div>
 
         </form>

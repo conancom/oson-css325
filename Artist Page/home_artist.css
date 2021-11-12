@@ -286,11 +286,11 @@ body{
     height: 173px;
     left: 126px;
     top: 198px;
-    background: url(img/1.jpg); /*Change image*/
     border-radius: 202px;
-    background-size: cover;
     background-position: center;
-    /*margin-top: -45px;*/
+    background-repeat: no-repeat;
+    background-size: auto;
+    align-items: center;
     margin-top: -2.25%;
 }
 .newlisteners{
