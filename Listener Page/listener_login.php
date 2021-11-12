@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $mysqli = new mysqli("localhost", "root", null, "oson-v0");
+    $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
 
 
     if ($mysqli->connect_errno) {
