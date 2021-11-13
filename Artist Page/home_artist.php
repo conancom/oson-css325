@@ -91,24 +91,123 @@ if ($mysqli->connect_errno) {
 
         <div class="grid-subcontainer">
             <img class="newlistenersimg" src="img/down_arrow.png" />
-            <div class="newlisteners"> New Listeners</div>
+            <?php
+            if (isset($_SESSION['id-artist'])) {
+
+            $query = "SELECT count(DISTINCT `ListenToSong`.`idListener`)
+            FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
+            WHERE `ListenToSong`.`idSong` = `song`.`idSong`
+            AND `song`.`idSong`  = `createsong`.`idSong`
+            AND `createsong`.`idArtist` = `artist`.`idArtist`
+            AND `artist`.`idArtist` = $id
+            AND YEARWEEK(`ListenTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);";
+
+                // print($query); 
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        $data = $result->fetch_array();
+
+                        echo '<div class="newlisteners">' . $data['count(DISTINCT `ListenToSong`.`idListener`)'] . ' New Listeners</div>';
+                    }
+                }
+            }
+            ?>
+
+
             <br>
             <br>
             <img class="streamsimg" src="img/up_arrow.png" />
-            <div class="streams"> Streams</div>
+
+            <?php
+            if (isset($_SESSION['id-artist'])) {
+
+            $query = "SELECT count(DISTINCT `ListenToSongid`)
+            FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
+            WHERE `ListenToSong`.`idSong` = `song`.`idSong`
+            AND `song`.`idSong`  = `createsong`.`idSong`
+            AND `createsong`.`idArtist` = `artist`.`idArtist`
+            AND `artist`.`idArtist` = $id
+            AND YEARWEEK(`ListenTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);";
+
+                // print($query); 
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        $data = $result->fetch_array();
+
+                        echo '<div class="streams">' . $data['count(DISTINCT `ListenToSongid`)'] . ' Streams</div>';
+                    }
+                }
+            }
+            ?>
+
             <br>
             <br>
             <img class="newfollowsimg" src="img/up_arrow.png" />
-            <div class="newfollows"> New Follows</div>
+
+            <?php
+            if (isset($_SESSION['id-artist'])) {
+
+            $query = "SELECT count(DISTINCT `FollowArist`.`idListener`)
+            FROM `listener`, `song`, `createsong`, `FollowArist`, `artist` 
+            WHERE `artist`.`idArtist` = $id
+            AND `FollowArist`.`idArtist` = `artist`.`idArtist`
+            AND YEARWEEK(`FollowDate`, 1) = YEARWEEK(CURDATE(), 1);";
+
+                // print($query); 
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        $data = $result->fetch_array();
+
+                        echo '<div class="newfollows">' . $data['count(DISTINCT `FollowArist`.`idListener`)'] . ' New Follows</div>';
+                    }
+                }
+            }
+            ?>
             <br>
             <br>
             <img class="donationsimg" src="img/up_arrow.png" />
-            <div class="donations"> Donations</div>
+
+            <?php
+            if (isset($_SESSION['id-artist'])) {
+
+            $query = "SELECT SUM(`donatetoartist`.`amount`)
+            FROM `donatetoartist`, `artist` 
+            WHERE `donatetoartist`.`idArtist` = `artist`.`idArtist`
+            AND `artist`.`idArtist` = $id
+            AND YEARWEEK(`DonateTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);";
+
+                // print($query); 
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        $data = $result->fetch_array();
+                        if (is_null($data['SUM(`donatetoartist`.`amount`)'])) { 
+                            $x = 0;
+                            echo ' <div class="donations">' . $x . ' $ worth of Donations</div>';
+                        }else{
+                            echo ' <div class="donations">' . $data['SUM(`donatetoartist`.`amount`)'] . ' $ worth of Donations</div>';
+                        }
+                    }
+                }
+            }
+            ?>
+
         </div>
         <?php
         if (isset($_SESSION['id-artist'])) {
 
-            $query = "SELECT DISTINCT `song`.* , COUNT(`ListenToSongId`) 
+            $query = "SELECT `song`.* , COUNT(`ListenToSongId`) 
             FROM `artist`, `song`, `createsong`, `ListenToSong` 
             WHERE `artist`.`idArtist` = '$id' 
             AND `artist`.`idArtist` = `createsong`.`idArtist` 
@@ -126,10 +225,10 @@ if ($mysqli->connect_errno) {
                     $x = 1;
                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                         // Do stuff with $data
-                        echo  '<img class="trendingsongs' .$x. '" src="songimg/' . $data['idSong'] . '.jpg" width="186" height="186"/>';
-                        echo '<div class="trendingsongs' .$x. '">';
+                        echo  '<img class="trendingsongs' . $x . '" src="songimg/' . $data['idSong'] . '.jpg" width="186" height="186"/>';
+                        echo '<div class="trendingsongs' . $x . '">';
                         echo '</div>';
-                        echo '<div class="dessong' .$x. '">'; 
+                        echo '<div class="dessong' . $x . '">';
                         echo  $data['Name'] . '<br>' . $data['COUNT(`ListenToSongId`)'] . ' Total Streams';
                         echo '</div>';
                         $x++;
@@ -139,7 +238,7 @@ if ($mysqli->connect_errno) {
         }
         ?>
 
-        
+
         <img class="trendingalbums1" src="img/album1.png" />
         <div class="trendingalbums1">
         </div>
