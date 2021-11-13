@@ -16,3 +16,9 @@ INSERT INTO `artist`(`ArtistEmail`, `ArtistPassword`, `ArtistName`, `ArtistGenre
 INSERT INTO `listener` (`UserEmail`, `UserPassword`, `Gender`, `UserName`, `UserDateOfBirth`, `PreferredGenre`, `CreationTimeStamp`, `Country`, `profile_url`) VALUES ('leon@gmail.com', 'leon', 'Male', 'leonardo', '26-Jun-2000', 'Indie', 'current_timestamp(2)', 'Germany', 'img/1') 
 
 INSERT INTO `song` (`Duration`, `Genre`, `Name`, `Language`, `Popularity`, `Explicity`, `ReleaseDate`, `song_url`, `cover_url`) VALUES ('2.36', 'Rap', 'God\'s plan', '0', 'English', 'E', '2018-01-19', 'song/1', 'cover/1');
+
+INSERT INTO `createsong` (`idArtist`, `idSong`, `EntryOfArtist`) VALUES ('2', '1', '1');
+
+INSERT INTO `listentosong` ( `idListener`, `idSong`, `DurationListenedTo`) VALUES ('1', '1', '1.36') '
+
+SELECT `song`.*, COUNT(`ListenToSongId`)FROM `artist`, `song`, `createsong`, `ListenToSong` WHERE `artist`.`idArtist` = 2 AND `artist`.`idArtist` = `createsong`.`idArtist` AND `createsong`.`idSong` = `song`.`idSong` AND `ListenToSong`.`idSong` = `song`.`idSong` ORDER BY COUNT(`ListenToSongId`) LIMIT 0,3 ; 
