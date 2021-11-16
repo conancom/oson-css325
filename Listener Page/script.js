@@ -22,7 +22,7 @@ let Playing_song = false;
 let track = document.createElement('audio');
 
 //All songs list
-/*
+
 let All_song = [{
         name: "Machine Gun Kelly - My Ex's Best Friend",
         path: "music/testsong1.mp3",
@@ -36,56 +36,22 @@ let All_song = [{
         singer: "DEAN"
     },
     {
-        name: "Post Malone, The Weeknd - One Right Now",
-        path: "music/testsong3.mp3",
-        img: "img/img3.jpg",
-        singer: "Post Malone, The Weeknd"
-    },
-    {
         name: "Drake - Fair Trade",
-        path: "music/testsong4.mp3",
+        path: "music/testsong3.mp3",
         img: "img/img4.jpg",
         singer: "Drake"
+    },
+    {
+        name: "Post Malone, The Weeknd - One Right Now",
+        path: "music/testsong4.mp3",
+        img: "img/img3.jpg",
+        singer: "Post Malone, The Weeknd"
     },
     {
         name: "Yiruma - River Flows In You",
         path: "music/testsong5.mp3",
         img: "img/img5.jpg",
         singer: "Yiruma"
-    }
-]; 
-*/
-
-//All songs list
-let All_song = [{
-        name: "first song",
-        path: "music/testsong1.mp3",
-        img: "img/img1.jpg",
-        singer: "1"
-    },
-    {
-        name: "second song",
-        path: "music/testsong2.mp3",
-        img: "img/img2.jpg",
-        singer: "2"
-    },
-    {
-        name: "third song",
-        path: "music/testsong3.mp3",
-        img: "img/img3.jpg",
-        singer: "3"
-    },
-    {
-        name: "fourth song",
-        path: "music/testsong4.mp3",
-        img: "img/img4.jpg",
-        singer: "4"
-    },
-    {
-        name: "fifth song",
-        path: "music/testsong5.mp3",
-        img: "img/img5.jpg",
-        singer: "5"
     }
 ];
 
