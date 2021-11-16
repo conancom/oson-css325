@@ -25,10 +25,10 @@ if ($mysqli->connect_errno) {
 
     <nav class="menu_head">
         <div class="menu_button_group">
-            <a href="#home">Home</a>
-            <a href="#songs">Songs</a>
-            <a href="#albums">Albums</a>
-            <a href="#settings">Settings</a>
+        <a href="#home">Home</a>
+        <a href="songs_artist.php">Songs</a>
+        <a href="albums_artist.php">Albums</a>
+        <a href="editprofile_artist.php">Settings</a>
         </div>
     </nav>
 
@@ -94,7 +94,7 @@ if ($mysqli->connect_errno) {
             <?php
             if (isset($_SESSION['id-artist'])) {
 
-            $query = "SELECT count(DISTINCT `ListenToSong`.`idListener`)
+                $query = "SELECT count(DISTINCT `ListenToSong`.`idListener`)
             FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
             WHERE `ListenToSong`.`idSong` = `song`.`idSong`
             AND `song`.`idSong`  = `createsong`.`idSong`
@@ -124,7 +124,7 @@ if ($mysqli->connect_errno) {
             <?php
             if (isset($_SESSION['id-artist'])) {
 
-            $query = "SELECT count(DISTINCT `ListenToSongid`)
+                $query = "SELECT count(DISTINCT `ListenToSongid`)
             FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
             WHERE `ListenToSong`.`idSong` = `song`.`idSong`
             AND `song`.`idSong`  = `createsong`.`idSong`
@@ -153,7 +153,7 @@ if ($mysqli->connect_errno) {
             <?php
             if (isset($_SESSION['id-artist'])) {
 
-            $query = "SELECT count(DISTINCT `FollowArist`.`idListener`)
+                $query = "SELECT count(DISTINCT `FollowArist`.`idListener`)
             FROM `listener`, `song`, `createsong`, `FollowArist`, `artist` 
             WHERE `artist`.`idArtist` = $id
             AND `FollowArist`.`idArtist` = `artist`.`idArtist`
@@ -179,7 +179,7 @@ if ($mysqli->connect_errno) {
             <?php
             if (isset($_SESSION['id-artist'])) {
 
-            $query = "SELECT SUM(`donatetoartist`.`amount`)
+                $query = "SELECT SUM(`donatetoartist`.`amount`)
             FROM `donatetoartist`, `artist` 
             WHERE `donatetoartist`.`idArtist` = `artist`.`idArtist`
             AND `artist`.`idArtist` = $id
@@ -192,10 +192,10 @@ if ($mysqli->connect_errno) {
                 } else {
                     if (mysqli_num_rows($result) > 0) {
                         $data = $result->fetch_array();
-                        if (is_null($data['SUM(`donatetoartist`.`amount`)'])) { 
+                        if (is_null($data['SUM(`donatetoartist`.`amount`)'])) {
                             $x = 0;
                             echo ' <div class="donations">' . $x . ' $ worth of Donations</div>';
-                        }else{
+                        } else {
                             echo ' <div class="donations">' . $data['SUM(`donatetoartist`.`amount`)'] . ' $ worth of Donations</div>';
                         }
                     }
@@ -239,24 +239,45 @@ if ($mysqli->connect_errno) {
         ?>
 
 
-        <img class="trendingalbums1" src="img/album1.png" />
-        <div class="trendingalbums1">
-        </div>
-        <div class="desalbums1">
-            Fall in to pieces<br> 23.3k Total Streams
-        </div>
-        <img class="trendingalbums2" src="img/album1.png" />
-        <div class="trendingalbums2">
-        </div>
-        <div class="desalbums2">
-            Fall in to pieces<br> 23.3k Total Streams
-        </div>
-        <img class="trendingalbums3" src="img/album1.png" />
-        <div class="trendingalbums3">
-        </div>
-        <div class="desalbums3">
-            Fall in to pieces<br> 23.3k Total Streams
-        </div>
+        <?php
+        if (isset($_SESSION['id-artist'])) {
+
+            $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
+            FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`, `ListenToSong`
+            WHERE `artist`.`idArtist` = 2
+            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+            AND `createsong`.`idSong` = `song`.`idSong` 
+            AND `song`.`idSong` = `consistAlbum`.`idSong`
+            AND `consistAlbum`.`idAlbum` = `Album`.`idAlbum`
+            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+            GROUP BY `idAlbum` 
+            ORDER BY COUNT(`ListenToSongId`) DESC 
+            LIMIT 0,3;";
+            // print($query); 
+            $result = $mysqli->query($query);
+            if (!$result) {
+                echo $mysqli->error;
+            } else {
+                if (mysqli_num_rows($result) > 0) {
+                    $x = 1;
+                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                        // Do stuff with $data
+                        echo  '<img class="trendingalbums' . $x . '" src="albumimg/' . $data['idAlbum'] . '.jpg" width="186" height="186"/>';
+                        echo '<div class="trendingalbums' . $x . '">';
+                        echo '</div>';
+                        echo '<div class="desalbums' . $x . '">';
+                        echo  $data['AlbumName'] . '<br>' . $data['COUNT(`ListenToSongId`)'] . ' Total Streams';
+                        echo '<br>';
+                        echo '</div>';
+                        $x++;
+                    }
+                }
+            }
+        }
+        ?>
+       
+
+        
 
     </div>
 
