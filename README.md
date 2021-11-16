@@ -55,3 +55,7 @@ SELECT SUM(`donatetoartist`.`amount`)
             WHERE `donatetoartist`.`idArtist` = `artist`.`idArtist`
             AND `artist`.`idArtist` = 2
             AND YEARWEEK(`DonateTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);
+
+SELECT album.* FROM album,artist where album.artistid = artist.artistid
+
+SELECT song.* FROM song, album, consistsalbum WHERE album.albumid = consistsalbum.albumid AND consistsalbum.songid = song.songid;

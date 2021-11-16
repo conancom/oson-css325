@@ -215,7 +215,7 @@ if ($mysqli->connect_errno) {
             AND `ListenToSong`.`idSong` = `song`.`idSong` 
             GROUP BY `idSong` 
             ORDER BY COUNT(`ListenToSongId`) DESC 
-            LIMIT 0,3; ;";
+            LIMIT 0,3;";
             // print($query); 
             $result = $mysqli->query($query);
             if (!$result) {

@@ -27,6 +27,7 @@
             echo $mysqli->error;
         }
         else {
+			move_uploaded_file($_FILES["my_file"]["tmp_name"], 'img/'.mysqli_insert_id($mysqli).'.jpg');
             header("Location: artist_login.php");
         }
 
@@ -48,7 +49,7 @@
 
 <body>
     <div class="div_content">
-        <form name="submit-registration" action="#" method="post">
+        <form name="submit-registration" action="#" method="post" enctype="multipart/form-data">
 
             <div class="text_wrapper">
                 <label class="text_email">Email Address</label>
@@ -390,7 +391,8 @@
             <br>
 
             <input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
-
+			Select Image to upload:
+            <input type="file" name="my_file" />
             <div class="button">
                 <input type="submit" name="submit-register" value="Register" class="button_orange">
             </div>
