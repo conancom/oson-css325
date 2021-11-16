@@ -101,8 +101,8 @@ if ($mysqli->connect_errno) {
                     $x = 1;
                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                         echo '<tr>';
-                        echo '<td>' .$data['idAlbum']. '</td>';
-                        echo '<td>' .$data['AlbumName']. '</td>';
+                        echo '<td> ' .$data['idAlbum']. '</td>';
+                        echo '<td> <a href="editalbums_artists.php?id='.$data['idAlbum'].'">' .$data['AlbumName']. '</td>';
                         echo '<td>' .$data['Genre']. '</td>';
                         echo '<td>' .$data['AmountOfFollower']. '</td>';
                         echo '<td>' .$data['Explicity']. '</td>';
