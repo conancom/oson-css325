@@ -11,13 +11,12 @@ if (isset($_POST["submit-newsong"])) {
     $songname = $_POST['songname'];
     $genre = $_POST['genre'];
     $explicity = $_POST['Explicity'];
-    $album = $_POST['album'];
+    $album = $_POST['Album'];
     $featuringartist =  $_POST['featuringartist'];
 
     $query = "INSERT INTO `song`(`Duration`,`Genre`, `Name`, `Language`, `Popularity`, `Explicity`) 
-    VALUES ('0', '$genre', '$songname', '-', '0', '$explicity');
-    INSERT `createsong`(idArtist, idSong , EntryOfArtist)
-    VALUES ();";
+    VALUES ('0', '$genre', '$songname', '-', '0', '$explicity');";
+
     //$query2 = "SELECT LAST_INSERT_ID();";
     //print $query;
 
@@ -26,9 +25,23 @@ if (isset($_POST["submit-newsong"])) {
     if (!$insert) {
         echo $mysqli->error;
     } else {
-        $query = 
-        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' . mysqli_insert_id($mysqli) . '.jpg');
-        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . mysqli_insert_id($mysqli) . '.mp3');
+
+        
+
+        $idartist = $_SESSION['id-artist'];
+        $newestsongid = mysqli_insert_id($mysqli);
+        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' .$insert2 . '.jpg');
+        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $insert2 . '.mp3');
+        $query2 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
+        VALUES ('$idartist','$newestsongid','0');";
+
+        $insert2 = $mysqli->query($query2);
+
+        if (!$insert2) {
+            echo $mysqli->error;
+        }
+
+        
         header("Location: songs_artist.php");
     }
 }
@@ -126,25 +139,25 @@ if (isset($_POST["submit-newsong"])) {
 
                         <select name="genre" style="margin-right: 60px; margin-bottom: 10px; padding-right: 35px; width: 250px;">
                             <option>-</option>
-                            <option value="pop ">Pop</option>
-                            <option value="rap ">Rap</option>
-                            <option value="edm ">EDM</option>
-                            <option value="rock ">Rock</option>
-                            <option value="randb ">R&B</option>
-                            <option value="jazz ">Jazz</option>
-                            <option value="metal ">Metal</option>
-                            <option value="soul ">Soul</option>
-                            <option value="raggae ">Raggae</option>
-                            <option value="classical ">Classical</option>
-                            <option value="soundtracks ">Soundtracks</option>
-                            <option value="Country ">Country</option>
-                            <option value="blues ">Blues</option>
-                            <option value="folk ">Folk</option>
-                            <option value="indie ">Indie</option>
+                            <option value="pop">Pop</option>
+                            <option value="rap">Rap</option>
+                            <option value="edm">EDM</option>
+                            <option value="rock">Rock</option>
+                            <option value="randb">R&B</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="metal">Metal</option>
+                            <option value="soul">Soul</option>
+                            <option value="raggae">Raggae</option>
+                            <option value="classical">Classical</option>
+                            <option value="soundtracks">Soundtracks</option>
+                            <option value="Country">Country</option>
+                            <option value="blues">Blues</option>
+                            <option value="folk">Folk</option>
+                            <option value="indie">Indie</option>
                         </select>
                         <select name="Explicity" style="padding-right: 75px; margin-bottom: 10px; ">
                             <option>-</option>
-                            <option value= 'E'>Explitcit</option>
+                            <option value='E'>Explitcit</option>
                         </select><br>
                         <label>Album</label><br>
                         <select name="Album" style="padding-right: 80px; margin-bottom: 10px; padding-right: 115px; width: 250px;">
@@ -165,9 +178,8 @@ if (isset($_POST["submit-newsong"])) {
                                     if (mysqli_num_rows($result2) > 0) {
                                         $x = 1;
                                         while ($data2 = $result2->fetch_array(MYSQLI_ASSOC)) {
-                                            echo '<option value="'.$data2['AlbumName'].'">'.$data2['AlbumName'].'</option>';
+                                            echo '<option value="' . $data2['AlbumName'] . '">' . $data2['AlbumName'] . '</option>';
                                         }
-
                                     }
                                 }
                             }
