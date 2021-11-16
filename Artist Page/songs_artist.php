@@ -100,10 +100,8 @@ if ($mysqli->connect_errno) {
             WHERE `artist`.`idArtist` = '$idartist' 
             AND `createsong`.`idArtist` = `artist`.`idArtist`
             AND `createsong`.`idSong` = `song`.`idSong`
-            AND `song`.`idSong` = `consistAlbum`.`idSong`
-            AND `consistAlbum`.`idAlbum` = `Album`.`idAlbum`
             GROUP BY `song`.`idSong`
-            ORDER BY `song`.`idSong` DESC ";
+            ORDER BY `song`.`idSong` DESC";
       // print($query); 
       $result = $mysqli->query($query);
       if (!$result) {
@@ -117,8 +115,27 @@ if ($mysqli->connect_errno) {
             echo '<tr>';
             echo '<td>' . $data['idSong'] . '</td>';
             echo ' <td> ' . $data['Name'] . '</td>';
-            echo '<td> ' . $data['AlbumName'] . '</td>';
+
             $songid = $data['idSong'];
+            $query1 = "SELECT *
+            FROM `song`, `consistAlbum`, `Album`
+            WHERE `song`.`idSong` = $songid
+            AND `song`.`idSong` = `consistAlbum`.`idSong`
+            AND `consistAlbum`.`idAlbum` = `Album`.`idAlbum`";
+            // print($query); 
+            
+            $result1 = $mysqli->query($query1);
+            if (!$result1) {
+              echo $mysqli->error;
+            } else {
+              if (mysqli_num_rows($result1) > 0) {
+                $data1 = $result1->fetch_array();
+                echo '<td> ' . $data['AlbumName'] . '</td>';
+              }
+            }
+            
+            
+            
 
 
             $query2 = "SELECT count(DISTINCT `ListenToSong`.`idListener`)
