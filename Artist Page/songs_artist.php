@@ -95,7 +95,7 @@ if ($mysqli->connect_errno) {
     if (isset($_SESSION['id-artist'])) {
       $idartist = $_SESSION['id-artist'];
 
-      $query = "SELECT *, `song`.`Popularity` AS 'pop', `song`.`Explicity` AS 'e'
+      $query = "SELECT *, `song`.`Popularity` AS 'pop', `song`.`Explicity` AS 'e', `song`.`idSong` AS 'songid'
             FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`
             WHERE `artist`.`idArtist` = '$idartist' 
             AND `createsong`.`idArtist` = `artist`.`idArtist`
@@ -113,10 +113,10 @@ if ($mysqli->connect_errno) {
             // Do stuff with $
             
             echo '<tr>';
-            echo '<td>' . $data['idSong'] . '</td>';
+            echo '<td>' . $data['songid'] . '</td>';
             echo ' <td> ' . $data['Name'] . '</td>';
 
-            $songid = $data['idSong'];
+            $songid = $data['songid'];
             $query1 = "SELECT *
             FROM `song`, `consistAlbum`, `Album`
             WHERE `song`.`idSong` = $songid
@@ -130,12 +130,12 @@ if ($mysqli->connect_errno) {
             } else {
               if (mysqli_num_rows($result1) > 0) {
                 $data1 = $result1->fetch_array();
-                echo '<td> ' . $data['AlbumName'] . '</td>';
+                
+                  echo '<td> ' . $data['AlbumName'] . '</td>';
+              }else{
+                echo '<td> - </td>'; 
               }
             }
-            
-            
-            
 
 
             $query2 = "SELECT count(DISTINCT `ListenToSong`.`idListener`)
@@ -152,7 +152,10 @@ if ($mysqli->connect_errno) {
               if (mysqli_num_rows($result2) > 0) {
                 $data2 = $result2->fetch_array();
                 echo '<td> ' . $data2['count(DISTINCT `ListenToSong`.`idListener`)'] . '</td>';
+              }else{
+                echo '<td>  0 </td>';
               }
+              
             }
 
             $query3 = "SELECT count(DISTINCT `ListenToSong`.`ListenToSongId`)
@@ -169,6 +172,8 @@ if ($mysqli->connect_errno) {
               if (mysqli_num_rows($result3) > 0) {
                 $data3 = $result3->fetch_array();
                 echo '<td> ' . $data3['count(DISTINCT `ListenToSong`.`ListenToSongId`)'] . '</td>';
+              }else{
+                echo '<td>  0 </td>';
               }
             }
             
