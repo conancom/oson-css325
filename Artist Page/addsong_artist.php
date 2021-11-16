@@ -25,23 +25,17 @@ if (isset($_POST["submit-newsong"])) {
     if (!$insert) {
         echo $mysqli->error;
     } else {
-
-        
-
         $idartist = $_SESSION['id-artist'];
         $newestsongid = mysqli_insert_id($mysqli);
         move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' .$insert2 . '.jpg');
         move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $insert2 . '.mp3');
         $query2 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
         VALUES ('$idartist','$newestsongid','0');";
-
         $insert2 = $mysqli->query($query2);
 
         if (!$insert2) {
             echo $mysqli->error;
         }
-
-        
         header("Location: songs_artist.php");
     }
 }
