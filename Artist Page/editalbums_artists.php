@@ -80,8 +80,8 @@ if ($mysqli->connect_errno) {
     }
     ?>
     <div class="duobutton">
-      <button type="button" class="button_orange"> Add new Song</button>
-      <button type="button" class="button_grey"> Remove Song(s)</button>
+      <button type="button" class="button_orange" onclick="location.href='addtoalbum_artist.php?id=<?php echo $albumId ?>'"> Add new Song</button>
+      <button type="button" class="button_grey" onclick="location.href='removefromalbum_artist.php?id=<?php echo $albumId ?>'"> Remove Song(s)</button>
 
       </select>
     </div>
