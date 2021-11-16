@@ -1,6 +1,6 @@
 <?php
     session_start();
-    print($_SESSION['id-listener']);
+    // print($_SESSION['id-listener']);
 ?>
 <!DOCTYPE html>
 
@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
@@ -37,7 +38,7 @@
                         Search
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Playlist-Page.php">
                     <p>
                         <ion-icon name="reorder-four-outline"></ion-icon>
                         Playlist
