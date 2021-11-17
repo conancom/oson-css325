@@ -14,17 +14,17 @@ body {
 .row {
     width: 100%;
     display: flex;
-    
 }
-.Trackbar{
+
+.Trackbar {
     position: relative;
     height: 80%;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
+
 .columntest-side {
     flex: 20%;
 }
@@ -35,6 +35,7 @@ body {
     flex: 80%;
     background-color: #372F2F;
     padding-bottom: 150px;
+    padding-left: 700px;
 }
 
 
@@ -144,6 +145,22 @@ body {
     clip-path: circle(36.9% at 50% 50%);
 }
 
+.Album-Pic,
+.ArtistSuggest-Pic {
+    margin-bottom: 10px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Album-Pic img,
+.ArtistSuggest-Pic img {
+    width: 75%;
+}
+
 .Artist-Name h3,
 .Playlist-Type p,
 .Album-Name h3,
@@ -161,13 +178,14 @@ body {
 /*New Trackbar*/
 
 .duration {
-    position: absolute;
+    position: relative;
     bottom: 20%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 15;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     width: 1500px;
     height: 20px;
     margin-top: 40px;
@@ -177,9 +195,7 @@ body {
     color: #fff;
     font-size: 15px;
     margin-left: 20px;
-    
 }
-
 
 input[type="range"] {
     -webkit-appearance: none;
@@ -197,8 +213,6 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     cursor: pointer;
 }
-
-
 
 .volume {
     bottom: 10%;
