@@ -1,6 +1,6 @@
 <?php
 session_start();
-print($_SESSION['id-listener']);
+
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@ print($_SESSION['id-listener']);
 
 <head>
     <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
+    <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
 
     <title>Oson Music Streaming</title>
 
@@ -69,9 +70,10 @@ print($_SESSION['id-listener']);
             <div class="Main">
                 <div class="Recents">
                     <div class="RecentsContainer">
-                        <h3 style="color: white; font-size: 35px;">
+                        <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
                             Recently Played
                         </h3>
+
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="row Artist-Pic">
@@ -81,7 +83,7 @@ print($_SESSION['id-listener']);
                                     <h3 style="text-align: center;">IU</h3>
                                 </div>
                                 <div class="row Artist-Type">
-                                    <p style="text-align: center;">Artists</p>
+                                    <p style="text-align: center; color: white;">Artists</p>
                                 </div>
                             </div>
 
@@ -93,7 +95,7 @@ print($_SESSION['id-listener']);
                                     <h3 style="text-align: center;">LISA</h3>
                                 </div>
                                 <div class="row Artist-Type">
-                                    <p style="text-align: center;">Artists</p>
+                                    <p style="text-align: center; color: white;">Artists</p>
                                 </div>
                             </div>
 
@@ -105,7 +107,7 @@ print($_SESSION['id-listener']);
                                     <h3 style="text-align: center;">Code Kunst</h3>
                                 </div>
                                 <div class="row Artist-Type">
-                                    <p style="text-align: center;">Artists</p>
+                                    <p style="text-align: center; color: white;">Artists</p>
                                 </div>
                             </div>
 
@@ -117,7 +119,7 @@ print($_SESSION['id-listener']);
                                     <h3 style="text-align: center;">Lil Beethoven</h3>
                                 </div>
                                 <div class="row Artist-Type">
-                                    <p style="text-align: center;">Artists</p>
+                                    <p style="text-align: center; color: white;">Artists</p>
                                 </div>
                             </div>
 
@@ -128,7 +130,7 @@ print($_SESSION['id-listener']);
                 <div class="row">
                     <div class="Albums">
                         <div class="AlbumsContainer">
-                            <h3 style="color: white; padding: 20px; font-size: 35px;">
+                            <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold; margin-bottom: 40px;">
                                 Albums you might love
                             </h3>
 
@@ -189,7 +191,7 @@ print($_SESSION['id-listener']);
                 <div class="row">
                     <div class="Artists-Suggest">
                         <div class="ArtistsSuggestContainer">
-                            <h3 style="color: white; padding: 20px; font-size: 35px;">
+                            <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
                                 Artists you might love
                             </h3>
 
@@ -234,14 +236,12 @@ print($_SESSION['id-listener']);
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="row Trackbar">
 
-    
         <div class="col">
             <div class="buttonsContainer" style="position:relative; top: 20%; left: 10%;">
                 <button style="width: 50px; height: 50px; border: none; border-radius: 360%; padding: 10px;" onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
@@ -259,14 +259,12 @@ print($_SESSION['id-listener']);
             </div>
 
             <div class="row">
-            <div class="duration">
-                <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-                <img type ="hidden" id="track_image" class="track_image" style=" visibility: hidden;">
+                <div class="duration" style="margin-left: 100px;">
+                    <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden;">
+                </div>
+
             </div>
-
-
-            </div>
-
         </div>
 
         <div class="col">
@@ -275,7 +273,7 @@ print($_SESSION['id-listener']);
                     <p id="volume_show">75</p>
                     <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
                     <input type="range" min="0" max="100" value="75" onchange="volume_change()" id="volume">
-                    <button style="border: none;" id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+                    <button style="border: none;" id="auto" onclick="autoplay_switch()"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
@@ -367,34 +365,34 @@ print($_SESSION['id-listener']);
 
         //All songs list
         let All_song = [{
-                name: "My Ex's Best Friend",
+                name: "My Ex's Best Friend |",
                 path: "music/testsong1.mp3",
                 img: "img/img1.jpg",
-                singer: "Machine Gun Kelly"
+                singer: "| Machine Gun Kelly"
             },
             {
-                name: "Instagram",
+                name: "Instagram |",
                 path: "music/testsong2.mp3",
                 img: "img/img2.jpg",
-                singer: "DEAN"
+                singer: "| DEAN"
             },
             {
-                name: "Fair Trade",
+                name: "Fair Trade | ",
                 path: "music/testsong3.mp3",
                 img: "img/img4.jpg",
-                singer: "Drake"
+                singer: "| Drake"
             },
             {
-                name: "One Right Now",
+                name: "One Right Now | ",
                 path: "music/testsong4.mp3",
                 img: "img/img3.jpg",
-                singer: "Post Malone, The Weeknd"
+                singer: "| Post Malone, The Weeknd"
             },
             {
-                name: "River Flows In You",
+                name: "River Flows In You | ",
                 path: "music/testsong5.mp3",
                 img: "img/img5.jpg",
-                singer: "Yiruma"
+                singer: "| Yiruma"
             }
         ];
 
