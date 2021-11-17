@@ -28,6 +28,9 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
 
 
         $newestsongid = $songId;
+        if(file_exists('songimg/' . $newestsongid . '.jpg')){
+            unlink('songimg/' . $newestsongid . '.jpg');
+        }
         move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' . $newestsongid . '.jpg');
         if (isset($_POST['featuringartist'])) {
             $query3 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
