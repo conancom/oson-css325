@@ -14,6 +14,7 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
     $songname = $_POST['songname'];
     $genre = $_POST['genre'];
     $explicity = $_POST['Explicity'];
+    $featuringartist = $_POST['featuringartist'];
 
     $query = "UPDATE `song` SET `Genre` = '$genre', `Name`='$songname', `Explicity` ='$explicity'
     WHERE `idSong` = '$songId';";
@@ -28,6 +29,24 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
 
         $newestsongid = $songId;
         move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' . $newestsongid . '.jpg');
+        if (isset($_POST['featuringartist'])) {
+            $query3 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
+            VALUES ('$featuringartist','$newestsongid','0');";
+            $insert3 = $mysqli->query($query3);
+
+            if (!$insert3) {
+                echo $mysqli->error;
+            }
+        }
+
+        $query4 = "DELETE FROM `createsong` WHERE `createsong`.`idArtist` <>  '$featuringartist' AND `createsong`.`idSong` =  '$songId' 
+        AND `createsong`.`idArtist` <>  '$idartist'";
+        $delete = $mysqli->query($query4);
+        if (!$delete) {
+            echo $mysqli->error;
+        }
+
+
         header("Location: songs_artist.php");
     }
 }
@@ -151,7 +170,30 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                     <div id="text_wrapper">
                         <label id="featuringartist">Featuring Arist</label>
                     </div>
-                    <input type="text" name="featuringartist" id="text_field" placeholder=" Featuring Arist"><br>
+                    <select type="text " name="featuringartist" id="text_field " placeholder=" Featuring Arist " style="margin-bottom: 10px; width: 250px;">
+                        <option>-</option>
+                        <?php
+                        if (isset($_SESSION['id-artist'])) {
+                            $idartist = $_SESSION['id-artist'];
+
+                            $query2 = "SELECT * 
+                                FROM `artist`
+                                WHERE `artist`.`idArtist` <> '$idartist' ;";
+                            // print($query); 
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result2) > 0) {
+                                    $x = 1;
+                                    while ($data2 = $result2->fetch_array(MYSQLI_ASSOC)) {
+                                        echo '<option value="' . $data2['idArtist'] . '">' . $data2['ArtistName'] . '</option>';
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                    </select><br>
 
 
                     <label>Cover Image</label>

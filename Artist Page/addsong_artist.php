@@ -27,14 +27,23 @@ if (isset($_POST["submit-newsong"])) {
     } else {
         $idartist = $_SESSION['id-artist'];
         $newestsongid = mysqli_insert_id($mysqli);
-        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' .$newestsongid. '.jpg');
-        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $newestsongid. '.mp3');
+        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' . $newestsongid . '.jpg');
+        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $newestsongid . '.mp3');
         $query2 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
         VALUES ('$idartist','$newestsongid','0');";
         $insert2 = $mysqli->query($query2);
 
         if (!$insert2) {
             echo $mysqli->error;
+        }
+        if (isset($_POST['featuringartist'])) {
+            $query3 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
+            VALUES ('$featuringartist','$newestsongid','0');";
+            $insert3 = $mysqli->query($query3);
+
+            if (!$insert3) {
+                echo $mysqli->error;
+            }
         }
         header("Location: songs_artist.php");
     }
@@ -182,8 +191,32 @@ if (isset($_POST["submit-newsong"])) {
 
                         <div id="text_wrapper ">
                             <label id="featuringartist" style="margin-bottom: 10px; ">Featuring Arist</label>
+
                         </div>
-                        <input type="text " name="featuringartist" id="text_field " placeholder=" Featuring Arist " style="margin-bottom: 10px; width: 250px;"><br>
+                        <select type="text " name="featuringartist" id="text_field " placeholder=" Featuring Arist " style="margin-bottom: 10px; width: 250px;">
+                            <option>-</option>
+                            <?php
+                            if (isset($_SESSION['id-artist'])) {
+                                $idartist = $_SESSION['id-artist'];
+
+                                $query2 = "SELECT * 
+                                FROM `artist`
+                                WHERE `artist`.`idArtist` <> '$idartist' ;";
+                                // print($query); 
+                                $result2 = $mysqli->query($query2);
+                                if (!$result2) {
+                                    echo $mysqli->error;
+                                } else {
+                                    if (mysqli_num_rows($result2) > 0) {
+                                        $x = 1;
+                                        while ($data2 = $result2->fetch_array(MYSQLI_ASSOC)) {
+                                            echo '<option value="' . $data2['idArtist'] . '">' . $data2['ArtistName'] . '</option>';
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
+                        </select><br>
 
                         <label style="margin-right:100px; margin-bottom: 10px; ">Upload Song</label>
                         <input type="file" name="my_song" /> Upload <br>
