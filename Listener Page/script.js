@@ -13,6 +13,7 @@ let total = document.querySelector('#total');
 let artist = document.querySelector('#artist');
 
 let timer;
+
 let autoplay = 0;
 
 let index_no = 0;
@@ -24,31 +25,31 @@ let track = document.createElement('audio');
 //All songs list
 
 let All_song = [{
-        name: "Machine Gun Kelly - My Ex's Best Friend",
+        name: "My Ex's Best Friend",
         path: "music/testsong1.mp3",
         img: "img/img1.jpg",
         singer: "Machine Gun Kelly"
     },
     {
-        name: "DEAN - Instagram",
+        name: "Instagram",
         path: "music/testsong2.mp3",
         img: "img/img2.jpg",
         singer: "DEAN"
     },
     {
-        name: "Drake - Fair Trade",
+        name: "Fair Trade",
         path: "music/testsong3.mp3",
         img: "img/img4.jpg",
         singer: "Drake"
     },
     {
-        name: "Post Malone, The Weeknd - One Right Now",
+        name: "One Right Now",
         path: "music/testsong4.mp3",
         img: "img/img3.jpg",
         singer: "Post Malone, The Weeknd"
     },
     {
-        name: "Yiruma - River Flows In You",
+        name: "River Flows In You",
         path: "music/testsong5.mp3",
         img: "img/img5.jpg",
         singer: "Yiruma"
@@ -178,7 +179,6 @@ function range_slider() {
         position = track.currentTime * (100 / track.duration);
         slider.value = position;
     }
-
 
     // function will run when the song is over
     if (track.ended) {
