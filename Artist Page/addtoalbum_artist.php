@@ -150,12 +150,19 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
         $idartist = $_SESSION['id-artist'];
 
         $query = "SELECT *, `song`.`Popularity` AS 'pop', `song`.`Explicity` AS 'e', `song`.`idSong` AS 'songid'
-            FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`
-            WHERE `artist`.`idArtist` = '$idartist' 
-            AND `createsong`.`idArtist` = `artist`.`idArtist`
-            AND `createsong`.`idSong` = `song`.`idSong`
-            GROUP BY `song`.`idSong`
-            ORDER BY `song`.`idSong` DESC";
+        FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`
+        WHERE `artist`.`idArtist` = '$idartist'
+        AND `createsong`.`idArtist` = `artist`.`idArtist`
+        AND `createsong`.`idSong` = `song`.`idSong`
+        AND (
+          (NOT EXISTS
+            (SELECT 1 FROM `consistAlbum`, `song` 
+              WHERE `consistAlbum`.`idSong` = `song`.`idSong` 
+              AND `consistAlbum`.`idSong` 
+              AND `createsong`.`idArtist` = `artist`.`idArtist`
+              AND `createsong`.`idSong` = `song`.`idSong` AND `artist`.`idArtist` = '$idartist')))
+        GROUP BY `song`.`idSong` 
+        ORDER BY `song`.`idSong` DESC";
         // print($query); 
         $result = $mysqli->query($query);
         if (!$result) {

@@ -91,7 +91,7 @@ if ($mysqli->connect_errno) {
     <tr>
       <th>Song Number</th>
       <th>Song Name</th>
-      <th>Album Name</th>
+ 
       <th>Genre</th>
       <th>Listeners</th>
       <th>Streams</th>
@@ -110,6 +110,7 @@ if ($mysqli->connect_errno) {
             AND `Album`.`idAlbum` = $albumId
             AND `consistalbum`.`idAlbum` = `Album`.`idAlbum`
             AND `consistalbum`.`idSong`= `song`.`idSong`
+            GROUP BY `song`.`idSong`
             ORDER BY `song`.`idSong` DESC";
       // print($query); 
       $result = $mysqli->query($query);
@@ -122,7 +123,6 @@ if ($mysqli->connect_errno) {
             echo '<tr>';
             echo '<td> ' . $data['songid'] . '</td>';
             echo '<td> ' . $data['songname'] . '</td>';
-            echo '<td> ' . $albumId . '</td>';
 
             echo '<td>' . $data['Genre'] . '</td>';
             $song = $data['songid'];
