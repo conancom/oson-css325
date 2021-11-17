@@ -116,7 +116,7 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
               $data1 = $result1->fetch_array();
             }
           }
-          echo '<h1> Add Song to ' . $data["ArtistName"] . ' ' . $data1["AlbumName"] . '</h1>';
+          echo '<h1> Add Song to ' . $data["ArtistName"] . ', ' . $data1["AlbumName"] . '</h1>';
         }
       }
       ?>
@@ -174,7 +174,7 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
               // Do stuff with $
 
               echo '<tr>';
-              echo '<td> <input type="checkbox" name="songtoadd' . $data['songid'] . '" value="' . $data['songid'] . '"/>songtoadd' . $data['songid'] . ' </td>';
+              echo '<td> <input type="checkbox" name="songtoadd' . $data['songid'] . '" value="' . $data['songid'] . '"/> </td>';
               echo '<td>' . $data['songid'] . '</td>';
               echo '<td> ' . $data['Name'] . '</td>';
 
