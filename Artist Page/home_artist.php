@@ -244,7 +244,7 @@ if ($mysqli->connect_errno) {
 
             $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
             FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`, `ListenToSong`
-            WHERE `artist`.`idArtist` = 2
+            WHERE `artist`.`idArtist` = $id
             AND `artist`.`idArtist` = `createsong`.`idArtist` 
             AND `createsong`.`idSong` = `song`.`idSong` 
             AND `song`.`idSong` = `consistAlbum`.`idSong`
