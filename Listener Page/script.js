@@ -23,7 +23,6 @@ let Playing_song = false;
 let track = document.createElement('audio');
 
 //All songs list
-
 let All_song = [{
         name: "My Ex's Best Friend",
         path: "music/testsong1.mp3",
@@ -119,21 +118,23 @@ function pausesong() {
 
 // next song
 function next_song() {
+    play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
     if (index_no < All_song.length - 1) {
         index_no += 1;
         load_track(index_no);
         playsong();
+
     } else {
         index_no = 0;
         load_track(index_no);
         playsong();
-
     }
 }
 
 
 // previous song
 function previous_song() {
+    play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
     if (index_no > 0) {
         index_no -= 1;
         load_track(index_no);
