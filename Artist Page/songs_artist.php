@@ -114,7 +114,7 @@ if ($mysqli->connect_errno) {
             
             echo '<tr>';
             echo '<td>' . $data['songid'] . '</td>';
-            echo ' <td> ' . $data['Name'] . '</td>';
+            echo '<td> <a href="editsong_artist.php?id='. $data['songid'] .'">' . $data['Name'] . '</td>';
 
             $songid = $data['songid'];
             $query1 = "SELECT *

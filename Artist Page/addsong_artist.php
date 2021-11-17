@@ -27,8 +27,8 @@ if (isset($_POST["submit-newsong"])) {
     } else {
         $idartist = $_SESSION['id-artist'];
         $newestsongid = mysqli_insert_id($mysqli);
-        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' .$insert2 . '.jpg');
-        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $insert2 . '.mp3');
+        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' .$newestsongid. '.jpg');
+        move_uploaded_file($_FILES["my_song"]["tmp_name"], 'song/' . $newestsongid. '.mp3');
         $query2 = "INSERT `createsong`(idArtist, idSong , EntryOfArtist)
         VALUES ('$idartist','$newestsongid','0');";
         $insert2 = $mysqli->query($query2);
@@ -116,7 +116,7 @@ if (isset($_POST["submit-newsong"])) {
         <div class="row">
             <div id="wrapper">
                 <div id="div_content" class="form">
-                    <form name="add-song" action="#" method="post" enctype="multipart/form-data">>
+                    <form name="add-song" action="#" method="post" enctype="multipart/form-data">
                         <div id="text_wrapper">
                             <label id="songname" style="margin-bottom: 10px;">Song Name</label>
                         </div>
