@@ -1,6 +1,9 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 $albumId  = $_GET['id'];
 $idartist = $_SESSION['id-artist'];
 
@@ -11,7 +14,7 @@ if ($mysqli->connect_errno) {
 if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
 
 
-  
+
 
   $query = "SELECT *, `song`.`Popularity` AS 'pop', `song`.`Explicity` AS 'e', `song`.`idSong` AS 'songid'
             FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`
@@ -26,7 +29,7 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
   if (!$result) {
     echo $mysqli->error;
   } else {
-    
+
     if (mysqli_num_rows($result) > 0) {
       $x = 1;
       while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -42,7 +45,6 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
           }
         }
       }
-      
     }
   }
   header("Location: editalbums_artists.php?id=" . $albumId);
@@ -52,20 +54,60 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
 
 
 <!DOCTYPE html>
-<!--Font-->
-<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
-<html>
+
 
 <head>
   <title>Album List</title>
   <link rel="stylesheet" href="lists_artist.css">
+  <link rel="stylesheet" href="home_artist.css">
+
+  <!--Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <html>
 </head>
 
 
 
 <body>
+
+  <style>
+    .after-head {
+      position: absolute;
+      height: 250px;
+      width: 100%;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    .menu_head a {
+      cursor: pointer;
+      transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
+    }
+
+    .menu_head a:hover {
+      position: relative;
+      color: white;
+      background-color: rgba(255, 115, 21, 0.5);
+      border-radius: 10px;
+    }
+
+    .ConfirmAdding {
+      font-size: 17px;
+      color: white;
+      transition: background-color 0.5s, border-color 0.5s;
+      cursor: pointer;
+      height: 27px;
+      margin-top: 15px;
+    }
+
+    .ConfirmAdding:hover {
+      background-color: rgba(255, 115, 21, 0.5);
+      border-color: rgba(255, 115, 21, 0.5);
+      color: white;
+    }
+  </style>
 
   <nav class="menu_head">
     <div class="menu_button_group">
@@ -75,7 +117,13 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
       <a href="editprofile_artist.php">Settings</a>
     </div>
   </nav>
-  <form name="form" method="post" >
+
+  <div class="after-head" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba(255,115,21,1) 94%);">
+
+  </div>
+
+  <form name="form" method="post">
     <div class="wrapper_main">
       <?php
       if (isset($_SESSION['id-artist'])) {
@@ -124,7 +172,7 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
 
       <div class="duobutton">
 
-        <input name="submit-add" type="submit" value="Confirm Adding" class="button_orange">
+        <input name="submit-add" type="submit" value="Confirm Adding" class="button_orange ConfirmAdding">
 
         <select name="order by" class="button_orange" style="visibility: hidden;">
         </select>
@@ -134,7 +182,6 @@ if (isset($_POST['submit-add']) and isset($_SESSION['id-artist'])) {
     <table class="songtableedit">
       <tr>
         <th>
-
         </th>
         <th>Song Number</th>
         <th>Song Name</th>

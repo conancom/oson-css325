@@ -37,8 +37,8 @@ if (isset($_POST["submit-login"])) {
 
 	<!--Font-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <div class="headerartist">
@@ -51,7 +51,6 @@ if (isset($_POST["submit-login"])) {
 			background-image: url("Cover-Background.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
-			font-family: 'Kanit', sans-serif;
 		}
 
 		.artist_register_button:hover {
@@ -86,19 +85,19 @@ if (isset($_POST["submit-login"])) {
 
 		<form name="artist-login" action="#" method="post">
 			<div class="text_wrapper email">
-				<label class="text_email email_label">Email Address</label>
+				<label class="text_email email_label" style="font-family: 'Kanit', sans-serif;">Email Address</label>
 			</div><br>
-			<input type="text" name="emailaddress" class="text_field email_text" placeholder=" Email Address"><br>
+			<input type="text" name="emailaddress" class="text_field email_text" placeholder=" Email Address" style="font-family: 'Kanit', sans-serif;"><br>
 
 			<div class="text_wrapper password">
-				<label class="text_pw password_label">Password</label>
+				<label class="text_pw password_label" style="font-family: 'Kanit', sans-serif;">Password</label>
 			</div><br>
-			<input type="password" name="password" class="text_field password_text" placeholder=" ***********"><br>
+			<input type="password" name="password" class="text_field password_text" placeholder=" ***********" style="font-family: 'Kanit', sans-serif;"><br>
 
 			<div class="button">
-				<input type="submit" name="submit-login" value="Submit" class="button_orange artist_submit_button" style="cursor: pointer;"><br>
-				<label class="label_text">Don't have an account ?</label><br>
-				<button type="button" class="button_dark artist_register_button"><a href="artist_register.php" style="text-decoration: none; color: white;">Register Now </a> </button>
+				<input type="submit" name="submit-login" value="Submit" class="button_orange artist_submit_button" style="cursor: pointer; font-family: 'Kanit', sans-serif;"><br>
+				<label class="label_text" style="font-family: 'Kanit', sans-serif;">Don't have an account ?</label><br>
+				<button type="button" class="button_dark artist_register_button"><a href="artist_register.php" style="text-decoration: none; color: white; font-family: 'Kanit', sans-serif;">Register Now </a> </button>
 			</div>
 
 		</form>

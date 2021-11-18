@@ -21,12 +21,10 @@ if ($mysqli->connect_errno) {
     <link rel="stylesheet" href="home_artist.css">
 
     <!--Font-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-
-
 
 <body>
 
@@ -102,30 +100,30 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
         }
         ?>
     </div>
-    <div class="header_details">
 
-        <h1><?php
+    <div class="header_details">
+        <h1>
+            <?php
             echo  $data['ArtistName'];
             ?>
         </h1>
         <h2>
-            <label class="subheader">
+            <label class="subheader" style="font-family: 'Kanit', sans-serif;">
                 1.6k currently listening. </label>
-            <label class="subheader">
+            <label class="subheader" style="font-family: 'Kanit', sans-serif;">
                 <?php
                 echo  $data['AmountOfFollowers'];
                 ?> follows </label>
         </h2>
-
     </div>
 
     <div class="grid-container">
-        <div class="grid-stat">This week's statistics</div>
-        <div class="grid-trendsong">Trending Songs</div>
-        <div class="grid-trendalbum">Trending Albums</div>
-        <div class="underline1"></div>
-        <div class="underline2"></div>
-        <div class="underline3"></div>
+        <div class="grid-stat" style="font-family: 'Kanit', sans-serif;">This week's statistics</div>
+        <div class="grid-trendsong" style="font-family: 'Kanit', sans-serif;">Trending Songs</div>
+        <div class="grid-trendalbum" style="font-family: 'Kanit', sans-serif;">Trending Albums</div>
+        <div class="underline1" style="font-family: 'Kanit', sans-serif;"></div>
+        <div class="underline2" style="font-family: 'Kanit', sans-serif;"></div>
+        <div class="underline3" style="font-family: 'Kanit', sans-serif;"></div>
 
         <div class="grid-subcontainer">
             <img class="newlistenersimg" src="img/down_arrow.png" />
@@ -148,7 +146,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     if (mysqli_num_rows($result) > 0) {
                         $data = $result->fetch_array();
 
-                        echo '<div class="newlisteners">' . $data['count(DISTINCT `ListenToSong`.`idListener`)'] . ' New Listeners</div>';
+                        echo '<div class="newlisteners" style="font-family: "Kanit", sans-serif;">' . $data['count(DISTINCT `ListenToSong`.`idListener`)'] . ' New Listeners</div>';
                     }
                 }
             }
@@ -178,7 +176,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     if (mysqli_num_rows($result) > 0) {
                         $data = $result->fetch_array();
 
-                        echo '<div class="streams">' . $data['count(DISTINCT `ListenToSongid`)'] . ' Streams</div>';
+                        echo '<div class="streams" style="font-family: "Kanit", sans-serif;">' . $data['count(DISTINCT `ListenToSongid`)'] . ' Streams</div>';
                     }
                 }
             }
@@ -205,7 +203,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     if (mysqli_num_rows($result) > 0) {
                         $data = $result->fetch_array();
 
-                        echo '<div class="newfollows">' . $data['count(DISTINCT `FollowArist`.`idListener`)'] . ' New Follows</div>';
+                        echo '<div class="newfollows" style="font-family: "Kanit", sans-serif;">' . $data['count(DISTINCT `FollowArist`.`idListener`)'] . ' New Follows</div>';
                     }
                 }
             }
@@ -232,9 +230,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                         $data = $result->fetch_array();
                         if (is_null($data['SUM(`donatetoartist`.`amount`)'])) {
                             $x = 0;
-                            echo ' <div class="donations">' . $x . ' $ worth of Donations</div>';
+                            echo ' <div class="donations" style="font-family: "Kanit", sans-serif;">' . $x . ' $ worth of Donations</div>';
                         } else {
-                            echo ' <div class="donations">' . $data['SUM(`donatetoartist`.`amount`)'] . ' $ worth of Donations</div>';
+                            echo ' <div class="donations" style="font-family: "Kanit", sans-serif;">' . $data['SUM(`donatetoartist`.`amount`)'] . ' $ worth of Donations</div>';
                         }
                     }
                 }
@@ -242,6 +240,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
             ?>
 
         </div>
+
         <?php
         if (isset($_SESSION['id-artist'])) {
 
@@ -264,9 +263,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                         // Do stuff with $data
                         echo  '<img class="trendingsongs' . $x . '" src="songimg/' . $data['idSong'] . '.jpg" width="186" height="186"/>';
-                        echo '<div class="trendingsongs' . $x . '">';
+                        echo '<div class="trendingsongs' . $x . '" style="font-family: "Kanit", sans-serif;">';
                         echo '</div>';
-                        echo '<div class="dessong' . $x . '">';
+                        echo '<div class="dessong' . $x . '" style="font-family: "Kanit", sans-serif;">';
                         echo  $data['Name'] . '<br>' . $data['COUNT(`ListenToSongId`)'] . ' Total Streams';
                         echo '</div>';
                         $x++;
@@ -301,9 +300,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                         // Do stuff with $data
                         echo  '<img class="trendingalbums' . $x . '" src="albumimg/' . $data['idAlbum'] . '.jpg" width="186" height="186"/>';
-                        echo '<div class="trendingalbums' . $x . '">';
+                        echo '<div class="trendingalbums' . $x . '" style="font-family: "Kanit", sans-serif;">';
                         echo '</div>';
-                        echo '<div class="desalbums' . $x . '">';
+                        echo '<div class="desalbums' . $x . '" style="font-family: "Kanit", sans-serif;">';
                         echo  $data['AlbumName'] . '<br>' . $data['COUNT(`ListenToSongId`)'] . ' Total Streams';
                         echo '<br>';
                         echo '</div>';

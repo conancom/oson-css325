@@ -55,15 +55,11 @@ if (isset($_POST["submit-register"])) {
 <body>
 
 	<style>
-		* {
-			
-		}
 
 		body {
 			background-image: url("Cover-Background-2.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
-			font-family: 'Kanit', sans-serif;
 		}
 
 		.container {
@@ -89,70 +85,70 @@ if (isset($_POST["submit-register"])) {
 		<form name="submit-registration" action="#" method="post" enctype="multipart/form-data">
 
 			<div class="text_wrapper">
-				<label class="text_email">Email Address</label>
+				<label class="text_email" style="font-family: 'Kanit', sans-serif;" style="font-family: 'Kanit', sans-serif;">Email Address</label>
 			</div>
 			<br>
 
-			<input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+			<input type="text" name="emailaddress" class="text_field" placeholder=" Email Address" style="font-family: 'Kanit', sans-serif;"><br>
 
 			<div id="text_wrapper">
-				<label class="text_pw">Password</label>
+				<label class="text_pw" style="font-family: 'Kanit', sans-serif;">Password</label>
 			</div>
 			<input type="password" name="password" class="text_field" placeholder=" ***********"><br>
 
 			<div class="text_wrapper">
-				<label class="text_conpw">Confirm Password</label>
+				<label class="text_conpw" style="font-family: 'Kanit', sans-serif;">Confirm Password</label>
 			</div>
 			<br>
 
-			<input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+			<input type="password" name="confirmpassword" class="text_field" placeholder=" ***********" style="font-family: 'Kanit', sans-serif;"><br>
 
 			<div class="text_wrapper">
-				<label class="text_artistname">Artist Name</label>
+				<label class="text_artistname" style="font-family: 'Kanit', sans-serif;">Artist Name</label>
 			</div>
 			<br>
 
-			<input type="text" name="artistname" class="text_field" placeholder=" Artist Name"><br>
+			<input type="text" name="artistname" class="text_field" placeholder=" Artist Name" style="font-family: 'Kanit', sans-serif;"><br>
 
 			<div class="text_wrapper">
-				<label class="text_genre">Genre</label>
+				<label class="text_genre" style="font-family: 'Kanit', sans-serif;">Genre</label>
 			</div><br>
-			<select name="genre" class="genrebox">
+			<select name="genre" class="genrebox" style="font-family: 'Kanit', sans-serif;">
 				<option>-</option>
-				<option value="pop">Pop</option>
-				<option value="rap">Rap</option>
-				<option value="edm">EDM</option>
-				<option value="rock">Rock</option>
-				<option value="randb">R&B</option>
-				<option value="jazz">Jazz</option>
-				<option value="metal">Metal</option>
-				<option value="soul">Soul</option>
-				<option value="raggae">Raggae</option>
-				<option value="classical">Classical</option>
-				<option value="soundtracks">Soundtracks</option>
-				<option value="Country">Country</option>
-				<option value="blues">Blues</option>
-				<option value="folk">Folk</option>
-				<option value="indie">Indie</option>
+				<option value="pop" style="font-family: 'Kanit', sans-serif;">Pop</option>
+				<option value="rap" style="font-family: 'Kanit', sans-serif;">Rap</option>
+				<option value="edm" style="font-family: 'Kanit', sans-serif;">EDM</option>
+				<option value="rock" style="font-family: 'Kanit', sans-serif;">Rock</option>
+				<option value="randb" style="font-family: 'Kanit', sans-serif;">R&B</option>
+				<option value="jazz" style="font-family: 'Kanit', sans-serif;">Jazz</option>
+				<option value="metal" style="font-family: 'Kanit', sans-serif;">Metal</option>
+				<option value="soul" style="font-family: 'Kanit', sans-serif;">Soul</option>
+				<option value="raggae" style="font-family: 'Kanit', sans-serif;">Raggae</option>
+				<option value="classical" style="font-family: 'Kanit', sans-serif;">Classical</option>
+				<option value="soundtracks" style="font-family: 'Kanit', sans-serif;">Soundtracks</option>
+				<option value="Country" style="font-family: 'Kanit', sans-serif;">Country</option>
+				<option value="blues" style="font-family: 'Kanit', sans-serif;">Blues</option>
+				<option value="folk" style="font-family: 'Kanit', sans-serif;">Folk</option>
+				<option value="indie" style="font-family: 'Kanit', sans-serif;">Indie</option>
 			</select>
 			<br>
 
 			<div class="text_wrapper">
-				<label class="text_name">Name</label>
-				<label class="text_surname">Surname</label>
+				<label class="text_name" style="font-family: 'Kanit', sans-serif;">Name</label>
+				<label class="text_surname" style="font-family: 'Kanit', sans-serif;">Surname</label>
 			</div>
 			<br>
 
-			<input type="text" name="name" class="box_name" placeholder=" Name">
-			<input type="text" name="surname" class="box_surname" placeholder=" Surname">
+			<input type="text" name="name" class="box_name" placeholder=" Name" style="position:relative; font-family: 'Kanit', sans-serif; left: -2%;">
+			<input type="text" name="surname" class="box_surname" placeholder=" Surname" style="font-family: 'Kanit', sans-serif;">
 			<br>
 
 			<div class="text_wrapper">
-				<label class="country_text">Country</label>
+				<label class="country_text" style="font-family: 'Kanit', sans-serif;">Country</label>
 			</div>
 			<br>
 
-			<select name="country" class="countrybox">
+			<select name="country" class="countrybox" style="font-family: 'Kanit', sans-serif;">
 				<option>-</option>
 				<option value="Afganistan">Afghanistan</option>
 				<option value="Albania">Albania</option>
@@ -403,11 +399,11 @@ if (isset($_POST["submit-register"])) {
 			</select><br>
 
 			<div class="text_wrapper">
-				<label class="text_bank">Bank</label>
+				<label class="text_bank" style="font-family: 'Kanit', sans-serif;">Bank</label>
 			</div>
 			<br>
 
-			<select name="bank" class="bankbox">
+			<select name="bank" class="bankbox" style="font-family: 'Kanit', sans-serif;">
 				<option>-</option>
 				<option value="bbl">BBL</option>
 				<option value="kbank">KBANK</option>
@@ -423,15 +419,15 @@ if (isset($_POST["submit-register"])) {
 			<br>
 
 			<div class="text_wrapper">
-				<label class="text_banknumber">Bank Account Number</label>
+				<label class="text_banknumber" style="font-family: 'Kanit', sans-serif;">Bank Account Number</label>
 			</div>
 			<br>
 
-			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
-			<label style="color: white;">Select Image to upload:</label><br><br>
-			<input type="file" name="my_file" style="color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;">
+			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number" style="font-family: 'Kanit', sans-serif;"><br>
+			<label style="color: white; font-family: 'Kanit', sans-serif;">Select Image to upload:</label><br><br>
+			<input type="file" name="my_file" style="font-family: 'Kanit', sans-serif; color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;">
 			<div class="button">
-				<input type="submit" name="submit-register" value="Register" class="button_orange artist_register_button" style="cursor: pointer;">
+				<input type="submit" name="submit-register" value="Register" class="button_orange artist_register_button" style=" font-family: 'Kanit', sans-serif;cursor: pointer;">
 			</div>
 
 		</form>

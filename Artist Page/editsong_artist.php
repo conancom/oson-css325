@@ -1,6 +1,9 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 $songId  = $_GET['id'];
 $idartist = $_SESSION['id-artist'];
 
@@ -28,7 +31,7 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
 
 
         $newestsongid = $songId;
-        if(file_exists('songimg/' . $newestsongid . '.jpg')){
+        if (file_exists('songimg/' . $newestsongid . '.jpg')) {
             unlink('songimg/' . $newestsongid . '.jpg');
         }
         move_uploaded_file($_FILES["my_file"]["tmp_name"], 'songimg/' . $newestsongid . '.jpg');
@@ -64,9 +67,58 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
     <title> Details Song</title>
     <link rel="stylesheet" href="lists_artist.css">
     <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="home_artist.css">
 </head>
 
 <body>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .after-head {
+            position: absolute;
+            height: 250px;
+            width: 100%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .menu_head a {
+            cursor: pointer;
+            transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
+        }
+
+        .menu_head a:hover {
+            position: relative;
+            color: white;
+            background-color: rgba(255, 115, 21, 0.5);
+            border-radius: 10px;
+        }
+
+        .ConfirmEdit {
+            height: 200px;
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .ConfirmEdit:hover,
+        .CancelButton:hover {
+            background-color: rgba(255, 115, 21, 1);
+            border-color: rgba(255, 115, 21, 0.5);
+        }
+
+        .CancelButton {
+
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .CancelButton a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 
     <section class="Header">
         <nav class="menu_head">
@@ -77,6 +129,11 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                 <a href="editprofile_artist.php">Settings</a>
             </div>
         </nav>
+
+        <div class="after-head" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba(255,115,21,1) 94%);">
+
+        </div>
 
         <div class="wrapper_main ">
             <?php
@@ -204,8 +261,8 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                     <input type="file" name="my_file" />
 
                     <div class="button">
-                        <input type="submit" name="submit-edit" value="Confirm Edit" style="margin-left: 25%; padding: 8px" class="button_orange"><br>
-                        <button type="button" class="button_dark" onclick="location.href='songs_artist.php'" style="margin-left: 14%; padding: 8px"> Cancel </button>
+                        <input type="submit" name="submit-edit" value="Confirm Edit" style="margin-top: 18px;margin-left: 32%;  height: 35px;" class="button_orange"><br>
+                        <button type="button" class="button_dark CancelButton" onclick="location.href='songs_artist.php'" style="margin-left: 14%; padding: 8px"> Cancel </button>
                     </div>
                 </form>
             </div>

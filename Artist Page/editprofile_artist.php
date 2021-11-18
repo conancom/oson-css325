@@ -1,6 +1,9 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 $idartist = $_SESSION['id-artist'];
 
@@ -49,7 +52,7 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
     if (!$insert) {
         echo $mysqli->error;
     } else {
-        if(file_exists('img/' . $idartist . '.jpg')){
+        if (file_exists('img/' . $idartist . '.jpg')) {
             unlink('img/' . $idartist . '.jpg');
         }
         move_uploaded_file($_FILES["my_file"]["tmp_name"], 'img/' . $idartist . '.jpg');
@@ -67,9 +70,60 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
     <title>Album List</title>
     <link rel="stylesheet" href="lists_artist.css">
     <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="home_artist.css">
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <style>
+        .menu_head a {
+            cursor: pointer;
+            transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
+        }
+
+        .menu_head a:hover {
+            position: relative;
+            color: white;
+            background-color: rgba(255, 115, 21, 0.5);
+            border-radius: 10px;
+
+        }
+
+        .ConfirmEdit {
+            height: 200px;
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .ConfirmEdit:hover,
+        .CancelButton:hover {
+            background-color: rgba(255, 115, 21, 1);
+            border-color: rgba(255, 115, 21, 0.5);
+        }
+
+        .CancelButton {
+
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .CancelButton a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .after-head {
+            position: absolute;
+            height: 250px;
+            width: 100%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
 
     <section class="Header">
         <nav class="menu_head">
@@ -80,6 +134,11 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                 <a href="editprofile_artist.php">Settings</a>
             </div>
         </nav>
+
+        <div class="after-head" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba(255,115,21,1) 94%);">
+
+        </div>
 
         <div class="wrapper_main ">
             <?php
@@ -121,7 +180,7 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                             $data1 = $result1->fetch_array();
                         }
                     }
-                    echo '<h1> Edit ' . $data["ArtistName"] .  ' ' . 'Profile</h1>';
+                    echo '<h1 > Edit ' . $data["ArtistName"] .  ' ' . 'Profile</h1>';
                 }
             }
             ?>
@@ -133,16 +192,16 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                         <input type="text" name="emailaddress" value=<?php echo '"' . $data1['ArtistEmail'] . '"'; ?>><br>
 
                         <label style="margin-left: 15%; margin-right: 17%">Password</label>
-                        <input type="password" name="password" value=<?php echo '"' . $data1['ArtistPassword'] . '"'; ?>><br>
+                        <input style="margin-left: 1%;" type="password" name="password" value=<?php echo '"' . $data1['ArtistPassword'] . '"'; ?>><br>
 
                         <!-- <label style="margin-left: 15%;  margin-right: 2%">Change Password</label>
                         <button type="button" class="button_orange" style="width: 75px;">Change</button><br>-->
 
                         <label style="margin-left: 15%;  margin-right: 13%">Artist Name</label>
-                        <input type="text" name="artistname" value=<?php echo '"' . $data1['ArtistName'] . '"'; ?>><br>
+                        <input style="margin-left: 0.5%;" type="text" name="artistname" value=<?php echo '"' . $data1['ArtistName'] . '"'; ?>><br>
 
                         <label style="margin-left: 15%;  margin-right: 22%">Genre</label>
-                        <select name="genre">
+                        <select name="genre" style="margin-left: 1%;">
                             <option>-</option>
                             <option value="pop" <?php
                                                 if ($data1['ArtistGenre'] == "pop") {
@@ -207,21 +266,21 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                         </select><br>
 
                         <label style="margin-left: 15%;  margin-right: 22%">Name</label>
-                        <input type="text" name="name" value=<?php
-                                                                $pieces = explode(" ", $data1['ArtistRealNames']);
-                                                                echo '"' . $pieces[0] . '"'; ?>>
+                        <input style="margin-left: 1%; text-indent: 5px;" type="text" name="name" value=<?php
+                                                                                                        $pieces = explode(" ", $data1['ArtistRealNames']);
+                                                                                                        echo '"' . $pieces[0] . '"'; ?>>
                         <label style="margin-left: 15%;  margin-right: 18%">Surname</label>
-                        <input type="text" name="Surname" value=<?php
-                                                                $pieces = explode(" ", $data1['ArtistRealNames']);
-                                                                echo '"';
-                                                                for ($x = 1; $x < count($pieces); $x++) {
-                                                                    echo  $pieces[$x] . ' ';
-                                                                }
-                                                                echo '"';
-                                                                ?>><br>
+                        <input style=" text-indent: 5px;" type="text" name="Surname" value=<?php
+                                                                                            $pieces = explode(" ", $data1['ArtistRealNames']);
+                                                                                            echo '"';
+                                                                                            for ($x = 1; $x < count($pieces); $x++) {
+                                                                                                echo  $pieces[$x] . ' ';
+                                                                                            }
+                                                                                            echo '"';
+                                                                                            ?>><br>
 
                         <label style="margin-left: 15%;  margin-right: 18%">Country</label>
-                        <select name="country">
+                        <select name="country" style="margin-left: 1%; ">
                             <option>-</option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -472,7 +531,7 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                         </select><br>
 
                         <label style="margin-left: 15%;  margin-right: 22%">Bank</label>
-                        <select name="bank">
+                        <select name="bank" style="margin-left: 2%; ">
                             <option>-</option>
                             <option value="bbl" <?php
                                                 $pieces = explode("-", $data1['Banking_Information']);
@@ -531,12 +590,12 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
                         <input type="text" name="bankaccountnumber" value=<?php
                                                                             $pieces = explode("-", $data1['Banking_Information']);
                                                                             echo '"' . $pieces[1] . '"'; ?>><br>
-                        Select Image to upload:
-                        <input type="file" name="my_file" />
+                        <label style="margin-left: 32%;">Select Image to upload:</label> <br>
+                        <input type="file" name="my_file" style="margin-left: 30%;" />
 
                         <div class="button">
-                            <input type="submit" name="submit-edit" value="Confirm Edit" style="margin-left: 32%; padding: 8px" class="button_orange"><br>
-                            <button type="button" class="button_dark" onclick="location.href='home_artist.php'" style="margin-left: 22%;"> Cancel </button>
+                            <input type="submit" name="submit-edit" value="Confirm Edit" style="margin-top: 18px;margin-left: 32%;  height: 35px;" class="button_orange ConfirmEdit"><br>
+                            <button type="button" class="button_dark CancelButton" onclick="location.href='home_artist.php'" style="margin-left: 22%;"><a href="home_artist.php"> Cancel </a></button>
                         </div>
                     </form>
                 </div>
