@@ -34,25 +34,25 @@ session_start();
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
-                <a href="#">
+                <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>
                         Home
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Search-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Search
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Playlist-Page.php">
                     <p>
                         <ion-icon name="reorder-four-outline"></ion-icon>
                         Playlist
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Album-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Album

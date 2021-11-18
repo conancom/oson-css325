@@ -1,7 +1,7 @@
 <?php 
     session_start();
     // echo $_SESSION['id-listener'];
-    $mysqli = new mysqli("localhost", "root", null, "oson-v0");
+    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
 
     if ($mysqli->connect_errno) {
         echo $mysqli->connect_error;
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="row Playlist-Type">
                                     <p style="text-align: center;">Album [<?php echo $album['Genre']?>]</p>
-                                </div>
+                                </div></a>
                             </div>
                             
                             <?php
