@@ -79,6 +79,7 @@ body {
     margin: auto;
     text-align: center;
     padding-top: 135px;
+    font-family: 'Kanit', sans-serif;
 }
 
 .button_orange {
@@ -92,7 +93,6 @@ body {
     margin: 20px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
 }
 

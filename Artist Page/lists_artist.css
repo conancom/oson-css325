@@ -36,12 +36,8 @@ body {
 }
 
 .wrapper_main {
-    margin: auto;
-    margin-top: 150px;
     margin-left: 5%;
-    margin-top: px;
     padding-left: 100px;
-    padding-top: 37px;
     width: 100%;
 }
 
@@ -131,7 +127,7 @@ body {
 
 .songtable {
     margin: auto;
-    width: 130%;
+    width: 85%;
     margin-left: 160px;
     margin-top: 55px;
     font-family: var(--main-font);
@@ -143,7 +139,7 @@ body {
 
 .songtableedit {
     margin: auto;
-    width: 130%;
+    width: 85%;
     margin-left: 100px;
     margin-top: 55px;
     font-family: var(--main-font);
@@ -177,16 +173,17 @@ td {
 .AlbumForm {
     border: 2px solid rgba(255, 115, 21, 1);
     padding: 25px;
-    margin-top: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 220px;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .AlbumForm label {
     color: white;
-    font-family: 'Typo Round Regular';
     font-size: 19px;
+    font-family: 'Kanit', sans-serif;
 }
 
 .AlbumForm input,
@@ -209,16 +206,20 @@ td {
 .AccountForm {
     border: 2px solid rgba(255, 115, 21, 1);
     padding: 25px;
-    margin-top: 350px;
+    margin-top: 80px;
     width: 500px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .AccountForm label {
     color: white;
-    font-family: 'Typo Round Regular';
+    font-family: 'Kanit', sans-serif;
     font-size: 19px;
 }
 
@@ -226,7 +227,7 @@ td {
 .AccountForm select {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
+    font-family: 'Kanit', sans-serif;
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);

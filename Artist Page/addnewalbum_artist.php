@@ -1,6 +1,9 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
@@ -23,8 +26,8 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
     if (!$insert) {
         echo $mysqli->error;
     } else {
-        
-        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'albumimg/' .mysqli_insert_id($mysqli). '.jpg');
+
+        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'albumimg/' . mysqli_insert_id($mysqli) . '.jpg');
         header("Location: albums_artist.php");
     }
 }
@@ -38,6 +41,7 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
     <title>Create New Album</title>
     <link rel="stylesheet" href="lists_artist.css">
     <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="home_artist.css">
 
     <!--Bootstrap-->
     <meta charset="utf-8">
@@ -49,6 +53,50 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
 </head>
 
 <body style="background-color: rgba(44, 38, 38, 1);">
+    <style>
+        .after-head {
+            position: absolute;
+            height: 250px;
+            width: 100%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .menu_head a {
+            cursor: pointer;
+            transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
+        }
+
+        .menu_head a:hover {
+            position: relative;
+            color: white;
+            background-color: rgba(255, 115, 21, 0.5);
+            border-radius: 10px;
+        }
+
+        .CancelButton {
+
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .CancelButton a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .CreateNewAlbum {
+            height: 200px;
+            transition: background-color 0.5s, border-color 0.5s;
+            cursor: pointer;
+        }
+
+        .CreateNewAlbum:hover,
+        .CancelButton:hover {
+            background-color: rgba(255, 115, 21, 1);
+            border-color: rgba(255, 115, 21, 0.5);
+        }
+    </style>
     <section class="Header">
         <nav class="menu_head">
             <div class="menu_button_group">
@@ -58,6 +106,11 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
                 <a href="editprofile_artist.php">Settings</a>
             </div>
         </nav>
+
+        <div class="after-head" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba(255,115,21,1) 94%);">
+
+        </div>
 
         <div class="wrapper_main ">
             <?php
@@ -107,7 +160,7 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
                 <div id="div_content" class="form">
                     <form name="add-album" action="#" method="post" enctype="multipart/form-data">>
                         <div id="text_wrapper">
-                            <label id="songname" style="margin-bottom: 10px;">Album Name</label>
+                            <label id="songname" style="margin-bottom: 10px; font-family: 'Kanit', sans-serif;">Album Name</label>
                         </div>
 
                         <input type="text " name="albumname" id="text_field " placeholder=" Album Name " style="margin-bottom: 10px; width: 250px">
@@ -120,7 +173,7 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
 
                         <br>
 
-                        <select name="genre" style="margin-right: 60px; margin-bottom: 10px; padding-right: 35px; width: 250px;">
+                        <select name="genre" style="margin-right: 60px; margin-bottom: 10px; padding-right: 35px; width: 250px; font-family: 'Kanit', sans-serif;">
                             <option>-</option>
                             <option value="pop">Pop</option>
                             <option value="rap">Rap</option>
@@ -140,17 +193,17 @@ if (isset($_POST["submit-newalbum"]) and isset($_SESSION['id-artist'])) {
                         </select>
                         <select name="Explicity" style="padding-right: 75px; margin-bottom: 10px; ">
                             <option>-</option>
-                            <option value='E'>Explitcit</option>
+                            <option value='E' style="font-family: 'Kanit', sans-serif;">Explitcit</option>
                         </select><br>
-                        
-                        
+
+
 
                         <label style="margin-right: 40px; margin-bottom: 70px; ">Upload Cover Image</label>
-                        <input type="file" name="my_file" /> Upload
+                        <input type="file" name="my_file" style="height: 40px;" /> Upload
 
                         <div class="button ">
-                            <input type="submit" name="submit-newalbum" value="Create new Album" class="button_orange " style="margin-bottom: 20px; margin-left: 29%; "> Create new song</button><br>
-                            <button type="button" class="button_dark " style="margin-left: 19%; margin-bottom: 10px; " onclick="location.href='albums_artist.php'"> Cancel </button>
+                            <input type="submit" name="submit-newalbum" value="Create new Album" class="button_orange CreateNewAlbum" style="margin-bottom: 20px; margin-left: 29%; height: 35px;"> Create new song</button><br>
+                            <button type="button" class="button_dark CancelButton" style="margin-left: 19%; margin-bottom: 10px; " onclick="location.href='albums_artist.php'"> Cancel </button>
                         </div>
 
                     </form>
