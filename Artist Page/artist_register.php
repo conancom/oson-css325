@@ -85,7 +85,7 @@ if (isset($_POST["submit-register"])) {
 		<form name="submit-registration" action="#" method="post" enctype="multipart/form-data">
 
 			<div class="text_wrapper">
-				<label class="text_email" style="font-family: 'Kanit', sans-serif;" style="font-family: 'Kanit', sans-serif;">Email Address</label>
+				<label class="text_email" style="font-family: 'Kanit', sans-serif;">Email Address</label>
 			</div>
 			<br>
 
