@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*
+
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
-*/
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");
+/*
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
 
 $idartist = $_SESSION['id-artist'];
 

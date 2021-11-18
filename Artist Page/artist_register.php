@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*
+
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
-*/
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");
+/*
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
 
 
 if ($mysqli->connect_errno) {
@@ -41,33 +41,34 @@ if (isset($_POST["submit-register"])) {
 <head>
 	<title>Oson Artist Registration</title>
 	<link rel="stylesheet" href="register.css">
-
-	<!--Font-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <div class="headerartist">
-	<div class="headerContentArtist" style="font-family: 'Typo Round Regular Demo';">O s o n - For Artists</div>
+	<div class="headerContentArtist">Oson - For Artists</div>
 </div>
 
 <body>
 
 	<style>
+<<<<<<< HEAD
+		body{
+			background-image: url("Cover-Background-2.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+=======
 
 		body {
 			background-image: url("Cover-Background-2.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
+>>>>>>> 283ed4599e122d7f16be0af55053691197ec20f0
 		}
 
 		.container {
 			background-color: rgba(35, 32, 32, 0.5);
 			border-radius: 10px;
 			margin-top: 10px;
-			padding-left: 70px;
-			padding-right: 70px;
 		}
 
 		.artist_register_button:hover {
@@ -423,9 +424,15 @@ if (isset($_POST["submit-register"])) {
 			</div>
 			<br>
 
+<<<<<<< HEAD
+			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
+			<label style="color: white;">Select Image to upload:</label><br><br>
+			<input type="file" name="my_file"  style="color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;"> 
+=======
 			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number" style="font-family: 'Kanit', sans-serif;"><br>
 			<label style="color: white; font-family: 'Kanit', sans-serif;">Select Image to upload:</label><br><br>
 			<input type="file" name="my_file" style="font-family: 'Kanit', sans-serif; color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;">
+>>>>>>> 283ed4599e122d7f16be0af55053691197ec20f0
 			<div class="button">
 				<input type="submit" name="submit-register" value="Register" class="button_orange artist_register_button" style=" font-family: 'Kanit', sans-serif;cursor: pointer;">
 			</div>
