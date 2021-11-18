@@ -4,7 +4,7 @@
 
 <head>
     <link rel="Stylesheet" href="Welcome-Page-Artist-Styling.css">
-    <title>Welcome!</title>
+    <title>Oson - Welcome For Artists</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,11 +22,35 @@
 </head>
 
 <body>
+
+    <style>
+        .Artist-Button-Artist a {
+            text-decoration: none;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .Artist-Button-Artist,
+        .Login-Button-Artist,
+        .Register-Button-Artist {
+            transition: background-color 0.3s;
+        }
+        
+        .Artist-Button-Artist:hover,
+        .Login-Button-Artist:hover {
+            background-color: #FF7315;
+        }
+        
+        .Register-Button-Artist:hover {
+            background-color: #bd4b00;
+        }
+    </style>
+
     <section class="Header-Artist">
         <div class="row">
             <div class="col">
                 <header class="Title-Name-Artist-Container">
-                    <h1 class="Title-Name-Artist">O S O N - For Artists</h1>
+                    <h1 class="Title-Name-Artist" style="font-family: 'Typo Round Regular Demo'; font-weight: lighter;">O s o n - For Artists</h1>
                 </header>
             </div>
 
@@ -48,7 +72,7 @@
         <div class="row">
             <div class="Creator-Select-Artist">
                 <p class="Creator-Text-Artist">Creator Section</p>
-                <button class="Artist-Button-Artist">Consumer</button>
+                <button class="Artist-Button-Artist"><a href="Welcome-Page-Listener.html">Consumer</a></button>
             </div>
         </div>
     </section>

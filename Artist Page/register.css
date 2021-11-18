@@ -108,14 +108,12 @@ body {
     margin: 20px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
 }
 
 .text_email {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 105px;
@@ -124,7 +122,6 @@ body {
 .text_pw {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 135px;
@@ -133,7 +130,6 @@ body {
 .text_conpw {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 75px;
@@ -142,7 +138,6 @@ body {
 .text_username {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 133px;
@@ -151,7 +146,6 @@ body {
 .text_artistname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 124px;
@@ -160,7 +154,6 @@ body {
 .text_gender {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 140px;
@@ -169,7 +162,6 @@ body {
 .text_genre {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 160px;
@@ -187,7 +179,6 @@ body {
 .text_field {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -203,7 +194,6 @@ body {
 .text_dateofbirth {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 105px;
@@ -212,7 +202,6 @@ body {
 .text_day {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 0px;
@@ -221,7 +210,6 @@ body {
 .text_month {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 0px;
@@ -231,7 +219,6 @@ body {
 .text_year {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 0px;
@@ -240,14 +227,12 @@ body {
 
 .label_text {
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
 }
 
 .monthbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -263,7 +248,6 @@ body {
 .genrebox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -280,7 +264,6 @@ body {
 .daybox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -296,7 +279,6 @@ body {
 .yearbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -312,7 +294,6 @@ body {
 .country_text {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 153px;
@@ -321,7 +302,6 @@ body {
 .countrybox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -338,7 +318,6 @@ body {
 .text_name {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 0px;
@@ -349,7 +328,6 @@ body {
 .text_surname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 70px;
@@ -359,7 +337,6 @@ body {
 .box_name {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -376,7 +353,6 @@ body {
 .box_surname {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);
@@ -394,7 +370,6 @@ body {
 .text_banknumber {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 52px;
@@ -403,7 +378,6 @@ body {
 .text_bank {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     margin-bottom: 15px;
     margin-right: 170px;
@@ -412,7 +386,6 @@ body {
 .bankbox {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Typo Round Regular Demo';
     font-weight: lighter;
     background-color: rgba(35, 32, 32, 1);
     border-color: rgba(255, 255, 255, 1);

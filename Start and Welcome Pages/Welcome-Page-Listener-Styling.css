@@ -70,7 +70,8 @@ body {
 
 .Creator-Text-Listener {
     color: white;
-    padding: 10px;
+    padding-top: 10px;
+    margin-bottom: -5px;
 }
 
 .Creator-Select-Listener {

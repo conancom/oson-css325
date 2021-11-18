@@ -1,9 +1,9 @@
 <?php
 session_start();
-
-$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
 /*
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
+$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
@@ -19,6 +19,11 @@ if ($mysqli->connect_errno) {
 <head>
     <title>Oson Artist Login</title>
     <link rel="stylesheet" href="home_artist.css">
+
+    <!--Font-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 
@@ -26,15 +31,19 @@ if ($mysqli->connect_errno) {
 <body>
 
     <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+
         .after-head {
             position: absolute;
-            height:250px;
+            height: 250px;
             width: 100%;
             opacity: 0.5;
             z-index: -1;
         }
 
-        .menu_head a{
+        .menu_head a {
             cursor: pointer;
             transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
         }
@@ -61,7 +70,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
 
     </div>
 
-    <div class=wrapper_main >
+    <div class=wrapper_main>
         <?php
         if (isset($_SESSION['id-artist'])) {
             $idartist = $_SESSION['id-artist'];
@@ -314,8 +323,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
     </div>
 
     <div id="div_footer">
-
-
 
     </div>
 </body>

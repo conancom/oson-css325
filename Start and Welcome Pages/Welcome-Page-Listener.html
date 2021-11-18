@@ -22,11 +22,35 @@
 </head>
 
 <body>
+
+    <style>
+        .Artist-Button-Listener a {
+            text-decoration: none;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .Artist-Button-Listener,
+        .Login-Button-Listener,
+        .Register-Button-Listener {
+            transition: background-color 0.3s;
+        }
+        
+        .Artist-Button-Listener:hover,
+        .Login-Button-Listener:hover {
+            background-color: #FF7315;
+        }
+        
+        .Register-Button-Listener:hover {
+            background-color: #bd4b00;
+        }
+    </style>
+
     <section class="Header-Listener">
         <div class="row">
             <div class="col">
                 <header class="Title-Name-Listener-Container">
-                    <h1 class="Title-Name-Listener">O S O N</h1>
+                    <h1 class="Title-Name-Listener" style="font-family: 'Typo Round Regular Demo'; font-weight: lighter;">O s o n</h1>
                 </header>
             </div>
 
@@ -48,7 +72,7 @@
         <div class="row">
             <div class="Creator-Select-Listener">
                 <p class="Creator-Text-Listener">Creator Section</p>
-                <button class="Artist-Button-Listener">Artist</button>
+                <button class="Artist-Button-Listener"><a href="Welcome-Page-Artist.html"></a>Artist</button>
             </div>
         </div>
     </section>

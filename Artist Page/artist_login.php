@@ -1,9 +1,9 @@
 <?php
 session_start();
-
-$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
 /*
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
+$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
@@ -34,10 +34,15 @@ if (isset($_POST["submit-login"])) {
 <head>
 	<title>Oson Artist Login</title>
 	<link rel="stylesheet" href="login.css">
+
+	<!--Font-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <div class="headerartist">
-	<div class="headerContentArtist">oson - For Artists</div>
+	<div class="headerContentArtist" style="font-family: 'Typo Round Regular Demo';">O s o n - For Artists</div>
 </div>
 
 <body>
@@ -46,6 +51,7 @@ if (isset($_POST["submit-login"])) {
 			background-image: url("Cover-Background.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
+			font-family: 'Kanit', sans-serif;
 		}
 
 		.artist_register_button:hover {
@@ -72,7 +78,6 @@ if (isset($_POST["submit-login"])) {
 			margin: auto;
 			width: 50%;
 			margin-top: 200px;
-			
 
 		}
 	</style>
