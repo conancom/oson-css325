@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*
+
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
-*/
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");
+/*
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
 
 
 if ($mysqli->connect_errno) {
@@ -42,7 +42,7 @@ if (isset($_POST["submit-login"])) {
 
 <body>
 	<style>
-		body{
+		body {
 			background-image: url("Cover-Background.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -69,21 +69,24 @@ if (isset($_POST["submit-login"])) {
 		}
 
 		.container {
-			margin-top: 150px;
-		}
+			margin: auto;
+			width: 50%;
+			margin-top: 200px;
+			
 
+		}
 	</style>
 
 	<div class="div_content container" class="form">
 
 		<form name="artist-login" action="#" method="post">
-			<div class="text_wrapper email" >
-				<label class="text_email email_label" >Email Address</label>
+			<div class="text_wrapper email">
+				<label class="text_email email_label">Email Address</label>
 			</div><br>
 			<input type="text" name="emailaddress" class="text_field email_text" placeholder=" Email Address"><br>
 
-			<div class="text_wrapper password" >
-				<label class="text_pw password_label" >Password</label>
+			<div class="text_wrapper password">
+				<label class="text_pw password_label">Password</label>
 			</div><br>
 			<input type="password" name="password" class="text_field password_text" placeholder=" ***********"><br>
 
