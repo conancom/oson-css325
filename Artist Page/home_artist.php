@@ -1,12 +1,14 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
-
 
 ?>
 
@@ -23,16 +25,43 @@ if ($mysqli->connect_errno) {
 
 <body>
 
+    <style>
+        .after-head {
+            position: absolute;
+            height:250px;
+            width: 100%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .menu_head a{
+            cursor: pointer;
+            transition: color 0.5s, background-color 0.2s, border-radius 0.5s;
+        }
+
+        .menu_head a:hover {
+            position: relative;
+            color: white;
+            background-color: rgba(255, 115, 21, 0.5);
+            border-radius: 10px;
+        }
+    </style>
+
     <nav class="menu_head">
         <div class="menu_button_group">
-        <a href="#home">Home</a>
-        <a href="songs_artist.php">Songs</a>
-        <a href="albums_artist.php">Albums</a>
-        <a href="editprofile_artist.php">Settings</a>
+            <a href="#home">Home</a>
+            <a href="songs_artist.php">Songs</a>
+            <a href="albums_artist.php">Albums</a>
+            <a href="editprofile_artist.php">Settings</a>
         </div>
     </nav>
 
-    <div class=wrapper_main>
+    <div class="after-head" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba(255,115,21,1) 94%);">
+
+    </div>
+
+    <div class=wrapper_main >
         <?php
         if (isset($_SESSION['id-artist'])) {
             $idartist = $_SESSION['id-artist'];
@@ -275,9 +304,9 @@ if ($mysqli->connect_errno) {
             }
         }
         ?>
-       
 
-        
+
+
 
     </div>
 

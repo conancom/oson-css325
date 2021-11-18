@@ -1,86 +1,111 @@
 <?php
-    session_start();
-    $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+session_start();
+/*
+$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
-    if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
-    }
+if ($mysqli->connect_errno) {
+	echo $mysqli->connect_error;
+}
 
-    if (isset($_POST["submit-register"])){
-        $emailaddress = $_POST['emailaddress'];
-        $password = $_POST['password'];
-        $confirmpassword = $_POST['confirmpassword'];
-        $artistname = $_POST['artistname'];
-        $artistgenre = $_POST['genre'];
-		$name =  $_POST['name'];
-		$surname = $_POST['surname'];
-        $artistrealnames = "$name $surname";
-        $country = $_POST['country'];
-		$bank = $_POST['bank'];
-		$banknumber = $_POST['banknumber'];
-		$bankinginformation = "$bank-$banknumber";
-        $query = "INSERT INTO `artist`(`ArtistEmail`, `ArtistPassword`, `ArtistName`, `ArtistGenre`, `Banking_Information`, `Country`, `ArtistRealNames`) VALUES ('$emailaddress', '$password', '$artistname', '$artistgenre', '$bankinginformation', '$country', '$artistrealnames' )";
-        print $query;
-        $insert = $mysqli->query($query);
-        if (!$insert) {
-            echo $mysqli->error;
-        }
-        else {
-			move_uploaded_file($_FILES["my_file"]["tmp_name"], 'img/'.mysqli_insert_id($mysqli).'.jpg');
-            header("Location: artist_login.php");
-        }
-
-    }
+if (isset($_POST["submit-register"])) {
+	$emailaddress = $_POST['emailaddress'];
+	$password = $_POST['password'];
+	$confirmpassword = $_POST['confirmpassword'];
+	$artistname = $_POST['artistname'];
+	$artistgenre = $_POST['genre'];
+	$name =  $_POST['name'];
+	$surname = $_POST['surname'];
+	$artistrealnames = "$name $surname";
+	$country = $_POST['country'];
+	$bank = $_POST['bank'];
+	$banknumber = $_POST['banknumber'];
+	$bankinginformation = "$bank-$banknumber";
+	$query = "INSERT INTO `artist`(`ArtistEmail`, `ArtistPassword`, `ArtistName`, `ArtistGenre`, `Banking_Information`, `Country`, `ArtistRealNames`) VALUES ('$emailaddress', '$password', '$artistname', '$artistgenre', '$bankinginformation', '$country', '$artistrealnames' )";
+	print $query;
+	$insert = $mysqli->query($query);
+	if (!$insert) {
+		echo $mysqli->error;
+	} else {
+		move_uploaded_file($_FILES["my_file"]["tmp_name"], 'img/' . mysqli_insert_id($mysqli) . '.jpg');
+		header("Location: artist_login.php");
+	}
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>oson Artist Registration</title>
-    <link rel="stylesheet" href="register.css">
+	<title>Oson Artist Registration</title>
+	<link rel="stylesheet" href="register.css">
 </head>
 
-
 <div class="headerartist">
-    <div class="headerContentArtist">oson - For Artists</div>
+	<div class="headerContentArtist">Oson - For Artists</div>
 </div>
 
 <body>
-    <div class="div_content">
-        <form name="submit-registration" action="#" method="post" enctype="multipart/form-data">
 
-            <div class="text_wrapper">
-                <label class="text_email">Email Address</label>
-            </div>
-            <br>
+	<style>
+		body{
+			background-image: url("Cover-Background-2.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
-            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+		.container {
+			background-color: rgba(35, 32, 32, 0.5);
+			border-radius: 10px;
+			margin-top: 10px;
+		}
 
-            <div id="text_wrapper">
-                <label class="text_pw">Password</label>
-            </div>
-            <input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+		.artist_register_button:hover {
+			background-color: rgba(255, 115, 21, 0.5);
+			border-color: rgba(255, 115, 21, 0.5);
+			color: white;
+		}
 
-            <div class="text_wrapper">
-                <label class="text_conpw">Confirm Password</label>
-            </div>
-            <br>
+		.artist_register_button {
+			transition: background-color 0.5s;
+		}
+	</style>
 
-            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+	<div class="div_content container">
+		<form name="submit-registration" action="#" method="post" enctype="multipart/form-data">
 
-            <div class="text_wrapper">
-                <label class="text_artistname">Artist Name</label>
-            </div>
-            <br>
+			<div class="text_wrapper">
+				<label class="text_email">Email Address</label>
+			</div>
+			<br>
 
-            <input type="text" name="artistname" class="text_field" placeholder=" Artist Name"><br>
+			<input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
 
-            <div class="text_wrapper">
-                <label class="text_genre">Genre</label>
-            </div><br>
-            <select name="genre" class="genrebox">
+			<div id="text_wrapper">
+				<label class="text_pw">Password</label>
+			</div>
+			<input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+
+			<div class="text_wrapper">
+				<label class="text_conpw">Confirm Password</label>
+			</div>
+			<br>
+
+			<input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+
+			<div class="text_wrapper">
+				<label class="text_artistname">Artist Name</label>
+			</div>
+			<br>
+
+			<input type="text" name="artistname" class="text_field" placeholder=" Artist Name"><br>
+
+			<div class="text_wrapper">
+				<label class="text_genre">Genre</label>
+			</div><br>
+			<select name="genre" class="genrebox">
 				<option>-</option>
 				<option value="pop">Pop</option>
 				<option value="rap">Rap</option>
@@ -98,24 +123,24 @@
 				<option value="folk">Folk</option>
 				<option value="indie">Indie</option>
 			</select>
-            <br>
+			<br>
 
-            <div class="text_wrapper">
-                <label class="text_name">Name</label>
-                <label class="text_surname">Surname</label>
-            </div>
-            <br>
+			<div class="text_wrapper">
+				<label class="text_name">Name</label>
+				<label class="text_surname">Surname</label>
+			</div>
+			<br>
 
-            <input type="text" name="name" class="box_name" placeholder=" Name">
-            <input type="text" name="surname" class="box_surname" placeholder=" Surname">
-            <br>
+			<input type="text" name="name" class="box_name" placeholder=" Name">
+			<input type="text" name="surname" class="box_surname" placeholder=" Surname">
+			<br>
 
-            <div class="text_wrapper">
-                <label class="country_text">Country</label>
-            </div>
-            <br>
+			<div class="text_wrapper">
+				<label class="country_text">Country</label>
+			</div>
+			<br>
 
-            <select name="country" class="countrybox">
+			<select name="country" class="countrybox">
 				<option>-</option>
 				<option value="Afganistan">Afghanistan</option>
 				<option value="Albania">Albania</option>
@@ -365,13 +390,13 @@
 				<option value="Zimbabwe">Zimbabwe</option>
 			</select><br>
 
-            <div class="text_wrapper">
-                <label class="text_bank">Bank</label>
-            </div>
-            <br>
+			<div class="text_wrapper">
+				<label class="text_bank">Bank</label>
+			</div>
+			<br>
 
-            <select name="bank" class="bankbox">
-				<option >-</option>
+			<select name="bank" class="bankbox">
+				<option>-</option>
 				<option value="bbl">BBL</option>
 				<option value="kbank">KBANK</option>
 				<option value="tfb">TFB</option>
@@ -383,23 +408,23 @@
 				<option value="scn">SCN</option>
 				<option value="uob">UOB</option>
 			</select>
-            <br>
+			<br>
 
-            <div class="text_wrapper">
-                <label class="text_banknumber" >Bank Account Number</label>
-            </div>
-            <br>
+			<div class="text_wrapper">
+				<label class="text_banknumber">Bank Account Number</label>
+			</div>
+			<br>
 
-            <input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
-			Select Image to upload:
-            <input type="file" name="my_file" />
-            <div class="button">
-                <input type="submit" name="submit-register" value="Register" class="button_orange">
-            </div>
+			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
+			<label style="color: white;">Select Image to upload:</label><br><br>
+			<input type="file" name="my_file"  style="color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;"> 
+			<div class="button">
+				<input type="submit" name="submit-register" value="Register" class="button_orange artist_register_button" style="cursor: pointer;">
+			</div>
 
-        </form>
-        <div id="div_footer"></div>
-    </div>
+		</form>
+		<div id="div_footer"></div>
+	</div>
 </body>
 
 </html>

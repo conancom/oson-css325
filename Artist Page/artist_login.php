@@ -1,6 +1,9 @@
 <?php
 session_start();
+/*
 $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+*/
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
@@ -25,7 +28,6 @@ if (isset($_POST["submit-login"])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -39,35 +41,64 @@ if (isset($_POST["submit-login"])) {
 </div>
 
 <body>
+	<style>
+		body{
+			background-image: url("Cover-Background.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
+		.artist_register_button:hover {
+			background-color: rgba(255, 115, 21, 1);
+			border-color: rgba(255, 115, 21, 0.5);
+		}
 
-	<div class="div_content" class="form">
+		.artist_register_button {
+			transition: background-color 0.5s, border-color 0.5s;
+			cursor: pointer;
+		}
+
+		.artist_submit_button:hover {
+			background-color: rgba(255, 115, 21, 0.5);
+			border-color: rgba(255, 115, 21, 0.5);
+			color: white;
+		}
+
+		.artist_submit_button {
+			transition: background-color 0.5s;
+		}
+
+		.container {
+			margin-top: 150px;
+		}
+
+	</style>
+
+	<div class="div_content container" class="form">
 
 		<form name="artist-login" action="#" method="post">
-			<div class="text_wrapper">
-				<label class="text_email">Email Address</label>
+			<div class="text_wrapper email" >
+				<label class="text_email email_label" >Email Address</label>
 			</div><br>
-			<input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+			<input type="text" name="emailaddress" class="text_field email_text" placeholder=" Email Address"><br>
 
-			<div class="text_wrapper">
-				<label class="text_pw">Password</label>
+			<div class="text_wrapper password" >
+				<label class="text_pw password_label" >Password</label>
 			</div><br>
-			<input type="password" name="password" class="text_field" placeholder=" ***********"><br>
-
+			<input type="password" name="password" class="text_field password_text" placeholder=" ***********"><br>
 
 			<div class="button">
-				<input type="submit" name="submit-login" value="Submit" class="button_orange"><br>
+				<input type="submit" name="submit-login" value="Submit" class="button_orange artist_submit_button" style="cursor: pointer;"><br>
 				<label class="label_text">Don't have an account ?</label><br>
-				<button type="button" class="button_dark"> Register Now </button>
+				<button type="button" class="button_dark artist_register_button"><a href="artist_register.php" style="text-decoration: none; color: white;">Register Now </a> </button>
 			</div>
+
 		</form>
 	</div>
-
 
 	<div id="div_footer">
 
 	</div>
-
 
 </body>
 
