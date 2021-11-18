@@ -77,7 +77,6 @@ if (isset($_POST["submit-login"])) {
 			margin: auto;
 			width: 50%;
 			margin-top: 200px;
-
 		}
 	</style>
 
@@ -97,7 +96,7 @@ if (isset($_POST["submit-login"])) {
 			<div class="button">
 				<input type="submit" name="submit-login" value="Submit" class="button_orange artist_submit_button" style="cursor: pointer; font-family: 'Kanit', sans-serif;"><br>
 				<label class="label_text" style="font-family: 'Kanit', sans-serif;">Don't have an account ?</label><br>
-				<button type="button" class="button_dark artist_register_button"><a href="artist_register.php" style="text-decoration: none; color: white; font-family: 'Kanit', sans-serif;">Register Now </a> </button>
+				<button type="button" class="button_dark artist_register_button" onclick="location.href='artist_register.php'"><a href="artist_register.php" style="text-decoration: none; color: white; font-family: 'Kanit', sans-serif;">Register Now </a> </button>
 			</div>
 
 		</form>

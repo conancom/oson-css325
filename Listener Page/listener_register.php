@@ -1,38 +1,41 @@
 <?php
-    session_start();
+session_start();/*
     $mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
+    */
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
-    if ($mysqli->connect_errno) {
+if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
-    }
+}
 
-    if (isset($_POST["submit-register"])){
-        $emailaddress = $_POST['emailaddress'];
-        $password = $_POST['password'];
-        $confirmpassword = $_POST['confirmpassword'];
-        $username = $_POST['username'];
-        $gender = $_POST['gender'];
-        $day = $_POST['day'];
-        $month = $_POST['month'];
-        $year = $_POST['year'];
-        $country = $_POST['country'];
-        if (strlen($month) == 1) { $dateofbirth = "$year-0$month-$day"; }
-        else { $dateofbirth = "$year-$month-$day"; }
-        date_default_timezone_set('Asia/Bangkok');
-        $timezone = date_default_timezone_get();
-        $createdAt = date('m/d/Y h:i:s a', time());
-        $query = "INSERT INTO `listener`(`UserEmail`, `UserPassword`, `Gender`, `Username`, `UserDateOfBirth`, `Country`) VALUES ('$emailaddress', '$password', '$gender', '$username', '$dateofbirth', '$country')";
-        print $query;
-        $insert = $mysqli->query($query);
-        if (!$insert) {
-            echo $mysqli->error;
-        }
-        else {
-            header("Location: Listener-Album-Page.html");
-        }
-
+if (isset($_POST["submit-register"])) {
+    $emailaddress = $_POST['emailaddress'];
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['confirmpassword'];
+    $username = $_POST['username'];
+    $gender = $_POST['gender'];
+    $day = $_POST['day'];
+    $month = $_POST['month'];
+    $year = $_POST['year'];
+    $country = $_POST['country'];
+    if (strlen($month) == 1) {
+        $dateofbirth = "$year-0$month-$day";
+    } else {
+        $dateofbirth = "$year-$month-$day";
     }
+    date_default_timezone_set('Asia/Bangkok');
+    $timezone = date_default_timezone_get();
+    $createdAt = date('m/d/Y h:i:s a', time());
+    $query = "INSERT INTO `listener`(`UserEmail`, `UserPassword`, `Gender`, `Username`, `UserDateOfBirth`, `Country`) VALUES ('$emailaddress', '$password', '$gender', '$username', '$dateofbirth', '$country')";
+    print $query;
+    $insert = $mysqli->query($query);
+    if (!$insert) {
+        echo $mysqli->error;
+    } else {
+        header("Location: Listener-Album-Page.html");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,45 +51,71 @@
 </div>
 
 <body>
-    <div class="div_content" class="form">
+    <style>
+        	body {
+			background-image: url("Cover-Background.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.container {
+			background-color: rgba(35, 32, 32, 0.5);
+			border-radius: 10px;
+			margin-top: 10px;
+			padding-left: 70px;
+			padding-right: 70px;
+		}
+
+		.listener_register_button:hover {
+			background-color: rgba(255, 115, 21, 0.5);
+			border-color: rgba(255, 115, 21, 0.5);
+			color: white;
+		}
+
+		.listener_register_button {
+			transition: background-color 0.5s;
+            cursor: pointer;
+        }
+    </style>
+    <div class="div_content container" class="form">
 
         <form name="listener-registration" action="#" method="post">
             <div class="text_wrapper">
-                <label class="text_email">Email Address</label>
+                <label class="text_email" style="font-family: 'Kanit', sans-serif;">Email Address</label>
             </div><br>
-            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address"><br>
+            <input type="text" name="emailaddress" class="text_field" placeholder=" Email Address" style="font-family: 'Kanit', sans-serif;"><br>
 
             <div id="text_wrapper">
-                <label class="text_pw">Password</label>
+                <label class="text_pw" style="font-family: 'Kanit', sans-serif;">Password</label>
             </div>
-            <input type="password" name="password" class="text_field" placeholder=" ***********"><br>
+            <input type="password" name="password" class="text_field" placeholder=" ***********" style="font-family: 'Kanit', sans-serif;"><br>
 
             <div class="text_wrapper">
-                <label class="text_conpw">Confirm Password</label>
+                <label class="text_conpw" style="font-family: 'Kanit', sans-serif;">Confirm Password</label>
             </div><br>
-            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********"><br>
+            <input type="password" name="confirmpassword" class="text_field" placeholder=" ***********" style="font-family: 'Kanit', sans-serif;"><br>
 
             <div class="text_wrapper">
-                <label class="text_username">Username</label>
+                <label class="text_username" style="font-family: 'Kanit', sans-serif;">Username</label>
             </div><br>
-            <input type="text" name="username" class="text_field" placeholder=" Username"><br>
+            <input type="text" name="username" class="text_field" placeholder=" Username" style="font-family: 'Kanit', sans-serif;"><br>
             <div class="text_wrapper">
 
-                <label class="text_gender">Gender</label>
+                <label class="text_gender" style="font-family: 'Kanit', sans-serif;">Gender</label>
             </div><br>
 
             <div class="genderchoose">
-                <label class="radiocontainer">Male
-                    <input type="radio" name="gender" value="male" id="male">
+                <label class="radiocontainer" style="font-family: 'Kanit', sans-serif;">Male
+                    <input type="radio" name="gender" value="male" id="male" >
                     <span class="checkmark"></span>
                 </label>
 
-                <label class="radiocontainer">Female
+                <label class="radiocontainer" style="font-family: 'Kanit', sans-serif;">Female
                     <input type="radio" name="gender" value="female" id="female">
                     <span class="checkmark"></span>
                 </label>
 
-                <label class="radiocontainer">Others
+                <label class="radiocontainer" style="font-family: 'Kanit', sans-serif;">Others
                     <input type="radio" name="gender" value="others" id="others">
                     <span class="checkmark"></span>
                 </label>
@@ -95,18 +124,18 @@
 
 
             <div class="dob_wrapper">
-                <label class="text_dateofbirth">Date of Birth</label>
+                <label class="text_dateofbirth" style="font-family: 'Kanit', sans-serif;">Date of Birth</label>
             </div>
 
             <div class="dobin_wrapper">
-                <label class="text_day">Day</label>
-                <label class="text_month">Month</label>
-                <label class="text_year">Year</label>
+                <label class="text_day" style="font-family: 'Kanit', sans-serif;">Day</label>
+                <label class="text_month" style="font-family: 'Kanit', sans-serif;">Month</label>
+                <label class="text_year" style="font-family: 'Kanit', sans-serif;">Year</label>
             </div>
 
-            <input type="text" name="day" class="daybox">
+            <input type="text" name="day" class="daybox" style="font-family: 'Kanit', sans-serif;">
 
-            <select name="month" class="monthbox" aria-placeholder="month">
+            <select name="month" class="monthbox" aria-placeholder="month" style="font-family: 'Kanit', sans-serif;">
                 <option>-</option>
                 <option value="1">Jan</option>
                 <option value="2">Feb</option>
@@ -122,15 +151,13 @@
                 <option value="12">Dec</option>
             </select>
 
-
-
-            <input type="text" name="year" class="yearbox">
+            <input type="text" name="year" class="yearbox" style="font-family: 'Kanit', sans-serif;">
             <br>
 
             <div class="text_wrapper">
-                <label class="country_text">Country</label>
+                <label class="country_text" style="font-family: 'Kanit', sans-serif;">Country</label>
             </div><br>
-            <select name="country" class="countrybox">
+            <select name="country" class="countrybox" style="font-family: 'Kanit', sans-serif;">
                 <option>-</option>
                 <option value="Afganistan">Afghanistan</option>
                 <option value="Albania">Albania</option>
@@ -381,7 +408,7 @@
             </select><br>
 
             <div class="button">
-                <input type="submit" name="submit-register" value="Register" class="button_orange">
+                <input type="submit" name="submit-register" value="Register" class="button_orange listener_register_button" style="font-family: 'Kanit', sans-serif;">
             </div>
         </form>
 
