@@ -1,6 +1,12 @@
 <?php
-
 session_start();
+
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
+
+
+if ($mysqli->connect_errno) {
+    echo $mysqli->connect_error;
+}
 
 ?>
 

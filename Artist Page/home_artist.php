@@ -8,6 +8,23 @@ if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
 
+
+if (isset($_SESSION['id-listener'])) {
+
+    $listenerid = $_SESSION['id-listener'];
+
+	$query = "SELECT * FROM `listener` WHERE `idListener` = '$listenerid'";
+	// print($query); 
+	$result = $mysqli->query($query);
+	if (!$result) {
+		echo $mysqli->error;
+	} else {
+		$data = $result->fetch_array();
+	
+	}
+}
+
+
 ?>
 
 

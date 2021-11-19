@@ -18,6 +18,8 @@ if (isset($_POST["submit-register"])) {
     $month = $_POST['month'];
     $year = $_POST['year'];
     $country = $_POST['country'];
+    $genre = $_POST['genre'];
+    
     if (strlen($month) == 1) {
         $dateofbirth = "$year-0$month-$day";
     } else {
@@ -26,13 +28,13 @@ if (isset($_POST["submit-register"])) {
     date_default_timezone_set('Asia/Bangkok');
     $timezone = date_default_timezone_get();
     $createdAt = date('m/d/Y h:i:s a', time());
-    $query = "INSERT INTO `listener`(`UserEmail`, `UserPassword`, `Gender`, `Username`, `UserDateOfBirth`, `Country`) VALUES ('$emailaddress', '$password', '$gender', '$username', '$dateofbirth', '$country')";
+    $query = "INSERT INTO `listener`(`UserEmail`, `UserPassword`, `Gender`, `Username`, `UserDateOfBirth`, `PreferredGenre`, `Country`) VALUES ('$emailaddress', '$password', '$gender', '$username', '$dateofbirth', '$genre', '$country')";
     print $query;
     $insert = $mysqli->query($query);
     if (!$insert) {
         echo $mysqli->error;
     } else {
-        header("Location: Listener-Album-Page.html");
+        header("Location: listener_login.php");
     }
 }
 ?>
@@ -51,28 +53,28 @@ if (isset($_POST["submit-register"])) {
 
 <body>
     <style>
-        	body {
-			background-image: url("Cover-Background.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
+        body {
+            background-image: url("Cover-Background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
-		.container {
-			background-color: rgba(35, 32, 32, 0.5);
-			border-radius: 10px;
-			margin-top: 10px;
-			padding-left: 70px;
-			padding-right: 70px;
-		}
+        .container {
+            background-color: rgba(35, 32, 32, 0.5);
+            border-radius: 10px;
+            margin-top: 10px;
+            padding-left: 70px;
+            padding-right: 70px;
+        }
 
-		.listener_register_button:hover {
-			background-color: rgba(255, 115, 21, 0.5);
-			border-color: rgba(255, 115, 21, 0.5);
-			color: white;
-		}
+        .listener_register_button:hover {
+            background-color: rgba(255, 115, 21, 0.5);
+            border-color: rgba(255, 115, 21, 0.5);
+            color: white;
+        }
 
-		.listener_register_button {
-			transition: background-color 0.5s;
+        .listener_register_button {
+            transition: background-color 0.5s;
             cursor: pointer;
         }
     </style>
@@ -105,7 +107,7 @@ if (isset($_POST["submit-register"])) {
 
             <div class="genderchoose">
                 <label class="radiocontainer" style="font-family: 'Kanit', sans-serif;">Male
-                    <input type="radio" name="gender" value="male" id="male" >
+                    <input type="radio" name="gender" value="male" id="male">
                     <span class="checkmark"></span>
                 </label>
 
@@ -404,6 +406,31 @@ if (isset($_POST["submit-register"])) {
                 <option value="Zaire">Zaire</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
+            </select><br>
+
+            <div class="text_wrapper">
+                <label class="country_text" style="font-family: 'Kanit', sans-serif;">  &#160&#160 &#160&#160 &#160&#160 &#160&#160 &#160&#160Preferred Genre</label>
+            </div><br>
+
+
+            <select name="genre" class="countrybox" style="font-family: 'Kanit', sans-serif;">
+                <option>-</option>
+                <option value="pop">Pop</option>
+                <option value="rap">Rap</option>
+                <option value="edm">EDM</option>
+                <option value="rock">Rock</option>
+                <option value="randb">R&B</option>
+                <option value="jazz">Jazz</option>
+                <option value="metal">Metal</option>
+                <option value="soul">Soul</option>
+                <option value="raggae">Raggae</option>
+                <option value="classical">Classical</option>
+                <option value="soundtracks">Soundtracks</option>
+                <option value="Country">Country</option>
+                <option value="blues">Blues</option>
+                <option value="folk">Folk</option>
+                <option value="indie">Indie</option>
+
             </select><br>
 
             <div class="button">
