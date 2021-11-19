@@ -1,8 +1,6 @@
 <?php
 session_start();
-/*
-$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
-*/
+
 $mysqli = new mysqli("localhost", "root", '', "oson-v2");
 $albumId  = $_GET['id'];
 $idartist = $_SESSION['id-artist'];
@@ -217,7 +215,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
               // Do stuff with $
 
               echo '<tr>';
-              echo '<td> <input type="checkbox" name="songtoremove' . $data['songid'] . '" value="' . $data['songid'] . '"/>songtoremove' . $data['songid'] . ' </td>';
+              echo '<td> <input type="checkbox" name="songtoremove' . $data['songid'] . '" value="' . $data['songid'] . '"/> </td>';
               echo '<td>' . $data['songid'] . '</td>';
               echo '<td> ' . $data['Name'] . '</td>';
 

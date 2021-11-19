@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    $mysqli = new mysqli("localhost", "root", null, "oson-v0");
+    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
     $query = "SELECT `AlbumName` FROM `album` WHERE idAlbum = " . $_GET['idAlbum'];
     $result = $mysqli->query($query);
     $al = $result->fetch_array();

@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$mysqli = new mysqli("localhost", "root", 'Wirz140328', "oson-v2");
-/*
-$mysqli = new mysqli("localhost", "root", '', "oson-v2");*/
+
+
+$mysqli = new mysqli("localhost", "root", '', "oson-v2");
 
 
 if ($mysqli->connect_errno) {
@@ -50,19 +50,11 @@ if (isset($_POST["submit-register"])) {
 <body>
 
 	<style>
-<<<<<<< HEAD
 		body{
 			background-image: url("Cover-Background-2.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
 			
-=======
-
-		body {
-			background-image: url("Cover-Background-2.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
->>>>>>> 283ed4599e122d7f16be0af55053691197ec20f0
 		}
 
 		.container {
