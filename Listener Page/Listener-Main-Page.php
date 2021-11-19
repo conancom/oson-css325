@@ -79,6 +79,8 @@ $listenerid = $_SESSION['id-listener'];
                     <div class="RecentsContainer">
                         <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
                             <?php
+
+
                             $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
@@ -105,6 +107,7 @@ $listenerid = $_SESSION['id-listener'];
                         <div class="row">
 
                             <?php
+
                             $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
@@ -167,7 +170,7 @@ $listenerid = $_SESSION['id-listener'];
                                     }
                                 } ?>
 
-                                
+
                             </h3>
 
 
@@ -221,45 +224,83 @@ $listenerid = $_SESSION['id-listener'];
                 <div class="Artists-Suggest">
                     <div class="ArtistsSuggestContainer">
                         <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
-                            Artists you might love
+
+                            <?php
+
+                            //AND `listener`.`idListener` = '$listenerid' 
+                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+WHERE `listener`.`idListener` = '$listenerid' 
+AND `artist`.`idArtist` = `createsong`.`idArtist` 
+AND `createsong`.`idSong` = `song`.`idSong` 
+AND `ListenToSong`.`idSong` = `song`.`idSong`
+AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
+GROUP BY `artist`.`idArtist` 
+ORDER BY COUNT(`ListenToSongId`) DESC 
+LIMIT 0,3;";
+
+
+
+                            $result = $mysqli->query($query);
+                            if (!$result) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result) > 0) {
+                                   echo 'Artists you might love';
+                                }
+                            }
+                            ?>
+
+                            
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="row ArtistSuggest-Pic">
-                                    <img src="Images/Scorpion.JPG" alt="Suggest Profile Picture">
-                                </div>
-                                <div class="row ArtistSuggest-Name">
-                                    <h3 style="text-align: center;">Drake</h3>
-                                </div>
-                                <div class="row ArtistSuggest-Type">
-                                    <p style="text-align: center;">Artist</p>
-                                </div>
-                            </div>
 
-                            <div class="col-md-3">
-                                <div class="row ArtistSuggest-Pic">
-                                    <img src="Images/Scorpion.JPG" alt="Suggest Profile Picture">
-                                </div>
-                                <div class="row ArtistSuggest-Name">
-                                    <h3 style="text-align: center;">Drake</h3>
-                                </div>
-                                <div class="row ArtistSuggest-Type">
-                                    <p style="text-align: center;">Artist</p>
-                                </div>
-                            </div>
 
-                            <div class="col-md-3">
-                                <div class="row ArtistSuggest-Pic">
-                                    <img src="Images/Scorpion.JPG" alt="Suggest Profile Picture">
-                                </div>
-                                <div class="row ArtistSuggest-Name">
-                                    <h3 style="text-align: center;">Drake</h3>
-                                </div>
-                                <div class="row ArtistSuggest-Type">
-                                    <p style="text-align: center;">Artist</p>
-                                </div>
-                            </div>
+                            <?php
+
+                            //AND `listener`.`idListener` = '$listenerid' 
+                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                        FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                        WHERE `listener`.`idListener` = '$listenerid' 
+                        AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                        AND `createsong`.`idSong` = `song`.`idSong` 
+                        AND `ListenToSong`.`idSong` = `song`.`idSong`
+                        AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
+                        GROUP BY `artist`.`idArtist` 
+                        ORDER BY COUNT(`ListenToSongId`) DESC 
+                        LIMIT 0,3;";
+
+
+
+                            $result = $mysqli->query($query);
+                            if (!$result) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result) > 0) {
+                                    $x = 1;
+                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+
+                                        echo '<div class="col-md-3">';
+                                        echo '<div class="row Artist-Pic">';
+                                        echo '    <img src="profileimg/' . $data['idArtist'] . '.jpg">';
+                                        echo '</div>';
+                                        echo '<div class="row Artist-Name">';
+                                        echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
+                                        echo '</div>';
+                                        echo '<div class="row Artist-Type">';
+                                        echo '   <p style="text-align: center; color: white;">Artists</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                            ?>
+
+
+
+
+
 
                         </div>
                     </div>
