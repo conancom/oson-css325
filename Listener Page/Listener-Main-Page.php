@@ -36,7 +36,7 @@ if ($mysqli->connect_errno) {
     <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body media="screen" >
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">

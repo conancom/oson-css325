@@ -9,11 +9,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #372F2F !important;
 }
 
 .row {
     width: 100%;
     display: flex;
+  
 }
 
 .Trackbar {
@@ -23,6 +25,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #372F2F;
 }
 
 .columntest-side {
