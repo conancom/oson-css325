@@ -138,10 +138,6 @@ $listenerid = $_SESSION['id-listener'];
                             }
                             ?>
 
-
-
-
-
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,6 @@ body {
 .row {
     width: 100%;
     display: flex;
-  
 }
 
 .Trackbar {
@@ -161,7 +160,7 @@ body {
 
 .Album-Pic img,
 .ArtistSuggest-Pic img {
-    width: 75%;
+    width: 270px;
 }
 
 .Artist-Name h3,
