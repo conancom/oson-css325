@@ -7,7 +7,7 @@ $mysqli = new mysqli("localhost", "root", '', "oson-v2");
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
-
+$listenerid = $_SESSION['id-listener'];
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ if ($mysqli->connect_errno) {
     <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
 </head>
 
-<body media="screen" >
+<body media="screen">
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
@@ -77,58 +77,70 @@ if ($mysqli->connect_errno) {
             <div class="Main">
                 <div class="Recents">
                     <div class="RecentsContainer">
-                        <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
-                            Recently Played
+                    <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
+                    <?php
+                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                            WHERE `listener`.`idListener` = '$listenerid' 
+                            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `artist`.`idArtist` 
+                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            LIMIT 0,3;";
+                            $result = $mysqli->query($query);
+                            if (!$result) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result) > 0){
+                                    echo 'Recently Played';
+                                }
+                            }
+                                ?>
+                       
+                            
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/IU.jpeg" alt="IU Profile Picture">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">IU</h3>
-                                </div>
-                                <div class="row Artist-Type">
-                                    <p style="text-align: center; color: white;">Artists</p>
-                                </div>
-                            </div>
 
-                            <div class="col-md-3">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/Lisa.jfif" alt="Lisa Profile Picture">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">LISA</h3>
-                                </div>
-                                <div class="row Artist-Type">
-                                    <p style="text-align: center; color: white;">Artists</p>
-                                </div>
-                            </div>
+                            <?php
+                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                            WHERE `listener`.`idListener` = '$listenerid' 
+                            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `artist`.`idArtist` 
+                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            LIMIT 0,3;";
+                            $result = $mysqli->query($query);
+                            if (!$result) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result) > 0) {
+                                    $x = 1;
+                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                                        echo '<div class="col-md-3">';
+                                        echo '<div class="row Artist-Pic">';
+                                        echo '    <img src="profileimg/'.$data['idArtist'].'.jpg">';
+                                        echo '</div>';
+                                        echo '<div class="row Artist-Name">';
+                                        echo '    <h3 style="text-align: center;">'.$data['ArtistName'].'</h3>';
+                                        echo '</div>';
+                                        echo '<div class="row Artist-Type">';
+                                        echo '   <p style="text-align: center; color: white;">Artists</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                            ?>
 
-                            <div class="col-md-3">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">Code Kunst</h3>
-                                </div>
-                                <div class="row Artist-Type">
-                                    <p style="text-align: center; color: white;">Artists</p>
-                                </div>
-                            </div>
 
-                            <div class="col-md-3">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">Lil Beethoven</h3>
-                                </div>
-                                <div class="row Artist-Type">
-                                    <p style="text-align: center; color: white;">Artists</p>
-                                </div>
-                            </div>
+
+
 
                         </div>
                     </div>
