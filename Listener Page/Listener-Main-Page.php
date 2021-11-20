@@ -246,12 +246,12 @@ LIMIT 0,3;";
                                 echo $mysqli->error;
                             } else {
                                 if (mysqli_num_rows($result) > 0) {
-                                   echo 'Artists you might love';
+                                    echo 'Artists you might love';
                                 }
                             }
                             ?>
 
-                            
+
                         </h3>
 
                         <div class="row">
@@ -435,12 +435,21 @@ LIMIT 0,3;";
 
         //All songs list
         let All_song = [{
+
+
                 name: "My Ex's Best Friend |",
                 path: "music/testsong1.mp3",
                 img: "img/img1.jpg",
                 singer: "| Machine Gun Kelly"
             },
-            {
+            <?php
+            echo '{';
+            echo 'name: "test song|",';
+            echo 'path: "song/8.mp3",';
+            echo 'img: "img/img1.jpg",';
+            echo 'singer: "| Machine Gun Kelly"';
+            echo '},';
+            ?> {
                 name: "Instagram |",
                 path: "music/testsong2.mp3",
                 img: "img/img2.jpg",
