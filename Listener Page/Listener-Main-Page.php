@@ -81,7 +81,7 @@ $listenerid = $_SESSION['id-listener'];
                             <?php
 
 
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                            $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
                             AND `listener`.`idListener` = `ListenToSong`.`idListener`
@@ -89,7 +89,7 @@ $listenerid = $_SESSION['id-listener'];
                             AND `createsong`.`idSong` = `song`.`idSong` 
                             AND `ListenToSong`.`idSong` = `song`.`idSong` 
                             GROUP BY `artist`.`idArtist` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            ORDER BY `ListenToSongId` DESC 
                             LIMIT 0,3;";
                             $result = $mysqli->query($query);
                             if (!$result) {
@@ -108,7 +108,7 @@ $listenerid = $_SESSION['id-listener'];
 
                             <?php
 
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                            $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
                             AND `listener`.`idListener` = `ListenToSong`.`idListener`
@@ -116,7 +116,7 @@ $listenerid = $_SESSION['id-listener'];
                             AND `createsong`.`idSong` = `song`.`idSong` 
                             AND `ListenToSong`.`idSong` = `song`.`idSong` 
                             GROUP BY `artist`.`idArtist` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            ORDER BY `ListenToSongId` DESC 
                             LIMIT 0,3;";
                             $result = $mysqli->query($query);
                             if (!$result) {
@@ -331,7 +331,7 @@ LIMIT 0,3;";
             <div class="row">
                 <div class="duration" style="margin-left: 100px;">
                     <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden;">
+                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden; width:0;">
                 </div>
 
             </div>
@@ -434,45 +434,47 @@ LIMIT 0,3;";
         let track = document.createElement('audio');
 
         //All songs list
-        let All_song = [{
-
-
-                name: "My Ex's Best Friend |",
-                path: "music/testsong1.mp3",
-                img: "img/img1.jpg",
-                singer: "| Machine Gun Kelly"
-            },
+        let All_song = [
             <?php
-            echo '{';
-            echo 'name: "test song|",';
-            echo 'path: "song/8.mp3",';
-            echo 'img: "img/img1.jpg",';
-            echo 'singer: "| Machine Gun Kelly"';
-            echo '},';
-            ?> {
-                name: "Instagram |",
-                path: "music/testsong2.mp3",
-                img: "img/img2.jpg",
-                singer: "| DEAN"
-            },
-            {
-                name: "Fair Trade | ",
-                path: "music/testsong3.mp3",
-                img: "img/img4.jpg",
-                singer: "| Drake"
-            },
-            {
-                name: "One Right Now | ",
-                path: "music/testsong4.mp3",
-                img: "img/img3.jpg",
-                singer: "| Post Malone, The Weeknd"
-            },
-            {
-                name: "River Flows In You | ",
-                path: "music/testsong5.mp3",
-                img: "img/img5.jpg",
-                singer: "| Yiruma"
+
+            $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
+            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+            WHERE `listener`.`idListener` = '$listenerid'
+            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+            AND `createsong`.`idSong` = `song`.`idSong` 
+            AND `ListenToSong`.`idSong` = `song`.`idSong`  
+            ORDER BY `ListenToSongId` DESC;";
+            $result = $mysqli->query($query);
+            if (!$result) {
+                echo $mysqli->error;
+            } else {
+                if (mysqli_num_rows($result) > 0) {
+                    $numrows = mysqli_num_rows($result);
+                    $x = 1;
+                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                        echo '{';
+                        echo 'name: "' . $data['Name'] . ' |",';
+                        echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                        echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                        echo 'singer: "| ' . $data['ArtistName'] . '"';
+                        if ($x < $numrows){
+                            echo '},';
+                        }else{
+                            echo '}';
+                        }
+                        
+                        $x ++;
+                    }
+                }
             }
+
+
+
+
+
+
+            ?> 
         ];
 
 

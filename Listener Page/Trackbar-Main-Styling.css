@@ -68,7 +68,7 @@ body {
 
 input[type="range"] {
     -webkit-appearance: none;
-    width: 50%;
+    width: 150%;
     outline: none;
     height: 2px;
     margin: 0 15px;
