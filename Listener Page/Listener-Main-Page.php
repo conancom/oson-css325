@@ -74,12 +74,12 @@ $listenerid = $_SESSION['id-listener'];
         </div>
 
         <div class="columntest-artist">
+        <div class="row">
             <div class="Main">
                 <div class="Recents">
                     <div class="RecentsContainer">
                         <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
                             <?php
-
 
                             $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
@@ -100,15 +100,13 @@ $listenerid = $_SESSION['id-listener'];
                                 }
                             }
                             ?>
-
-
                         </h3>
+                        
+                        <div class=" row">
+                            <div class="Artist-Container">
+                                <?php
 
-                        <div class="row">
-
-                            <?php
-
-                            $query = "SELECT `artist`.*
+                                $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
                             AND `listener`.`idListener` = `ListenToSong`.`idListener`
@@ -118,31 +116,37 @@ $listenerid = $_SESSION['id-listener'];
                             GROUP BY `artist`.`idArtist` 
                             ORDER BY `ListenToSongId` DESC 
                             LIMIT 0,3;";
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                    $x = 1;
-                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-                                        echo '<div class="col-md-3">';
-                                        echo '<div class="row Artist-Pic">';
-                                        echo '    <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Name">';
-                                        echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Type">';
-                                        echo '   <p style="text-align: center; color: white;">Artists</p>';
-                                        echo '</div>';
-                                        echo '</div>';
+                                $result = $mysqli->query($query);
+                                if (!$result) {
+                                    echo $mysqli->error;
+                                } else {
+                                    if (mysqli_num_rows($result) > 0) {
+                                        $x = 1;
+                                        while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                                            echo '  <div class="col-md-3>"';
+                                            echo '      <div class="row">';
+                                            echo '          <div class="Artist-Pic">';
+                                            echo '              <a href="Listener-Playlist-Page.php"><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                            echo '          </div>';
+                                            echo '      </div>';
+                                            echo '      <div class="row Artist-Name">';
+                                            echo '           <h3 style="color: white; margin-top: 3%; margin-left: 7%;">' . $data['ArtistName'] . '</h3>';
+                                            echo '      </div>';
+                                            echo '      <div class="row ">';
+                                            echo '          <div class="Artist-Type">';
+                                            echo '              <p style="color: white; margin-left: 8%;">Artists</p>';
+                                            echo '          </div>';
+                                            echo '      </div>';
+                                            echo '  </div>';
+                                        }
                                     }
                                 }
-                            }
-                            ?>
-
+                                
+                                ?>
+                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="row">
@@ -170,7 +174,6 @@ $listenerid = $_SESSION['id-listener'];
                                     }
                                 } ?>
 
-
                             </h3>
 
 
@@ -192,8 +195,6 @@ $listenerid = $_SESSION['id-listener'];
                                 if (mysqli_num_rows($result) > 0) {
                                     $x = 1;
                                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-
-
                                         echo '<div class="row">';
                                         echo '<div class="col-md-3">';
                                         echo '   <div class="row Album-Pic">';
@@ -210,10 +211,6 @@ $listenerid = $_SESSION['id-listener'];
                                 }
                             }
                             ?>
-
-
-
-
 
                         </div>
                     </div>
@@ -238,7 +235,6 @@ AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre`
 GROUP BY `artist`.`idArtist` 
 ORDER BY COUNT(`ListenToSongId`) DESC 
 LIMIT 0,3;";
-
 
 
                             $result = $mysqli->query($query);
@@ -272,7 +268,6 @@ LIMIT 0,3;";
                         LIMIT 0,3;";
 
 
-
                             $result = $mysqli->query($query);
                             if (!$result) {
                                 echo $mysqli->error;
@@ -296,11 +291,6 @@ LIMIT 0,3;";
                                 }
                             }
                             ?>
-
-
-
-
-
 
                         </div>
                     </div>
@@ -459,23 +449,18 @@ LIMIT 0,3;";
                         echo 'path: "song/' . $data['idSong'] . '.mp3",';
                         echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
                         echo 'singer: "| ' . $data['ArtistName'] . '"';
-                        if ($x < $numrows){
+                        if ($x < $numrows) {
                             echo '},';
-                        }else{
+                        } else {
                             echo '}';
                         }
-                        
-                        $x ++;
+
+                        $x++;
                     }
                 }
             }
 
-
-
-
-
-
-            ?> 
+            ?>
         ];
 
 
