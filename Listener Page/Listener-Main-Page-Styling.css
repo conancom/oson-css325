@@ -249,9 +249,6 @@ input[type="range"]::-webkit-slider-thumb {
     background: #FF8A65;
 }
 
-button:hover {
-    background: #FF8A65;
-}
 
 i:before {
     color: rgb(61, 50, 50);

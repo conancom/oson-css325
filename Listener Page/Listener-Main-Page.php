@@ -127,7 +127,7 @@ $listenerid = $_SESSION['id-listener'];
                                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                                         echo '<div class="col-md-3">';
                                         echo '<div class="row Artist-Pic">';
-                                        echo '    <img src="profileimg/' . $data['idArtist'] . '.jpg">';
+                                        echo '    <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                         echo '</div>';
                                         echo '<div class="row Artist-Name">';
                                         echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
@@ -197,7 +197,7 @@ $listenerid = $_SESSION['id-listener'];
                                         echo '<div class="row">';
                                         echo '<div class="col-md-3">';
                                         echo '   <div class="row Album-Pic">';
-                                        echo '       <img src="albumimg/' . $data['idAlbum'] . '.jpg">';
+                                        echo '      <a href="Listener-Playlist-Page.php" > <img src="albumimg/' . $data['idAlbum'] . '.jpg"></a>';
                                         echo '   </div>';
                                         echo '   <div class="row Album-Name">';
                                         echo '       <h3 style="text-align: center;">' . $data['AlbumName'] . '</h3>';
@@ -283,7 +283,7 @@ LIMIT 0,3;";
 
                                         echo '<div class="col-md-3">';
                                         echo '<div class="row Artist-Pic">';
-                                        echo '    <img src="profileimg/' . $data['idArtist'] . '.jpg">';
+                                        echo '    <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                         echo '</div>';
                                         echo '<div class="row Artist-Name">';
                                         echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
@@ -444,7 +444,8 @@ LIMIT 0,3;";
             AND `artist`.`idArtist` = `createsong`.`idArtist` 
             AND `createsong`.`idSong` = `song`.`idSong` 
             AND `ListenToSong`.`idSong` = `song`.`idSong`  
-            ORDER BY `ListenToSongId` DESC;";
+            ORDER BY `ListenToSongId` DESC
+            LIMIT 0, 10;";
             $result = $mysqli->query($query);
             if (!$result) {
                 echo $mysqli->error;
