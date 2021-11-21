@@ -5,16 +5,7 @@
 
 body {
     overflow-x: hidden;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #372F2F !important;
-}
-
-.row {
-    width: 100%;
-    display: flex;
 }
 
 .Trackbar {
@@ -80,10 +71,12 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 1920px;
-    height: 12%;
-    padding: 20px 20px;
+    right: 0;
+    width: 100%;
+    height: 14%;
     background-color: #232020;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .music-data {
@@ -136,40 +129,37 @@ body {
 
 /*Main Section Codes*/
 
-.Artist-Pic {
-    padding: 20px;
+.Artist-Container .Artist-Pic {
     line-height: 20px;
-    position: relative;
-    margin-bottom: -12%;
+    margin-bottom: -2%;
 }
 
-.Artist-Pic img {
+.Artist-Container .Artist-Pic img {
     clip-path: circle(36.9% at 50% 50%);
-}
-
-.Album-Pic,
-.ArtistSuggest-Pic {
-    margin-bottom: 10px;
+    width: 300px;
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.Album-Pic img,
-.ArtistSuggest-Pic img {
-    width: 270px;
+.Artist-Container .Album-Pic,
+.Artist-Container .ArtistSuggest-Pic {
+    margin-bottom: 20px;
+}
+
+.Artist-Container .Album-Pic img,
+.Artist-Container .ArtistSuggest-Pic img {
+    width: 100px;
+    height: 100px;
 }
 
 .Artist-Name h3,
+.Artist-Type p,
 .Playlist-Type p,
 .Album-Name h3,
 .Album-Type p,
 .ArtistSuggest-Name h3,
 .ArtistSuggest-Type p {
     color: white;
+    position: relative;
 }
 
 .columntest-artist {
@@ -182,7 +172,7 @@ body {
 .duration {
     position: relative;
     bottom: 20%;
-    left: 15;
+    left: -8%;
     display: flex;
     align-items: center;
     justify-content: center;

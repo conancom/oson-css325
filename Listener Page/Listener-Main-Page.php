@@ -74,15 +74,16 @@ echo $listenerid;
             </div>
         </div>
 
+        <!--Recently Played-->
         <div class="columntest-artist">
-            <div class="Main">
-                <div class="Recents">
-                    <div class="RecentsContainer">
-                        <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
-                            <?php
+            <div class="row">
+                <div class="Main">
+                    <div class="Recents">
+                        <div class="RecentsContainer">
+                            <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
+                                <?php
 
-
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                                $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
                             AND `listener`.`idListener` = `ListenToSong`.`idListener`
@@ -90,62 +91,66 @@ echo $listenerid;
                             AND `createsong`.`idSong` = `song`.`idSong` 
                             AND `ListenToSong`.`idSong` = `song`.`idSong` 
                             GROUP BY `artist`.`idArtist` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            ORDER BY `ListenToSongId` DESC 
                             LIMIT 0,3;";
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                    echo 'Recently Played';
-                                }
-                            }
-                            ?>
-
-
-                        </h3>
-
-                        <div class="row">
-
-                            <?php
-
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
-                            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-                            WHERE `listener`.`idListener` = '$listenerid' 
-                            AND `listener`.`idListener` = `ListenToSong`.`idListener`
-                            AND `artist`.`idArtist` = `createsong`.`idArtist` 
-                            AND `createsong`.`idSong` = `song`.`idSong` 
-                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
-                            GROUP BY `artist`.`idArtist` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
-                            LIMIT 0,3;";
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                    $x = 1;
-                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-                                        echo '<div class="col-md-3">';
-                                        echo '<div class="row Artist-Pic">';
-                                        echo '    <img src="profileimg/' . $data['idArtist'] . '.jpg">';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Name">';
-                                        echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Type">';
-                                        echo '   <p style="text-align: center; color: white;">Artists</p>';
-                                        echo '</div>';
-                                        echo '</div>';
+                                $result = $mysqli->query($query);
+                                if (!$result) {
+                                    echo $mysqli->error;
+                                } else {
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo 'Recently Played';
                                     }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </h3>
 
+                            <div class=" row">
+                                <div class="Artist-Container">
+                                    <?php
+
+                                    $query = "SELECT `artist`.*
+                            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                            WHERE `listener`.`idListener` = '$listenerid' 
+                            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `artist`.`idArtist` 
+                            ORDER BY `ListenToSongId` DESC 
+                            LIMIT 0,3;";
+                                    $result = $mysqli->query($query);
+                                    if (!$result) {
+                                        echo $mysqli->error;
+                                    } else {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            $x = 1;
+                                            while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                                                echo '  <div class="col-md-3>"';
+                                                echo '      <div class="row">';
+                                                echo '          <div class="Artist-Pic">';
+                                                echo '              <a href="Listener-Playlist-Page.php"><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '          </div>';
+                                                echo '      </div>';
+                                                echo '      <div class="row Artist-Name">';
+                                                echo '           <h3 style="color: white; margin-top: 3%; margin-left: 7%;">' . $data['ArtistName'] . '</h3>';
+                                                echo '      </div>';
+                                                echo '      <div class="row ">';
+                                                echo '          <div class="Artist-Type">';
+                                                echo '              <p style="color: white; margin-left: 8%;">Artists</p>';
+                                                echo '          </div>';
+                                                echo '      </div>';
+                                                echo '  </div>';
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!--Albums you might love-->
                 <div class="row">
                     <div class="Albums">
                         <div class="AlbumsContainer">
@@ -171,12 +176,12 @@ echo $listenerid;
                                     }
                                 } ?>
 
-
                             </h3>
 
-
-                            <?php
-                            $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
+                            <div class=" row">
+                                <div class="Artist-Container">
+                                    <?php
+                                    $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
                             FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`, `ListenToSong`, `listener`
                             WHERE `listener`.`PreferredGenre` = `album`.`Genre`
                             AND `listener`.`idListener` = '$listenerid' 
@@ -186,82 +191,78 @@ echo $listenerid;
                             GROUP BY `idAlbum` 
                             ORDER BY COUNT(`ListenToSongId`) DESC 
                             LIMIT 0,4;";
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                    $x = 1;
-                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-
-
-                                        echo '<div class="row">';
-                                        echo '<div class="col-md-3">';
-                                        echo '   <div class="row Album-Pic">';
-                                        echo '       <img src="albumimg/' . $data['idAlbum'] . '.jpg">';
-                                        echo '   </div>';
-                                        echo '   <div class="row Album-Name">';
-                                        echo '       <h3 style="text-align: center;">' . $data['AlbumName'] . '</h3>';
-                                        echo '   </div>';
-                                        echo '   <div class="row Album-Type">';
-                                        echo '       <p style="text-align: center;">Album</p>';
-                                        echo '   </div>';
-                                        echo '</div>';
+                                    $result = $mysqli->query($query);
+                                    if (!$result) {
+                                        echo $mysqli->error;
+                                    } else {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            $x = 1;
+                                            while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                                                echo '<div class="col-md-3">';
+                                                echo '  <div class="row>';
+                                                echo '      <div class="Album-Pic">';
+                                                echo '          <a href="Listener-Playlist-Page.php"> <img src="albumimg/' . $data['idAlbum'] . '.jpg"></a>';
+                                                echo '      </div>';
+                                                echo '      <div class="row Album-Name">';
+                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 7%;">' . $data['AlbumName'] . '</h3>';
+                                                echo '      </div>';
+                                                echo '      <div class="row ">';
+                                                echo '          <div class="Album-Type">';
+                                                echo '              <p style="color: white; margin-left: 8%;">Album</p>';
+                                                echo '          </div>';
+                                                echo '      </div>';
+                                                echo '  </div>';
+                                                echo '</div>';
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                            ?>
-
-
-
-
-
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="Artists-Suggest">
-                    <div class="ArtistsSuggestContainer">
-                        <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
+                <!--Artists You might love-->
+                <div class="row">
+                    <div class="Artists-Suggest">
+                        <div class="ArtistsSuggestContainer">
+                            <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
 
-                            <?php
+                                <?php
 
-                            //AND `listener`.`idListener` = '$listenerid' 
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
-FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-WHERE `listener`.`idListener` = '$listenerid' 
-AND `artist`.`idArtist` = `createsong`.`idArtist` 
-AND `createsong`.`idSong` = `song`.`idSong` 
-AND `ListenToSong`.`idSong` = `song`.`idSong`
-AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
-GROUP BY `artist`.`idArtist` 
-ORDER BY COUNT(`ListenToSongId`) DESC 
-LIMIT 0,3;";
+                                //AND `listener`.`idListener` = '$listenerid' 
+                                $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                                FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                                WHERE `listener`.`idListener` = '$listenerid' 
+                                AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                                AND `createsong`.`idSong` = `song`.`idSong` 
+                                AND `ListenToSong`.`idSong` = `song`.`idSong`
+                                AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
+                                GROUP BY `artist`.`idArtist` 
+                                ORDER BY COUNT(`ListenToSongId`) DESC 
+                                LIMIT 0,3;";
 
-
-
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                   echo 'Artists you might love';
+                                $result = $mysqli->query($query);
+                                if (!$result) {
+                                    echo $mysqli->error;
+                                } else {
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo 'Artists you might love';
+                                    }
                                 }
-                            }
-                            ?>
-
-                            
-                        </h3>
-
-                        <div class="row">
+                                ?>
 
 
-                            <?php
+                            </h3>
 
-                            //AND `listener`.`idListener` = '$listenerid' 
-                            $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
+                            <div class=" row">
+                                <div class="Artist-Container">
+
+                                    <?php
+
+                                    //AND `listener`.`idListener` = '$listenerid' 
+                                    $query = "SELECT `artist`.* , COUNT(`ListenToSongId`) 
                         FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                         WHERE `listener`.`idListener` = '$listenerid' 
                         AND `artist`.`idArtist` = `createsong`.`idArtist` 
@@ -272,43 +273,40 @@ LIMIT 0,3;";
                         ORDER BY COUNT(`ListenToSongId`) DESC 
                         LIMIT 0,3;";
 
+                                    $result = $mysqli->query($query);
+                                    if (!$result) {
+                                        echo $mysqli->error;
+                                    } else {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            $x = 1;
+                                            while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
 
-
-                            $result = $mysqli->query($query);
-                            if (!$result) {
-                                echo $mysqli->error;
-                            } else {
-                                if (mysqli_num_rows($result) > 0) {
-                                    $x = 1;
-                                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-
-                                        echo '<div class="col-md-3">';
-                                        echo '<div class="row Artist-Pic">';
-                                        echo '    <img src="profileimg/' . $data['idArtist'] . '.jpg">';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Name">';
-                                        echo '    <h3 style="text-align: center;">' . $data['ArtistName'] . '</h3>';
-                                        echo '</div>';
-                                        echo '<div class="row Artist-Type">';
-                                        echo '   <p style="text-align: center; color: white;">Artists</p>';
-                                        echo '</div>';
-                                        echo '</div>';
+                                                echo '<div class="col-md-3">';
+                                                echo '  <div class="row">';
+                                                echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
+                                                echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '      </div>';
+                                                echo '      <div class="row Artist-Name">';
+                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 29%;">' . $data['ArtistName'] . '</h3>';
+                                                echo '      </div>';
+                                                echo '      <div class="row ">';
+                                                echo '          <div class="Artist-Type>"';
+                                                echo '              <p style="color: white; margin-left: 32%;">Artists</p>';
+                                                echo '          </div>';
+                                                echo '      </div>';
+                                                echo '  </div>';
+                                                echo '</div>';
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                            ?>
-
-
-
-
-
-
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="row Trackbar">
@@ -332,7 +330,7 @@ LIMIT 0,3;";
             <div class="row">
                 <div class="duration" style="margin-left: 100px;">
                     <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden;">
+                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden; width:0;">
                 </div>
 
             </div>
@@ -435,36 +433,43 @@ LIMIT 0,3;";
         let track = document.createElement('audio');
 
         //All songs list
-        let All_song = [{
-                name: "My Ex's Best Friend |",
-                path: "music/testsong1.mp3",
-                img: "img/img1.jpg",
-                singer: "| Machine Gun Kelly"
-            },
-            {
-                name: "Instagram |",
-                path: "music/testsong2.mp3",
-                img: "img/img2.jpg",
-                singer: "| DEAN"
-            },
-            {
-                name: "Fair Trade | ",
-                path: "music/testsong3.mp3",
-                img: "img/img4.jpg",
-                singer: "| Drake"
-            },
-            {
-                name: "One Right Now | ",
-                path: "music/testsong4.mp3",
-                img: "img/img3.jpg",
-                singer: "| Post Malone, The Weeknd"
-            },
-            {
-                name: "River Flows In You | ",
-                path: "music/testsong5.mp3",
-                img: "img/img5.jpg",
-                singer: "| Yiruma"
+        let All_song = [
+            <?php
+
+            $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
+            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+            WHERE `listener`.`idListener` = '$listenerid'
+            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+            AND `createsong`.`idSong` = `song`.`idSong` 
+            AND `ListenToSong`.`idSong` = `song`.`idSong`  
+            ORDER BY `ListenToSongId` DESC
+            LIMIT 0, 10;";
+            $result = $mysqli->query($query);
+            if (!$result) {
+                echo $mysqli->error;
+            } else {
+                if (mysqli_num_rows($result) > 0) {
+                    $numrows = mysqli_num_rows($result);
+                    $x = 1;
+                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                        echo '{';
+                        echo 'name: "' . $data['Name'] . ' |",';
+                        echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                        echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                        echo 'singer: "| ' . $data['ArtistName'] . '"';
+                        if ($x < $numrows) {
+                            echo '},';
+                        } else {
+                            echo '}';
+                        }
+
+                        $x++;
+                    }
+                }
             }
+
+            ?>
         ];
 
 
