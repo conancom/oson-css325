@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $mysqli = new mysqli("localhost", "root", '', "oson-v2");
+    if ($mysqli->connect_errno) {
+        echo $mysqli->connect_error;
+    }
+    $listenerid = $_SESSION['id-listener'];
+    $query = "SELECT `idListener`, `UserEmail`, `Gender`, `UserName`, `UserDateOfBirth`, `PreferredGenre`, `Country`, `profile_url` FROM `listener` WHERE `idListener` = ". $listenerid;
+    $result = $mysqli->query($query);
+    if($result) { $data = $result->fetch_array(); print_r($data);}
+?>
+
+
 <!DOCTYPE html>
 
 <html>

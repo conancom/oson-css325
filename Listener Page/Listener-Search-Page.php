@@ -92,20 +92,7 @@ if (isset($_GET['searchResult'])) {
                             Search Result
                         </h3>
                         <div id="display" class="row">
-
-
-                            <div class="col-md-3">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">IU</h3>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Playlist</p>
-                                </div>
-                            </div>
-
+                            <!-- SEARCH RESULT RENDER HERE -->
                         </div>
 
                         <h3 style="color: white;">
