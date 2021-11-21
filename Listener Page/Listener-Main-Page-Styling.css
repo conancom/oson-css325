@@ -140,17 +140,15 @@ body {
     position: relative;
 }
 
-.Album-Pic,
-.ArtistSuggest-Pic {
-    margin-bottom: 10px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
+.Artist-Container .Album-Pic,
+.Artist-Container .ArtistSuggest-Pic {
+    margin-bottom: 20px;
 }
 
-.Album-Pic img,
-.ArtistSuggest-Pic img {
-    width: 270px;
+.Artist-Container .Album-Pic img,
+.Artist-Container .ArtistSuggest-Pic img {
+    width: 100px;
+    height: 100px;
 }
 
 .Artist-Name h3,
