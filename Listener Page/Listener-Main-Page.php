@@ -158,30 +158,33 @@ $listenerid = $_SESSION['id-listener'];
                 <!--Albums you might love-->
                 <div class="row">
                     <div class="Albums">
-                        <div class="AlbumsContainer">
-                            <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold; margin-bottom: 40px;">
+                        <div class="row">
+                            <div class="AlbumsContainer">
 
-                                <?php
-                                $query = "SELECT `album`.*                              
-                                FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
-                                WHERE `listener`.`PreferredGenre` = `album`.`Genre`                             
-                                AND `listener`.`idListener` = '$listenerid'                              
-                                GROUP BY `idAlbum`                              
-                                ORDER BY `AmountOfFollower` DESC                              
-                                LIMIT 0,4;";
-                                $result = $mysqli->query($query);
-                                if (!$result) {
-                                    echo $mysqli->error;
-                                } else {
-                                    if (mysqli_num_rows($result) > 0) {
-                                        echo 'Albums you might love';
-                                    }
-                                } ?>
+                                <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 20px; font-weight: bold; margin-bottom: 20px;">
 
-                            </h3>
+                                    <?php
+                                    $query = "SELECT `album`.*                              
+                                    FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
+                                    WHERE `listener`.`PreferredGenre` = `album`.`Genre`                             
+                                    AND `listener`.`idListener` = '$listenerid'                              
+                                    GROUP BY `idAlbum`                              
+                                    ORDER BY `AmountOfFollower` DESC                              
+                                    LIMIT 0,4;";
+                                    $result = $mysqli->query($query);
+                                    if (!$result) {
+                                        echo $mysqli->error;
+                                    } else {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            echo 'Albums you might love';
+                                        }
+                                    } ?>
 
-                            <div class=" row">
-                                <div class="Artist-Container">
+                                </h3>
+                            </div>
+
+                            
+                                <div class="col-md-3" style="width: 240px; height: 240px;">
                                     <?php
                                     $query = "SELECT `album`.*                              
                                     FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
@@ -197,21 +200,25 @@ $listenerid = $_SESSION['id-listener'];
                                         if (mysqli_num_rows($result) > 0) {
                                             $x = 1;
                                             while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-                                                echo '<div class="col-md-3">';
-                                                echo '  <div class="row>';
-                                                echo '      <div class="Album-Pic">';
-                                                echo '          <a href="Listener-Playlist-Page.php"> <img src="albumimg/' . $data['idAlbum'] . '.jpg"></a>';
-                                                echo '      </div>';
-                                                echo '      <div class="row Album-Name">';
-                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 7%;">' . $data['AlbumName'] . '</h3>';
-                                                echo '      </div>';
-                                                echo '      <div class="row ">';
-                                                echo '          <div class="Album-Type">';
-                                                echo '              <p style="color: white; margin-left: 8%;">Album</p>';
-                                                echo '          </div>';
-                                                echo '      </div>';
-                                                echo '  </div>';
-                                                echo '</div>';
+                                                echo '<div class=" row">';
+                                                echo '<div class="Artist-Container" style="margin-left: 55px; width: 240px; height: 240px;">';
+                                                echo ' ';
+                                                echo '     <div class="row>';
+                                                echo '         <div class="Album-Pic">';
+                                                echo '             <a href="Listener-Playlist-Page.php"> <img style="width: 220px; height: 220px;" src="albumimg/' . $data['idAlbum'] . '.jpg"></a>';
+                                                echo '         </div>';
+                                                echo '         <div class="row Album-Name">';
+                                                echo '             <h3 style="color: white; text-align: center;">' . $data['AlbumName'] . '</h3>';
+                                                echo '         </div>';
+                                                echo '         <div class="row ">';
+                                                echo '             <div class="Album-Type">';
+                                                echo '                 <p style="color: white; text-align: center;">Album</p>';
+                                                echo '             </div>';
+                                                echo '         </div>';
+                                                echo '     </div>';
+                                                echo ' </div>';
+                                                echo ' </div>';
+                                                echo ' ';
                                             }
                                         }
                                     }
@@ -225,7 +232,7 @@ $listenerid = $_SESSION['id-listener'];
                 <!--Artists You might love-->
                 <div class="row">
                     <div class="Artists-Suggest">
-                        <div class="ArtistsSuggestContainer">
+                        <div class="ArtistsSuggestContainer" style="position:relative; left: 15%;">
                             <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
 
                                 <?php
@@ -251,7 +258,6 @@ $listenerid = $_SESSION['id-listener'];
                                     }
                                 }
                                 ?>
-
 
                             </h3>
 
@@ -286,11 +292,11 @@ $listenerid = $_SESSION['id-listener'];
                                                 echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
-                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 29%;">' . $data['ArtistName'] . '</h3>';
+                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
                                                 echo '      </div>';
                                                 echo '      <div class="row ">';
                                                 echo '          <div class="Artist-Type>"';
-                                                echo '              <p style="color: white; margin-left: 32%;">Artists</p>';
+                                                echo '              <p style="color: white; margin-left: 29%;">Artists</p>';
                                                 echo '          </div>';
                                                 echo '      </div>';
                                                 echo '  </div>';

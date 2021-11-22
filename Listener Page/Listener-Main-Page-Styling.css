@@ -27,7 +27,7 @@ body {
     margin-right: -20px;
     flex: 80%;
     background-color: #372F2F;
-    padding-bottom: 150px;
+    padding-bottom: 50px;
     padding-left: 700px;
 }
 
@@ -140,13 +140,13 @@ body {
     position: relative;
 }
 
-.Artist-Container .Album-Pic,
-.Artist-Container .ArtistSuggest-Pic {
+.Album-Pic,
+.ArtistSuggest-Pic {
     margin-bottom: 20px;
 }
 
-.Artist-Container .Album-Pic img,
-.Artist-Container .ArtistSuggest-Pic img {
+.Album-Pic img,
+.ArtistSuggest-Pic img {
     width: 100px;
     height: 100px;
 }
@@ -162,8 +162,9 @@ body {
     position: relative;
 }
 
-.columntest-artist {
-    margin-bottom: 140px;
+.Artist-Container {
+    position: relative;
+    height: 250px;
 }
 
 
