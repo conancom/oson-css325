@@ -156,15 +156,12 @@ $listenerid = $_SESSION['id-listener'];
                             <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold; margin-bottom: 40px;">
 
                                 <?php
-                                $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
-                            FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`, `ListenToSong`, `listener`
+                                $query = "SELECT `album`.* 
+                            FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`
                             WHERE `listener`.`PreferredGenre` = `album`.`Genre`
                             AND `listener`.`idListener` = '$listenerid' 
-                            AND `song`.`idSong` = `consistAlbum`.`idSong`
-                            AND `consistAlbum`.`idAlbum` = `Album`.`idAlbum`
-                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
                             GROUP BY `idAlbum` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            ORDER BY `AmountOfFollower` DESC 
                             LIMIT 0,4;";
                                 $result = $mysqli->query($query);
                                 if (!$result) {
@@ -180,15 +177,12 @@ $listenerid = $_SESSION['id-listener'];
                             <div class=" row">
                                 <div class="Artist-Container">
                                     <?php
-                                    $query = "SELECT `album`.* , COUNT(`ListenToSongId`) 
-                            FROM `artist`, `song`, `createsong`,`consistAlbum`, `Album`, `ListenToSong`, `listener`
+                                    $query = "SELECT `album`.* 
+                            FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`
                             WHERE `listener`.`PreferredGenre` = `album`.`Genre`
                             AND `listener`.`idListener` = '$listenerid' 
-                            AND `song`.`idSong` = `consistAlbum`.`idSong`
-                            AND `consistAlbum`.`idAlbum` = `Album`.`idAlbum`
-                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
                             GROUP BY `idAlbum` 
-                            ORDER BY COUNT(`ListenToSongId`) DESC 
+                            ORDER BY `AmountOfFollower` DESC 
                             LIMIT 0,4;";
                                     $result = $mysqli->query($query);
                                     if (!$result) {

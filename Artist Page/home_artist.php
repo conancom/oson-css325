@@ -98,7 +98,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     $data = $result->fetch_array();
                     $_SESSION['id-artist'] = $data['idArtist'];
                     $id = $data["idArtist"];
-                    echo '<div class="profilepic" style="background: url(img/' . $id . '.jpg); 
+                    echo '<div class="profilepic" style="background: url(profileimg/' . $id . '.jpg); 
                         position: absolute;
                         width: 173px;
                         height: 173px;
@@ -141,7 +141,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
         <div class="underline3" style="font-family: 'Kanit', sans-serif;"></div>
 
         <div class="grid-subcontainer">
-            <img class="newlistenersimg" src="img/down_arrow.png" />
+            <img class="newlistenersimg" src="profileimg/down_arrow.png" />
             <?php
             if (isset($_SESSION['id-artist'])) {
 
@@ -170,7 +170,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
 
             <br>
             <br>
-            <img class="streamsimg" src="img/up_arrow.png" />
+            <img class="streamsimg" src="profileimg/up_arrow.png" />
 
             <?php
             if (isset($_SESSION['id-artist'])) {
@@ -199,7 +199,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
 
             <br>
             <br>
-            <img class="newfollowsimg" src="img/up_arrow.png" />
+            <img class="newfollowsimg" src="profileimg/up_arrow.png" />
 
             <?php
             if (isset($_SESSION['id-artist'])) {
@@ -225,7 +225,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
             ?>
             <br>
             <br>
-            <img class="donationsimg" src="img/up_arrow.png" />
+            <img class="donationsimg" src="profileimg/up_arrow.png" />
 
             <?php
             if (isset($_SESSION['id-artist'])) {

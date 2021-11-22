@@ -51,10 +51,10 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
     if (!$insert) {
         echo $mysqli->error;
     } else {
-        if (file_exists('img/' . $idartist . '.jpg')) {
-            unlink('img/' . $idartist . '.jpg');
+        if (file_exists('profileimg/' . $idartist . '.jpg')) {
+            unlink('profileimg/' . $idartist . '.jpg');
         }
-        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'img/' . $idartist . '.jpg');
+        move_uploaded_file($_FILES["my_file"]["tmp_name"], 'profileimg/' . $idartist . '.jpg');
         header("Location: home_artist.php");
     }
 }
@@ -154,7 +154,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                         $data = $result->fetch_array();
                         $_SESSION['id-artist'] = $data['idArtist'];
                         $id = $data["idArtist"];
-                        echo '<div class="profilepic" style="background: url(img/' . $id . '.jpg); 
+                        echo '<div class="profilepic" style="background: url(profileimg/' . $id . '.jpg); 
                         position: absolute;
                         width: 173px;
                         height: 173px;

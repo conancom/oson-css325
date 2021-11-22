@@ -146,7 +146,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                         $data = $result->fetch_array();
                         $_SESSION['id-artist'] = $data['idArtist'];
                         $id = $data["idArtist"];
-                        echo '<div class="profilepic" style="background: url(img/' . $id . '.jpg); 
+                        echo '<div class="profilepic" style="background: url(profileimg/' . $id . '.jpg); 
                         position: absolute;
                         width: 173px;
                         height: 173px;
