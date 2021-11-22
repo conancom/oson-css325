@@ -144,3 +144,26 @@ clip-path: circle(36.9% at 50% 50%);
 .columntest-artist {
     padding-bottom: 180px;
 }
+
+.AddToPlaylistButton {
+    border: none;
+    background-color: rgba(255, 115, 21, 1);
+    padding: 4px;
+    margin: 4px;
+    transition: background-color 0.3s;
+}
+
+.AddToPlaylistButton:hover {
+    background-color: rgb(196, 78, 0);
+}
+
+.FollowButton .Donate,
+.FollowButton .FollowBtn {
+    background-color: rgba(255, 115, 21, 1);
+    transition: background-color 0.3s;
+}
+
+.FollowButton .Donate:hover,
+.FollowButton .FollowBtn:hover {
+    background-color: rgb(196, 78, 0);
+}

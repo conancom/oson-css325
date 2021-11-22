@@ -111,7 +111,7 @@ if (isset($_GET['idAlbum'])) {
                                         ?>
                                         <form action="#fllw" method="post">
                                             <input type="hidden" name="is-follow" value="<?php echo $data['ISFOLLOW'] ?>">
-                                            <button name="follow-album" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                            <button name="follow-album" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">
                                                 <?php if ($data['ISFOLLOW'] == 0) {
                                                     echo "Follow";
                                                 } else {
@@ -150,7 +150,7 @@ if (isset($_GET['idAlbum'])) {
                                     <div class="col FollowButton ">
                                         <form action="#don" method="post">
                                             <input type="hidden" name="id-artist" value="<?php echo $albumid ?>">
-                                            <button name="donate" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                            <button name="donate" style="border: none; padding: 10px 30px; border-radius: 10px;" class="Donate">
                                                 Donate
                                             </button>
                                         </form>
@@ -223,7 +223,7 @@ if (isset($_GET['idAlbum'])) {
                                         ?>
                                         <form action="#" method="post">
                                             <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
-                                            <button type="submit" name="first-hit">+PL</button>
+                                            <button type="submit" name="first-hit" class="AddToPlaylistButton">+PL</button>
                                         </form>
 
                                         <?php
