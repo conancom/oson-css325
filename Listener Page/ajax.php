@@ -15,7 +15,14 @@ if (isset($_POST['search'])) {
       <div class="col-md-3">
          <a href="Listener-Search-Page.php?searchResult=<?php echo $Result['searchRes']?>">
             <div class="row Artist-Pic">
-               <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
+               <?php
+                  if($Result['type'] == "artist"){
+                     $path = "profileimg/";
+                  } else { 
+                     # need to change to song img/album img
+                     $path = "profileimg/"; }
+               ?>
+               <img src=<?php echo $path.$Result['searchId'].'.jpg'?> alt="IU Profile Picture" style="padding-bottom: 20px;">
             </div>
             <div class="row Artist-Name">
                <h3 style="text-align: center;"><?php echo $Result['searchRes']?></h3>

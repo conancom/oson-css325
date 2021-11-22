@@ -8,6 +8,8 @@ if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
 $listenerid = $_SESSION['id-listener'];
+echo $listenerid;
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +66,11 @@ $listenerid = $_SESSION['id-listener'];
                         Album
                     </p>
                 </a>
+<<<<<<< HEAD
                 <a href="Listener-Settings-Page.html">
+=======
+                <a href="Listener-Settings-Page.php">
+>>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings

@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-
 $mysqli = new mysqli("localhost", "root", '', "oson-v2");
-
 if ($mysqli->connect_errno) {
 	echo $mysqli->connect_error;
 }
@@ -11,19 +8,21 @@ if ($mysqli->connect_errno) {
 if (isset($_POST["submit-login"])) {
 	$emailaddress = $_POST['emailaddress'];
 	$password = $_POST['password'];
-	$query = "SELECT * FROM `listener` WHERE `UserEmail` = '$emailaddress' AND `UserPassword` = '$password'";
+	$query = "SELECT * FROM `listener` WHERE `UserEmail` = '$emailaddress' 
+				AND `UserPassword` = '$password'";
 	// print($query); 
 	$result = $mysqli->query($query);
 	if (!$result) {
 		echo $mysqli->error;
 	} else {
-		$data = $result->fetch_array();
-		$_SESSION['id-listener'] = $data['idListener'];
-		header("Location: Listener-Main-Page.php");
+		if ($result->num_rows == 1){
+			$data = $result->fetch_array();
+			$_SESSION['id-listener'] = $data['idListener'];
+			header("Location: Listener-Main-Page.php");
+		}
 	}
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -79,13 +78,10 @@ if (isset($_POST["submit-login"])) {
 				<label class="text_pw" style="cursor: pointer; font-family: 'Kanit', sans-serif;">Password</label>
 			</div><br>
 			<input type="password" name="password" class="text_field" placeholder=" ***********" style="cursor: pointer; font-family: 'Kanit', sans-serif;"><br>
-
-
 			<div class="button">
 				<input type="submit" name="submit-login" value="Submit" class="button_orange listener_submit_button"><br>
 				<label class="label_text" style="cursor: pointer; font-family: 'Kanit', sans-serif;">Don't have an account ?</label><br>
 				<button type="button " class="button_dark listener_register_button" onclick="location.href='listener_register.php'"> <a href="listener_register.php" style="text-decoration: none; color: white; font-family: 'Kanit', sans-serif;">Register Now </a> </button>
-
 			</div>
 		</form>
 
