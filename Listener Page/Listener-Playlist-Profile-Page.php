@@ -73,11 +73,11 @@ $pl = $result->fetch_array();
                     <div class="ArtistContainer">
                         <div class="row">
                             <?php
-                            $query = "SELECT cp.*, s.*, cs.*, art.*, al.AlbumName FROM consistplaylist cp, song s, createsong cs, artist art 
-                                WHERE s.idSong = cp.idSong AND cs.idSong = s.idSong AND cs.idArtist = art.idArtist AND cp.idPlaylist = " . $id_playlist;
+                            $query = "SELECT cp.*, s.*, cs.*, art.* FROM consistplaylist cp, song s, createsong cs, artist art 
+                                WHERE s.idSong = cp.idSong AND cs.idSong = s.idSong AND cs.idArtist = art.idArtist AND cp.idPlaylist = " . $id_playlist  . " ORDER BY s.Popularity DESC";
                             // $query = "SELECT cp.*, s.* FROM consistplaylist cp, song s WHERE s.idSong = cp.idSong AND cp.idPlaylist = " . $id_playlist;
                             $playlist_eles = $mysqli->query($query);
-                            print_r($playlist_eles);
+                            // print_r($playlist_eles);
                             ?>
 
 
@@ -148,14 +148,21 @@ $pl = $result->fetch_array();
                                         <p><?php echo $row['Name'] ?></p>
                                     </div>
                                     <div class="col-md-2">
-                                        <!-- <?php
-                                                $query = "SELECT COUNT(cal.Consiste)";
-                                                $playlist_eles = $mysqli->query($query);
-                                                print_r($playlist_eles);
-                                                ?> -->
-                                        <p><?php echo $row['AlbumName'] ?></p>
+                                        <?php
+                                        $query = "SELECT COUNT(cal.ConsistAlbumId) as EXIST , cal.*, al.* FROM consistalbum cal, song s, album al
+                                                WHERE cal.idSong = s.idSong AND cal.idAlbum = al.idAlbum AND s.idSong = " . $row['idSong']  ;
+                                        $album_eles = $mysqli->query($query);
+                                        //  print_r($playlist_eles);
+                                        $al_temp = $album_eles->fetch_array();
+                                        if ($al_temp['EXIST'] == 1) {
+                                            echo '<p>' . $al_temp["AlbumName"] . '</p>';
+                                        } else {
+                                            echo '<p> - </p>';
+                                        }
+                                        ?>
+
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" >
                                         <p><?php echo $row['ArtistName'] ?></p>
                                     </div>
                                     <div class="col-md-2">
@@ -164,12 +171,16 @@ $pl = $result->fetch_array();
                                     <div class="col-md-2">
                                         <p><?php echo $row['Explicity'] ?></p>
                                     </div>
+                               
                                     <hr>
+                                </div>
 
                             <?php
+                                // echo $index;
                                 $index++;
-                            }
-                        }
+                                
+                                    }
+                                }
                             ?>
 
                             <!---------------------------------------------------------------------------------------------------->
@@ -181,9 +192,9 @@ $pl = $result->fetch_array();
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
-                        </div> -->
+                            </div> -->
 
-                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

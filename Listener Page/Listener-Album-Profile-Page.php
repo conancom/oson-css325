@@ -1,15 +1,5 @@
 <?php
 session_start();
-<<<<<<< HEAD
-
-$mysqli = new mysqli("localhost", "root", null, "oson-v2");
-$query = "SELECT `AlbumName` FROM `album` WHERE idAlbum = " . $_GET['idAlbum'];
-$result = $mysqli->query($query);
-$al = $result->fetch_array();
-
-$query = "SELECT * FROM `consistalbum` WHERE idAlbum = " . $_GET['idAlbum'];
-$album_eles = $mysqli->query($query);
-=======
 $listenerid = $_SESSION['id-listener'];
 
 $mysqli = new mysqli("localhost", "root", null, "oson-v2");
@@ -18,7 +8,6 @@ if (isset($_GET['idAlbum'])) {
     $albumid = $_GET['idAlbum'];
     $query = "SELECT * FROM `album` WHERE idAlbum = " . $albumid;
 }
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
 
 ?>
 
@@ -71,11 +60,7 @@ if (isset($_GET['idAlbum'])) {
                         Album
                     </p>
                 </a>
-<<<<<<< HEAD
-                <a href="Listener-Settings-Page.html">
-=======
                 <a href="Listener-Settings-Page.php">
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -192,11 +177,8 @@ if (isset($_GET['idAlbum'])) {
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
-<<<<<<< HEAD
-=======
                         $query = "SELECT * FROM `consistalbum` WHERE idAlbum = " . $albumid;
                         $album_eles = $mysqli->query($query);
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
                         if ($album_eles) {
                             $index = 0;
                             while ($ele = $album_eles->fetch_array()) {
@@ -211,22 +193,6 @@ if (isset($_GET['idAlbum'])) {
                                         <p><?php echo $song['Name'] ?></p>
                                     </div>
 
-<<<<<<< HEAD
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><?php echo $song['Name'] ?></p>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Popularity'] ?></p>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Duration'] ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-=======
                                     <div class="col-md-3">
                                         <p><?php echo $song['Popularity'] ?></p>
                                     </div>
@@ -261,7 +227,6 @@ if (isset($_GET['idAlbum'])) {
                                         </form>
 
                                         <?php
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
 
 
                                         if (isset($_POST['first-hit'])) {
