@@ -76,30 +76,72 @@ if (isset($_GET['idArtist'])) {
                         <div class="row">
                             <?php
                             $query = "SELECT COUNT(fart.`FollowArtistId`) as NUMFOLLOWER, art.* FROM `artist` art, `followarist` fart WHERE fart.`idArtist` = art.`idArtist` AND art.`idArtist` = " . $artistid;
-                            // $query = "SELECT * FROM `album` WHERE idAlbum = " . $albumid;
                             $result = $mysqli->query($query);
                             $art = $result->fetch_array();
                             ?>
                             <div class="col-md-3">
-                                <img src="Images/Lisa.jfif" style="clip-path: circle(36.9% at 50% 50%); width: 55%;">
+                                <img src="<?php echo 'profileimg/' . $artistid . '.jpg' ?>" style="clip-path: circle(36.9% at 50% 50%); width: 55%;">
                             </div>
 
                             <div class="col-md-9">
                                 <div class="row">
                                     <h1>
-                                        <?php echo $art['ArtistName']?>
+                                        <?php echo $art['ArtistName'] ?>
                                     </h1>
                                 </div>
 
                                 <div class="row">
                                     <h1>
-                                        <?php echo $art['NUMFOLLOWER']?> Followers
+                                        <?php echo $art['NUMFOLLOWER'] ?> Followers
                                     </h1>
                                 </div>
 
                                 <div class="row g-0">
-                                    <div class="col FollowButton ">
-                                        <button style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">Follow</button>
+                                <div class="col FollowButton ">
+                                        <?php
+                                        // $query = sprintf("SELECT COUNT(*) ISFOLLOW FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
+                                        $query = sprintf("SELECT COUNT(fart.FollowArtistId) as ISFOLLOW, art.* FROM `followarist` fart, `artist` art  
+                                            WHERE fart.idListener = %d AND art.idArtist = fart.idArtist AND fart.idArtist = %d", $listenerid, $artistid);
+                                        $result = $mysqli->query($query);
+                                        $data = $result->fetch_array();
+
+                                        ?>
+                                        <form action="#fllw" method="post">
+                                            <input type="hidden" name="is-follow" value="<?php echo $data['ISFOLLOW'] ?>">
+                                            <button name="follow-album" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                                <?php if ($data['ISFOLLOW'] == 0) {
+                                                    echo "Follow";
+                                                } else {
+                                                    echo "Unfollow";
+                                                } ?>
+                                            </button>
+                                        </form>
+                                        <?php
+                                        if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
+                                            // $check_if_exist = "";
+                                            if ($_POST['is-follow'] == 0) {
+                                                $date = date('Y-m-d');
+                                                $time = date('H:i:s');
+                                                $follow_q = sprintf("INSERT INTO `followarist`(`idListener`, `idArtist`, `FollowDate`, `FollowTime`) VALUES(%d, %d, '%s', '%s')", $listenerid, $artistid, $date, $time);
+                                                echo $follow_q;
+                                                $result = $mysqli->query($follow_q);
+                                                if (!$result) {
+                                                    echo $mysqli->error;
+                                                } else {
+                                                    header("Location: Listener-Artist-Profile-Page.php?idArtist=" . $artistid);
+                                                }
+                                            } else {
+                                                $unfollow_q = sprintf("DELETE FROM `followarist` WHERE `idListener` = %d AND `idArtist` = %d", $listenerid, $artistid);
+                                                echo $unfollow_q;
+                                                $result = $mysqli->query($unfollow_q);
+                                                if (!$result) {
+                                                    echo $mysqli->error;
+                                                } else {
+                                                    header("Location: Listener-Artist-Profile-Page.php?idArtist=" . $artistid);
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </div>
 
                                     <div class="col FollowButton ">
@@ -108,12 +150,14 @@ if (isset($_GET['idArtist'])) {
                                                 Donate
                                             </button>
                                         </form>
-                                        <?php 
-                                        if(isset($_POST['donate'])){
-                        
-                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $artistid, 9.99, "VISA-xxx09436552"); 
+                                        <?php
+                                        if (isset($_POST['donate'])) {
+
+                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $artistid, 9.99, "VISA-xxx09436552");
                                             $result = $mysqli->query($insert_donate);
-                                            if(!$result) { echo $mysqli->error; }
+                                            if (!$result) {
+                                                echo $mysqli->error;
+                                            }
                                         }
                                         ?>
                                     </div>
@@ -124,90 +168,87 @@ if (isset($_GET['idArtist'])) {
                         <!---------------------------------------------------------------------------------------------------->
 
                         <div class="row">
-                            <h1>Top Songs From  <?php echo $art['ArtistName']?></h1>
+                            <h1>Top Songs From <?php echo $art['ArtistName'] ?></h1>
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
-                        $query = "SELECT cs.*, s.* FROM `createsong` cs, `song` s WHERE s.idSong = cs.idSong AND cs.idArtist =" . $artistid . " ORDER BY s.Popularity DESC LIMIT 0, 5";
-                        $result = $mysqli->query($query);
-                        while ($song = $result->fetch_array()) {
-                            // $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'];
-                            // $song = $mysqli->query($query);
-                            // $song = $song->fetch_array();
+                        // CAUSE ERROR //
+                        // $query = "SELECT cs.*, s.* FROM `createsong` cs, `song` s WHERE s.idSong = cs.idSong AND cs.idArtist =" . $artistid . " ORDER BY s.Popularity DESC LIMIT 0, 5";
+                        // $result = $mysqli->query($query);
+
+                        # $query = "SELECT * FROM `createsong` WHERE idArtist = " . $artistid;
+                        $query = "SELECT s.Popularity, cs.* FROM createsong cs, song s WHERE cs.idArtist =" . $artistid . " AND cs.idSong = s.idSong ORDER BY s.Popularity DESC LIMIT 0,5";
+                        $artist_eles = $mysqli->query($query);
+                        while ($ele = $artist_eles->fetch_array()) {
+                            $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'] ;
+                            $song = $mysqli->query($query);
+                            $song = $song->fetch_array();
                         ?>
-                                <!-- <a href="Listener-Album-Profile-Page.php?play_idSong=<?php echo $song['idSong'] ?>&idAlbum=<?php echo $albumid ?>"> -->
-                                <div class="row">
-                                    <!-- <form action="Listener-Main-Page.php" method="post"> -->
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Name'] ?></p>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Popularity'] ?></p>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Duration'] ?></p>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <?php
-                                        if (isset($_POST['add-to-playlist'])) {
-                                            if ($_POST['add-id-song-2-pl'] == $song['idSong']) {
-                                                $query_if_exist = sprintf("SELECT COUNT(`idSong`) as SONG_EXIST FROM `consistplaylist` WHERE `idPlaylist` = %d AND `idSong` = %d", $_POST['id-playlist'], $song['idSong']);
-                                                $result = $mysqli->query($query_if_exist);
-                                                $if_exist = $result->fetch_array();
-                                                echo 'SONG EXIST ====' . $if_exist['SONG_EXIST']; 
-                                                if ($if_exist['SONG_EXIST'] == 0) {
-                                                    $insert = sprintf("INSERT INTO `consistplaylist`(`idSong`, `idPlaylist`, `CreationTimeStamp`) VALUES (%d, %d, NOW())", $_POST['add-id-song-2-pl'], $_POST['id-playlist']);
-                                                    echo $insert;
-                                                    $result = $mysqli->query($insert);
-                                                    if ($result) {
-                                                        echo "ADDED TOPLAYLIST";
-                                                    }
-                                                } else {
-                                                    echo "XXXXX already in pl";
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                        <form action="#" method="post">
-                                            <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
-                                            <button type="submit" name="first-hit">+PL</button>
-                                        </form>
-
-                                        <?php
-
-
-                                        if (isset($_POST['first-hit'])) {
-                                            // echo "sddss";
-                                            // echo $_POST['add-id-song'];
-                                            if ($_POST['add-id-song'] == $song['idSong']) {
-                                                $query_pl = "SELECT * FROM `playlist` WHERE `idListener` =" . $listenerid;
-                                                $result = $mysqli->query($query_pl);
-                                                while ($row = $result->fetch_array()) {
-                                        ?>
-                                                    <form action="##" method="post">
-                                                        <input type="hidden" name="id-playlist" value=<?php echo $row['idPlaylist'] ?>>
-                                                        <input type="hidden" name="add-id-song-2-pl" value=<?php echo $_POST['add-id-song'] ?>>
-                                                        <button name="add-to-playlist" type="submit">
-                                                            <p><?php echo $row['PlaylistName'] ?></p>
-                                                        </button>
-                                                    </form>
-                                                    <!-- <a href="Listener-Main-Page.php"><p><?php echo $row['PlaylistName'] ?></p></a> -->
-                                        <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </div>
-
-                                    <!-- <button id="<?php echo 'play-this-song-' . $song['idSong'] ?>" onclick="alert('Clicked!!!')" type="submit" name="play-this-song-from-other-page"> HIDDEN BUTTON </button> -->
-                                    <!-- </form> -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p><?php echo $song['Name'] ?></p>
                                 </div>
-                            <?php } ?>
+
+                                <div class="col-md-3">
+                                    <p><?php echo $song['Popularity'] ?></p>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <p><?php echo $song['Duration'] ?></p>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <?php
+                                    if (isset($_POST['add-to-playlist'])) {
+                                        if ($_POST['add-id-song-2-pl'] == $song['idSong']) {
+                                            $query_if_exist = sprintf("SELECT COUNT(`idSong`) as SONG_EXIST FROM `consistplaylist` WHERE `idPlaylist` = %d AND `idSong` = %d", $_POST['id-playlist'], $song['idSong']);
+                                            $result = $mysqli->query($query_if_exist);
+                                            $if_exist = $result->fetch_array();
+                                            // echo 'SONG EXIST ====' . $if_exist['SONG_EXIST']; 
+                                            if ($if_exist['SONG_EXIST'] == 0) {
+                                                $insert = sprintf("INSERT INTO `consistplaylist`(`idSong`, `idPlaylist`, `CreationTimeStamp`) VALUES (%d, %d, NOW())", $_POST['add-id-song-2-pl'], $_POST['id-playlist']);
+                                                echo $insert;
+                                                $result = $mysqli->query($insert);
+                                                if ($result) {
+                                                    echo "ADDED TOPLAYLIST";
+                                                }
+                                            } else {
+                                                echo "XXXXX already in pl";
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <form action="#" method="post">
+                                        <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
+                                        <button type="submit" name="first-hit">+PL</button>
+                                    </form>
+
+                                    <?php
+
+
+                                    if (isset($_POST['first-hit'])) {
+                                        if ($_POST['add-id-song'] == $song['idSong']) {
+                                            $query_pl = "SELECT * FROM `playlist` WHERE `idListener` =" . $listenerid;
+                                            $result = $mysqli->query($query_pl);
+                                            while ($row = $result->fetch_array()) {
+                                    ?>
+                                                <form action="##" method="post">
+                                                    <input type="hidden" name="id-playlist" value=<?php echo $row['idPlaylist'] ?>>
+                                                    <input type="hidden" name="add-id-song-2-pl" value=<?php echo $_POST['add-id-song'] ?>>
+                                                    <button name="add-to-playlist" type="submit">
+                                                        <p><?php echo $row['PlaylistName'] ?></p>
+                                                    </button>
+                                                </form>
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php } ?>
                         <hr>
-                        
+
                         <div class="row">
                             <h1>
                                 Albums
@@ -216,11 +257,36 @@ if (isset($_GET['idArtist'])) {
 
                         <!---------------------------------------------------------------------------------------------------->
 
+                        <!-- <div class="row">
+                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
+                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
+                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
+                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
+                        </div> -->
                         <div class="row">
-                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
-                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
-                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
-                            <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
+                            <?php
+                                $query = "SELECT al.* FROM album al WHERE al.idArtist = " . $artistid;
+                                $result = $mysqli->query($query);
+                                while($album = $result-> fetch_array()) {
+                            ?>
+
+                            <div class="col-md-3">
+
+                                <div class="row Artist-Pic">
+                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                        <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg'; ?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
+                                </div>
+                                <div class="row Artist-Name">
+                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                        <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3>
+                                    </a>
+                                </div>
+                                <div class="row Playlist-Type">
+                                    <p style="text-align: center;">Album [<?php echo $album['Genre'] ?>]</p>
+                                </div>
+                                </a>
+                            </div>
+                            <?php } ?>
                         </div>
 
                     </div>

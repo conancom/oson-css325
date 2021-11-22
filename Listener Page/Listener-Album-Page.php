@@ -1,7 +1,6 @@
-<<<<<<< HEAD:Listener Page/Listener-Album-Page.php
 <?php
 session_start();
-// echo $_SESSION['id-listener'];
+$listenerid = $_SESSION['id-listener'];
 $mysqli = new mysqli("localhost", "root", null, "oson-v2");
 
 if ($mysqli->connect_errno) {
@@ -12,8 +11,6 @@ if ($mysqli->connect_errno) {
 }
 
 ?>
-=======
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84:Listener Page/Listener-Album-Page.html
 <!DOCTYPE html>
 
 <html>
@@ -79,7 +76,6 @@ if ($mysqli->connect_errno) {
                         </h3>
                         <div class="row">
                             <?php
-<<<<<<< HEAD:Listener Page/Listener-Album-Page.php
                             if ($followalbum_result) {
                                 $index = 0;
                                 while ($followalbum = $followalbum_result->fetch_array()) {
@@ -89,13 +85,14 @@ if ($mysqli->connect_errno) {
                             ?>
 
                                     <div class="col-md-3">
-                                        <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                        
                                             <div class="row Artist-Pic">
-                                                <!-- album['AlbumImg'] -->
-                                                <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
+                                                <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                                <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg';?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
                                             </div>
                                             <div class="row Artist-Name">
-                                                <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3>
+                                                <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                                <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3></a>
                                             </div>
                                             <div class="row Playlist-Type">
                                                 <p style="text-align: center;">Album [<?php echo $album['Genre'] ?>]</p>
@@ -103,33 +100,6 @@ if ($mysqli->connect_errno) {
                                         </a>
                                     </div>
 
-=======
-                                $query = "SELECT * FROM `followalbum` fa, `album` a WHERE a.`idAlbum` = fa.`idAlbum`  AND fa.`idListener` = " . $listenerid;
-                                $followalbum_result = $mysqli->query($query);
-                                if ($followalbum_result) {
-                                    $index = 0;
-                                    while ($followalbum = $followalbum_result->fetch_array()) {
-                                        // $query = "SELECT * FROM `album` WHERE `idAlbum` = " . $followalbum['idAlbum'];
-                                        // $album_result = $mysqli->query($query);
-                                        // $album = $album_result->fetch_array(); 
-                            ?>
-
-                            <div class="col-md-3">
-                                
-                                <div class="row Artist-Pic"> 
-                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $followalbum['idAlbum']?>&play_idSong=0">
-                                    <img width="250" height="250"src="<?php echo "albumimg/" . $followalbum['idAlbum'] .".jpg"?>" alt="<?php echo "albumimg/" . $followalbum['idAlbum'] .".jpg"?>" style="margin-left: 30px; padding-bottom: 20px;"></a>
-                                </div>
-                                <div class="row Artist-Name">
-                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $followalbum['idAlbum']?>&play_idSong=0">
-                                    <h3 style="text-align: center;"><?php echo $followalbum['AlbumName']?></h3></a>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Album [<?php echo $followalbum['Genre']?>]</p>
-                                </div>
-                            </div>
-                            
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84:Listener Page/Listener-Album-Page.html
                             <?php
                                 }
                             }
