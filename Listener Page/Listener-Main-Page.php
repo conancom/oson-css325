@@ -8,8 +8,6 @@ if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
 $listenerid = $_SESSION['id-listener'];
-echo $listenerid;
-
 ?>
 
 <!DOCTYPE html>
@@ -66,11 +64,7 @@ echo $listenerid;
                         Album
                     </p>
                 </a>
-<<<<<<< HEAD
-                <a href="Listener-Settings-Page.html">
-=======
-                <a href="Listener-Settings-Page.php">
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
+                <a href="#">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -162,13 +156,13 @@ echo $listenerid;
                             <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold; margin-bottom: 40px;">
 
                                 <?php
-                                $query = "SELECT `album`.* 
-                            FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`
-                            WHERE `listener`.`PreferredGenre` = `album`.`Genre`
-                            AND `listener`.`idListener` = '$listenerid' 
-                            GROUP BY `idAlbum` 
-                            ORDER BY `AmountOfFollower` DESC 
-                            LIMIT 0,4;";
+                                $query = "SELECT `album`.*                              
+                                FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
+                                WHERE `listener`.`PreferredGenre` = `album`.`Genre`                             
+                                AND `listener`.`idListener` = '$listenerid'                              
+                                GROUP BY `idAlbum`                              
+                                ORDER BY `AmountOfFollower` DESC                              
+                                LIMIT 0,4;";
                                 $result = $mysqli->query($query);
                                 if (!$result) {
                                     echo $mysqli->error;
@@ -183,13 +177,13 @@ echo $listenerid;
                             <div class=" row">
                                 <div class="Artist-Container">
                                     <?php
-                                    $query = "SELECT `album`.* 
-                            FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`
-                            WHERE `listener`.`PreferredGenre` = `album`.`Genre`
-                            AND `listener`.`idListener` = '$listenerid' 
-                            GROUP BY `idAlbum` 
-                            ORDER BY `AmountOfFollower` DESC 
-                            LIMIT 0,4;";
+                                    $query = "SELECT `album`.*                              
+                                    FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
+                                    WHERE `listener`.`PreferredGenre` = `album`.`Genre`                            
+                                     AND `listener`.`idListener` = '$listenerid'                              
+                                     GROUP BY `idAlbum`                              
+                                     ORDER BY `AmountOfFollower` DESC                              
+                                     LIMIT 0,4;";
                                     $result = $mysqli->query($query);
                                     if (!$result) {
                                         echo $mysqli->error;

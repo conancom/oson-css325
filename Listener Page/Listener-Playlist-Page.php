@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<?php
-session_start();
-// echo $_SESSION['id-listener'];
-$mysqli = new mysqli("localhost", "root", null, "oson-v2");
-
-if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
-} else {
-    $query = "SELECT * FROM `playlist` WHERE `idListener` = " . $_SESSION['id-listener'];
-    $playlist_result = $mysqli->query($query);
-}
-
-=======
 <?php 
     session_start();
     $idListener = $_SESSION['id-listener'];
@@ -33,7 +19,6 @@ if ($mysqli->connect_errno) {
         }
     }
     
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
 ?>
 
 <!DOCTYPE html>
@@ -112,22 +97,6 @@ if ($mysqli->connect_errno) {
                                     while ($playlist = $playlist_result->fetch_array()) {
 
                                 ?>
-<<<<<<< HEAD
-                                        <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist'] ?>">
-                                            <div class="col-md-3">
-                                                <div class="row Artist-Pic">
-                                                    <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
-                                                </div>
-                                                <div class="row Artist-Name">
-                                                    <h3 style="text-align: center;"><?php echo $playlist['PlaylistName'] ?></h3>
-                                                </div>
-                                                <div class="row Playlist-Type">
-                                                    <p style="text-align: center;">Playlist</p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-=======
                                
                                     <div class="col-md-3">
                                         <div class="row Artist-Pic">
@@ -142,7 +111,6 @@ if ($mysqli->connect_errno) {
                                             <p style="text-align: center;">Playlist</p>
                                         </div>
                                     </div>
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
                                 <?php
                                     }
                                 }

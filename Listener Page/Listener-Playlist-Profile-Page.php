@@ -1,26 +1,12 @@
-<<<<<<< HEAD
 <?php
 session_start();
-
 $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-$query = "SELECT `PlaylistName` FROM `playlist` WHERE idPlaylist = " . $_GET['idPlaylist'];
+
+$id_playlist = $_GET['idPlaylist'];
+$query = "SELECT `PlaylistName` FROM `playlist` WHERE idPlaylist = " . $id_playlist;
 $result = $mysqli->query($query);
 $pl = $result->fetch_array();
 
-$query = "SELECT * FROM `consistplaylist` WHERE idPlaylist = " . $_GET['idPlaylist'];
-$playlist_eles = $mysqli->query($query);
-
-=======
-<?php 
-    session_start();
-    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-
-    $id_playlist = $_GET['idPlaylist'];
-    $query = "SELECT `PlaylistName` FROM `playlist` WHERE idPlaylist = " . $id_playlist;
-    $result = $mysqli->query($query);
-    $pl = $result->fetch_array();
-  
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
 ?>
 
 <!DOCTYPE html>
@@ -87,13 +73,13 @@ $playlist_eles = $mysqli->query($query);
                     <div class="ArtistContainer">
                         <div class="row">
                             <?php
-                                $query = "SELECT cp.*, s.*, cs.*, art.*, al.AlbumName FROM consistplaylist cp, song s, createsong cs, artist art 
+                            $query = "SELECT cp.*, s.*, cs.*, art.*, al.AlbumName FROM consistplaylist cp, song s, createsong cs, artist art 
                                 WHERE s.idSong = cp.idSong AND cs.idSong = s.idSong AND cs.idArtist = art.idArtist AND cp.idPlaylist = " . $id_playlist;
-                                // $query = "SELECT cp.*, s.* FROM consistplaylist cp, song s WHERE s.idSong = cp.idSong AND cp.idPlaylist = " . $id_playlist;
-                                $playlist_eles = $mysqli->query($query);
-                                print_r($playlist_eles);
+                            // $query = "SELECT cp.*, s.* FROM consistplaylist cp, song s WHERE s.idSong = cp.idSong AND cp.idPlaylist = " . $id_playlist;
+                            $playlist_eles = $mysqli->query($query);
+                            print_r($playlist_eles);
                             ?>
-                        
+
 
                             <div class="col-md-3">
                                 <img src="Images/playlist-cover.jpg" style="clip-path: circle(36.9% at 50% 50%); width: 55%;">
@@ -108,7 +94,7 @@ $playlist_eles = $mysqli->query($query);
 
                                 <div class="row">
                                     <h1>
-                                        <?php echo $playlist_eles->num_rows?> Songs
+                                        <?php echo $playlist_eles->num_rows ?> Songs
                                     </h1>
                                 </div>
 
@@ -126,165 +112,137 @@ $playlist_eles = $mysqli->query($query);
                             <h1> Playlist </h1>
                             <p></p>
                         </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <p>Song Number</p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p>Song Name</p>
-                                </div>
-                                <div class="col-md-2">
-                                     <p>Album Name</p>
-                                </div>
-                                <div class="col-md-2">
-                                     <p>Artist</p>
-                                </div>
-                                <div class="col-md-2">
-                                     <p>Popularity</p>
-                                </div>
-                                <div class="col-md-2">
-                                     <p>Expicit</p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Song Number</p>
                             </div>
-                            <hr>
+                            <div class="col-md-2">
+                                <p>Song Name</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Album Name</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Artist</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Popularity</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Expicit</p>
+                            </div>
+                        </div>
+                        <hr>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
-<<<<<<< HEAD
                         if ($playlist_eles) {
                             $index = 0;
-                            while ($ele = $playlist_eles->fetch_array()) {
-                                $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'];
-                                $song = $mysqli->query($query);
-                                $song = $song->fetch_array();
+                            while ($row = $playlist_eles->fetch_array()) {
                         ?>
 
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <p><?php echo $song['Name'] ?></p>
+                                    <div class="col-md-2">
+                                        <p><?php echo $index + 1 ?></p>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Popularity'] ?></p>
+                                    <div class="col-md-2">
+                                        <p><?php echo $row['Name'] ?></p>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <p><?php echo $song['Duration'] ?></p>
+                                    <div class="col-md-2">
+                                        <!-- <?php
+                                                $query = "SELECT COUNT(cal.Consiste)";
+                                                $playlist_eles = $mysqli->query($query);
+                                                print_r($playlist_eles);
+                                                ?> -->
+                                        <p><?php echo $row['AlbumName'] ?></p>
                                     </div>
-=======
-                            if ($playlist_eles) {
-                                $index = 0;
-                                while ($row = $playlist_eles->fetch_array()) {                       
-                        ?>
+                                    <div class="col-md-2">
+                                        <p><?php echo $row['ArtistName'] ?></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p><?php echo $row['Popularity'] ?></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p><?php echo $row['Explicity'] ?></p>
+                                    </div>
+                                    <hr>
 
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <p><?php echo $index+1?></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p><?php echo $row['Name']?></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <!-- <?php
-                                    $query = "SELECT COUNT(cal.Consiste)"
-                                    $playlist_eles = $mysqli->query($query);
-                                    print_r($playlist_eles);
-                                    ?> -->
-                                    <p><?php echo $row['AlbumName']?></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p><?php echo $row['ArtistName']?></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p><?php echo $row['Popularity']?></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p><?php echo $row['Explicity']?></p>
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
-                                </div>
-                                <hr>
-
-                        <?php
-<<<<<<< HEAD
+                            <?php
+                                $index++;
                             }
                         }
-=======
-                                $index++;
-                                }
-                            } 
->>>>>>> d18ae39fc157e4dae04aa8295d7ff3077a8cbd84
-                        ?>
+                            ?>
 
-                        <!---------------------------------------------------------------------------------------------------->
+                            <!---------------------------------------------------------------------------------------------------->
 
-                        <!---------------------------------------------------------------------------------------------------->
+                            <!---------------------------------------------------------------------------------------------------->
 
-                        <!-- <div class="row">
+                            <!-- <div class="row">
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                         </div> -->
 
+                                </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="Trackbar" style="position: fixed;">
-        <div class="row">
-            <div class="col">
-                <div class="music-control">
-                    <p>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="play-skip-back-outline"></ion-icon>
-                        </a>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="play-outline"></ion-icon>
-                        </a>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="play-skip-forward-outline"></ion-icon>
-                        </a>
-                    </p>
+        <div class="Trackbar" style="position: fixed;">
+            <div class="row">
+                <div class="col">
+                    <div class="music-control">
+                        <p>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="play-skip-back-outline"></ion-icon>
+                            </a>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="play-outline"></ion-icon>
+                            </a>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="play-skip-forward-outline"></ion-icon>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-8">
-                <div class="row">
-                    <div class="music-data">
-                        <div>
-                            <p class="Song-name">Lucid Dreams | Juice WRLD </p>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="music-data">
+                            <div>
+                                <p class="Song-name">Lucid Dreams | Juice WRLD </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="music-progressbar">
+                            <div class="bar">
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="music-progressbar">
-                        <div class="bar">
-
-                        </div>
+                <div class="col">
+                    <div class="music-option">
+                        <p>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="shuffle-outline"></ion-icon>
+                            </a>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="swap-horizontal-outline"></ion-icon>
+                            </a>
+                            <a href="#" style="text-decoration: none;">
+                                <ion-icon name="volume-high-outline"></ion-icon>
+                            </a>
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <div class="col">
-                <div class="music-option">
-                    <p>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="shuffle-outline"></ion-icon>
-                        </a>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="swap-horizontal-outline"></ion-icon>
-                        </a>
-                        <a href="#" style="text-decoration: none;">
-                            <ion-icon name="volume-high-outline"></ion-icon>
-                        </a>
-                    </p>
-                </div>
             </div>
-
         </div>
-    </div>
 </body>
 
 </html>

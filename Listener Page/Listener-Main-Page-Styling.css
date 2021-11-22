@@ -142,15 +142,13 @@ body {
 
 .Artist-Container .Album-Pic,
 .Artist-Container .ArtistSuggest-Pic {
-    line-height: 20px;
-    margin-bottom: -2%;
+    margin-bottom: 20px;
 }
 
 .Artist-Container .Album-Pic img,
 .Artist-Container .ArtistSuggest-Pic img {
-    clip-path: circle(36.9% at 50% 50%);
-    width: 300px;
-    position: relative;
+    width: 100px;
+    height: 100px;
 }
 
 .Artist-Name h3,
