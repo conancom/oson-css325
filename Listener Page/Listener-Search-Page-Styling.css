@@ -10,6 +10,7 @@
 
 body {
     overflow-x: hidden;
+    background-color: #372F2F !important;
 }
 
 .columntest-side {
@@ -51,7 +52,7 @@ body {
 }
 
 .Sidebar a:hover {
-    color: #ffc266;
+    color: rgba(255, 115, 21, 1);
 }
 
 .Sidebar p {

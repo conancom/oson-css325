@@ -24,46 +24,37 @@ if (isset($_GET['searchResult'])) {
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="search.js"></script>
 
-    <style>
-        a:hover {
-            cursor: pointer;
-            background-color: yellow;
-        }
-    </style>
-
 </head>
-
-
 
 <body>
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
-                <a href="#">
+                <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>
                         Home
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Search-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Search
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Playlist-Page.php">
                     <p>
                         <ion-icon name="reorder-four-outline"></ion-icon>
                         Playlist
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Album-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Album
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Settings-Page.html">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -278,21 +269,22 @@ if (isset($_GET['searchResult'])) {
 
         </div>
     </div>
-    
+
     <script>
-        function hide_header(){
+        function hide_header() {
             var s = document.getElementById("search").value;
             var header = document.getElementById("search-header");
             console.log("value =", s);
-            if (s != ""){
+            if (s != "") {
                 console.log('block');
                 header.style.display = "block";
             } else {
                 console.log("none");
-                header.style.display = "none"; }
-            
+                header.style.display = "none";
+            }
+
         }
-    </script> 
+    </script>
 
 </body>
 

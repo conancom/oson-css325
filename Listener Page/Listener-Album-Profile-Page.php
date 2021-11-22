@@ -1,14 +1,14 @@
-<?php 
-    session_start();
+<?php
+session_start();
 
-    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-    $query = "SELECT `AlbumName` FROM `album` WHERE idAlbum = " . $_GET['idAlbum'];
-    $result = $mysqli->query($query);
-    $al = $result->fetch_array();
-  
-    $query = "SELECT * FROM `consistalbum` WHERE idAlbum = " . $_GET['idAlbum'];
-    $album_eles = $mysqli->query($query);
-    
+$mysqli = new mysqli("localhost", "root", null, "oson-v2");
+$query = "SELECT `AlbumName` FROM `album` WHERE idAlbum = " . $_GET['idAlbum'];
+$result = $mysqli->query($query);
+$al = $result->fetch_array();
+
+$query = "SELECT * FROM `consistalbum` WHERE idAlbum = " . $_GET['idAlbum'];
+$album_eles = $mysqli->query($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -36,31 +36,31 @@
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
-                <a href="#" style="color: white;">
+                <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>
                         Home
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Search-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Search
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Playlist-Page.php">
                     <p>
                         <ion-icon name="reorder-four-outline"></ion-icon>
                         Playlist
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Album-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Album
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Settings-Page.html">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -81,7 +81,7 @@
                             <div class="col-md-9">
                                 <div class="row">
                                     <h1>
-                                        <?php echo $al['AlbumName']?>
+                                        <?php echo $al['AlbumName'] ?>
                                     </h1>
                                 </div>
 
@@ -106,34 +106,34 @@
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
-                            if ($album_eles) {
-                                $index = 0;
-                                while ($ele = $album_eles->fetch_array()) {    
-                                    $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'];
-                                    $song = $mysqli->query($query);
-                                    $song = $song->fetch_array();                            
+                        if ($album_eles) {
+                            $index = 0;
+                            while ($ele = $album_eles->fetch_array()) {
+                                $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'];
+                                $song = $mysqli->query($query);
+                                $song = $song->fetch_array();
                         ?>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p><?php echo $song['Name']?></p>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><?php echo $song['Name'] ?></p>
+                                    </div>
 
-                                <div class="col-md-3">
-                                    <p><?php echo $song['Popularity']?></p>
-                                </div>
+                                    <div class="col-md-3">
+                                        <p><?php echo $song['Popularity'] ?></p>
+                                    </div>
 
-                                <div class="col-md-3">
-                                    <p><?php echo $song['Duration']?></p>
+                                    <div class="col-md-3">
+                                        <p><?php echo $song['Duration'] ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
+                                <hr>
 
                         <?php
-                                }
-                            } 
+                            }
+                        }
                         ?>
-                        
+
                         <!---------------------------------------------------------------------------------------------------->
 
                         <!---------------------------------------------------------------------------------------------------->

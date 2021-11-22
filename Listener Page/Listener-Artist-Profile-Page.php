@@ -23,31 +23,31 @@
     <div class="row">
         <div class="columntest-side">
             <div class="Sidebar" style="position: fixed;">
-                <a href="#" style="color: white;">
+                <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>
                         Home
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Search-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Search
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Playlist-Page.php">
                     <p>
                         <ion-icon name="reorder-four-outline"></ion-icon>
                         Playlist
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Album-Page.php">
                     <p>
                         <ion-icon name="search-outline"></ion-icon>
                         Album
                     </p>
                 </a>
-                <a href="#" style="color: white;">
+                <a href="Listener-Settings-Page.html">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings

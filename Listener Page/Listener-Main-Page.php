@@ -64,7 +64,7 @@ $listenerid = $_SESSION['id-listener'];
                         Album
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Settings-Page.html">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings

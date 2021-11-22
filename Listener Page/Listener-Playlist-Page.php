@@ -1,17 +1,15 @@
-<?php 
-    session_start();
-    // echo $_SESSION['id-listener'];
-    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
+<?php
+session_start();
+// echo $_SESSION['id-listener'];
+$mysqli = new mysqli("localhost", "root", null, "oson-v2");
 
-    if ($mysqli->connect_errno) {
-        echo $mysqli->connect_error;
-        }
-    
-    else {
-        $query = "SELECT * FROM `playlist` WHERE `idListener` = " . $_SESSION['id-listener'];
-        $playlist_result = $mysqli->query($query);
-    }
-    
+if ($mysqli->connect_errno) {
+    echo $mysqli->connect_error;
+} else {
+    $query = "SELECT * FROM `playlist` WHERE `idListener` = " . $_SESSION['id-listener'];
+    $playlist_result = $mysqli->query($query);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,31 +36,31 @@
         <div class="row">
             <div class="columntest-side">
                 <div class="Sidebar" style="position: fixed;">
-                    <a href="#">
+                    <a href="Listener-Main-Page.php">
                         <p>
                             <ion-icon name="home-outline"></ion-icon>
                             Home
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Search-Page.php">
                         <p>
                             <ion-icon name="search-outline"></ion-icon>
                             Search
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Playlist-Page.php">
                         <p>
                             <ion-icon name="reorder-four-outline"></ion-icon>
                             Playlist
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Album-Page.php">
                         <p>
                             <ion-icon name="search-outline"></ion-icon>
                             Album
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Settings-Page.html">
                         <p>
                             <ion-icon name="settings-outline"></ion-icon>
                             Settings
@@ -80,28 +78,28 @@
                             </h3>
                             <div class="row">
                                 <?php
-                                    if ($playlist_result) {
-                                        $index = 0;
-                                        while ($playlist = $playlist_result->fetch_array()) {
-                                                
+                                if ($playlist_result) {
+                                    $index = 0;
+                                    while ($playlist = $playlist_result->fetch_array()) {
+
                                 ?>
-                                <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist']?>">
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-                                            <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
-                                        </div>
-                                        <div class="row Artist-Name">
-                                            <h3 style="text-align: center;"><?php echo $playlist['PlaylistName']?></h3>
-                                        </div>
-                                        <div class="row Playlist-Type">
-                                            <p style="text-align: center;">Playlist</p>
-                                        </div>
-                                    </div>
-                                </a>
+                                        <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist'] ?>">
+                                            <div class="col-md-3">
+                                                <div class="row Artist-Pic">
+                                                    <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
+                                                </div>
+                                                <div class="row Artist-Name">
+                                                    <h3 style="text-align: center;"><?php echo $playlist['PlaylistName'] ?></h3>
+                                                </div>
+                                                <div class="row Playlist-Type">
+                                                    <p style="text-align: center;">Playlist</p>
+                                                </div>
+                                            </div>
+                                        </a>
 
                                 <?php
-                                        }
                                     }
+                                }
                                 ?>
 
                                 <div class="col-md-3">

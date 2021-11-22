@@ -5,6 +5,7 @@
 
 body {
     overflow-x: hidden;
+    background-color: #372F2F !important;
 }
 
 .row {
@@ -51,7 +52,7 @@ body {
 }
 
 .Sidebar a:hover {
-    color: #ffc266;
+    color: rgba(255, 115, 21, 1);
 }
 
 .Sidebar p {
@@ -173,4 +174,22 @@ clip-path: circle(36.9% at 50% 50%);
 
 .ChangePass {
     font-family: 'Typo Round Regular Demo';
+}
+
+.confirmEdit {
+    transition: background-color 0.5s, border-color 0.5s;
+}
+
+.confirmEdit:hover {
+    background-color: rgb(184, 73, 0);
+    border-color: rgb(184, 73, 0);
+}
+
+.ChangePasswordButton {
+    transition: background-color 0.5s, border-color 0.5s;
+}
+
+.ChangePasswordButton:hover {
+    background-color: rgba(255, 115, 21, 1);
+    border-color: rgba(255, 115, 21, 1);
 }
