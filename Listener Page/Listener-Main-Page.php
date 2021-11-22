@@ -9,6 +9,7 @@ if ($mysqli->connect_errno) {
 }
 $listenerid = $_SESSION['id-listener'];
 echo $listenerid;
+
 ?>
 
 <!DOCTYPE html>

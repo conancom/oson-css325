@@ -1,32 +1,9 @@
-<?php 
-    session_start();
-    $idListener = $_SESSION['id-listener'];
-    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-
-    if ($mysqli->connect_errno) {
-        echo $mysqli->connect_error;
-        }
-    
-    else {
-        $query = "SELECT * FROM `playlist` WHERE `idListener` = " . $idListener;
-        $playlist_result = $mysqli->query($query);
-    }
-    if(isset($_POST['create-playlist'])){
-        $insert = sprintf("INSERT INTO `playlist`(`idListener`, `TotalDuration`, `PlaylistName`, `AmountOfSongs`, `Description`, `Genre`, `Publicity`) VALUES (%d, 0, 'New Playlist-%d', 0, 'Create New Playlist-%d', '', 'P')", $idListener, $idListener, $idListener);
-        $result = $mysqli->query($insert);
-        if ($result) { 
-            // header("Refresh:0");
-        }
-    }
-    
-?>
-
 <!DOCTYPE html>
 
 <html>
 
 <head>
-    <link rel="Stylesheet" href="Listener-Playlist-Page-Styling.css">
+    <link rel="Stylesheet" href="Listener-Artist-Page-Styling.css">
     <!--Bootstrap-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,128 +58,160 @@
             <div class="columntest-artist">
                 <div class="Main">
                     <div class="Recents">
-                        <div class="PlaylistContainer">
+                        <div class="ArtistsContainer">
                             <h3 style="color: white; padding: 20px; font-size: 35px;">
-                                Your Playlist
+                                Artists
                             </h3>
-                            <form action="#" method="post">
-                                <input type="hidden" name="listenerid" value=<?php echo $idListener?>>
-                                <button name="create-playlist" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
-                                    + Create Playlist
-                                </button></form>
                             <div class="row">
-                                <?php
-                                    if ($playlist_result) {
-                                        $index = 0;
-                                        while ($playlist = $playlist_result->fetch_array()) {
-                                                
-                                ?>
-                               
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-                                            <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist']?>">
-                                            <img width="250" height="250" src="Images/playlist-cover.jpg" alt="Playlist-Picture" style="padding-bottom: 20px;"></a>
-                                        </div>
-                                        <div class="row Artist-Name">
-                                            <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist']?>">
-                                            <h3 style="text-align: center;"><?php echo $playlist['PlaylistName']?></h3></a>
-                                        </div>
-                                        <div class="row Playlist-Type">
-                                            <p style="text-align: center;">Playlist</p>
-                                        </div>
-                                    </div>
-                                <?php
-                                        }
-                                    }
-                                ?>
-
-                                <!-- <div class="col-md-3">
+                                <div class="col-md-3">
                                     <div class="row Artist-Pic">
-                                        <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
+                                        <img src="Images/IU.jpeg" alt="IU Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">IU</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/Lisa.jfif" alt="Lisa Profile Picture">
                                     </div>
                                     <div class="row Artist-Name">
                                         <h3 style="text-align: center;">LISA</h3>
                                     </div>
-                                    <div class="row Playlist-Type">
-                                        <p style="text-align: center;">Playlist</p>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="row Artist-Pic">
-                                        <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture" style="padding-bottom: 20px;">
+                                        <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture">
                                     </div>
                                     <div class="row Artist-Name">
                                         <h3 style="text-align: center;">Code Kunst</h3>
                                     </div>
-                                    <div class="row Playlist-Type">
-                                        <p style="text-align: center;">Playlist</p>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="row Artist-Pic">
-                                        <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture" style="padding-bottom: 20px;">
+                                        <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture">
                                     </div>
                                     <div class="row Artist-Name">
                                         <h3 style="text-align: center;">Lil Beethoven</h3>
                                     </div>
-                                    <div class="row Playlist-Type">
-                                        <p style="text-align: center;">Playlist</p>
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <div class="row blank">
-                                <div class="col-md-3">
-                                    <div class="row Artist-Pic">
-
-                                    </div>
-                                    <div class="row Artist-Name">
-
-                                    </div>
-                                    <div class="row Playlist-Type">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="row Artist-Pic">
-
-                                    </div>
-                                    <div class="row Artist-Name">
-
-                                    </div>
-                                    <div class="row Playlist-Type">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="row Artist-Pic">
-
-                                    </div>
-                                    <div class="row Artist-Name">
-
-                                    </div>
-                                    <div class="row Playlist-Type">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="row Artist-Pic">
-
-                                    </div>
-                                    <div class="row Artist-Name">
-
-                                    </div>
-                                    <div class="row Playlist-Type">
-
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/IU.jpeg" alt="IU Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">IU</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/Lisa.jfif" alt="Lisa Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">LISA</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">Code Kunst</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">Lil Beethoven</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/IU.jpeg" alt="IU Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">IU</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/Lisa.jfif" alt="Lisa Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">LISA</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">Code Kunst</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row Artist-Pic">
+                                        <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture">
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <h3 style="text-align: center;">Lil Beethoven</h3>
+                                    </div>
+                                    <div class="row Artist-Type">
+                                        <p style="text-align: center;">Artists</p>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
@@ -216,13 +225,13 @@
                 <div class="col">
                     <div class="music-control">
                         <p>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="play-skip-back-outline"></ion-icon>
                             </a>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="play-outline"></ion-icon>
                             </a>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="play-skip-forward-outline"></ion-icon>
                             </a>
                         </p>
@@ -250,13 +259,13 @@
                 <div class="col">
                     <div class="music-option">
                         <p>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="shuffle-outline"></ion-icon>
                             </a>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="swap-horizontal-outline"></ion-icon>
                             </a>
-                            <a href="#" style="text-decoration: none;">
+                            <a href="#">
                                 <ion-icon name="volume-high-outline"></ion-icon>
                             </a>
                         </p>

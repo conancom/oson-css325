@@ -1,18 +1,3 @@
-<?php 
-    session_start();
-    // echo $_SESSION['id-listener'];
-    $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-
-    if ($mysqli->connect_errno) {
-        echo $mysqli->connect_error;
-        }
-    
-    else {
-        $query = "SELECT * FROM `followalbum` WHERE `idListener` = " . $_SESSION['id-listener'];
-        $followalbum_result = $mysqli->query($query);
-    }
-    
-?>
 <!DOCTYPE html>
 
 <html>
@@ -78,33 +63,36 @@
                         </h3>
                         <div class="row">
                             <?php
+                                $query = "SELECT * FROM `followalbum` fa, `album` a WHERE a.`idAlbum` = fa.`idAlbum`  AND fa.`idListener` = " . $listenerid;
+                                $followalbum_result = $mysqli->query($query);
                                 if ($followalbum_result) {
                                     $index = 0;
                                     while ($followalbum = $followalbum_result->fetch_array()) {
-                                        $query = "SELECT * FROM `album` WHERE `idAlbum` = " . $followalbum['idAlbum'];
-                                        $album_result = $mysqli->query($query);
-                                        $album = $album_result->fetch_array(); 
+                                        // $query = "SELECT * FROM `album` WHERE `idAlbum` = " . $followalbum['idAlbum'];
+                                        // $album_result = $mysqli->query($query);
+                                        // $album = $album_result->fetch_array(); 
                             ?>
 
                             <div class="col-md-3">
-                                <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum']?>">
-                                <div class="row Artist-Pic">
-                                    <!-- album['AlbumImg'] -->
-                                    <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
+                                
+                                <div class="row Artist-Pic"> 
+                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $followalbum['idAlbum']?>&play_idSong=0">
+                                    <img width="250" height="250"src="<?php echo "albumimg/" . $followalbum['idAlbum'] .".jpg"?>" alt="<?php echo "albumimg/" . $followalbum['idAlbum'] .".jpg"?>" style="margin-left: 30px; padding-bottom: 20px;"></a>
                                 </div>
                                 <div class="row Artist-Name">
-                                    <h3 style="text-align: center;"><?php echo $album['AlbumName']?></h3>
+                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $followalbum['idAlbum']?>&play_idSong=0">
+                                    <h3 style="text-align: center;"><?php echo $followalbum['AlbumName']?></h3></a>
                                 </div>
                                 <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Album [<?php echo $album['Genre']?>]</p>
-                                </div></a>
+                                    <p style="text-align: center;">Album [<?php echo $followalbum['Genre']?>]</p>
+                                </div>
                             </div>
                             
                             <?php
                                     }
                                 }
                             ?>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -114,7 +102,7 @@
                                 <div class="row Playlist-Type">
                                     <p style="text-align: center;">Playlist</p>
                                 </div>
-                            </div>
+                            </div> -->
 
                            
                         </div>
