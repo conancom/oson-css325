@@ -1,7 +1,7 @@
 <?php
 session_start();
 $mysqli = new mysqli("localhost", "root", null, "oson-v2");
-
+$listenerid = $_SESSION['id-listener'];
 $id_playlist = $_GET['idPlaylist'];
 $query = "SELECT `PlaylistName` FROM `playlist` WHERE idPlaylist = " . $id_playlist;
 $result = $mysqli->query($query);
@@ -87,9 +87,30 @@ $pl = $result->fetch_array();
 
                             <div class="col-md-9">
                                 <div class="row">
-                                    <h1>
-                                        <?php echo $pl['PlaylistName'] ?>
-                                    </h1>
+                                    <?php
+                                        if(isset($_POST['input-pl-name'])){
+                                            $update = sprintf("UPDATE `playlist` SET `PlaylistName`= '%s' WHERE idPlaylist = %d  AND idListener = %d", $_POST['input-pl-name'], $id_playlist, $listenerid);
+                                            $result = $mysqli->query($update);
+                                            if(!$result) { echo "You are not the owner of this playlist.";}
+
+                                            header("Refresh:0");
+                                        }
+                                    ?>
+                                    <div>
+                                        <form action="#ed" method="post">
+                                        <?php
+                                            if(isset($_POST['edit-pl-name'])){?>
+                                                <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>"><?php
+                                            }
+                                            else { ?>
+                                                <h1><?php echo $pl['PlaylistName']?></h1><?php
+                                            }
+                                        ?>
+                                        <!-- <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>">
+                                        <h1><?php echo $pl['PlaylistName']?></h1> -->
+                                            
+                                        
+                                        <button type="submit" name="edit-pl-name">Edit</button></form></div>
                                 </div>
 
                                 <div class="row">
@@ -99,9 +120,25 @@ $pl = $result->fetch_array();
                                 </div>
 
                                 <div class="row g-0">
-                                    <div class="col FollowButton ">
+                                    <!-- <div class="col FollowButton ">
                                         <button style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">Follow</button>
-                                    </div>
+                                    </div> -->
+                                </div>
+                                <p></p>
+                                <div class="row g-0">
+                                <?php
+                                    if(isset($_POST['delete-playlist'])){
+                                        $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
+                                        $result = $mysqli->query($delete);
+                                        // echo $delete;
+                                        if($result) { header("Location: Listener-Playlist-Page.php"); }
+                                        else { echo $mysqli->error;}
+                                    }
+                                ?>
+                                    <div class="col FollowButton ">
+                                            <form action="#del" method="post">
+                                                <button type="submit" name="delete-playlist"style="background-color: #DC143C; border: none; padding: 10px 30px; border-radius: 10px;">- Delete This Playlist</button></form>
+                                        </div>
                                 </div>
                             </div>
                         </div>

@@ -75,7 +75,7 @@ if (isset($_GET['idAlbum'])) {
                     <div class="ArtistContainer">
                         <div class="row">
                             <?php
-                            $query = "SELECT COUNT(fa.`FollowAlbumid`) as NUMFOLLOWER, a.* FROM `album` a, `followalbum` fa WHERE fa.`idAlbum` = a.`idAlbum` AND a.`idAlbum` = " . $albumid;
+                            $query = "SELECT COUNT(fa.`FollowAlbumid`) as NUMFOLLOWER, a.*, art.ArtistName, art.idArtist FROM `album` a, `followalbum` fa, `artist` art WHERE a.idArtist = art.idArtist AND fa.`idAlbum` = a.`idAlbum` AND a.`idAlbum` = " . $albumid;
                             // $query = "SELECT * FROM `album` WHERE idAlbum = " . $albumid;
                             $result = $mysqli->query($query);
                             $al = $result->fetch_array();
@@ -90,6 +90,11 @@ if (isset($_GET['idAlbum'])) {
                                     <h1>
                                         <?php echo $al['AlbumName'] ?>
                                     </h1>
+                                </div>
+                                <div class="row">
+                                    <a href="<?php echo "Listener-Artist-Profile-Page.php?idArtist=".$al['idArtist']?>"><p>
+                                        <?php echo $al['ArtistName'] ?>
+                                    </p></a>
                                 </div>
 
                                 <div class="row">
@@ -154,13 +159,15 @@ if (isset($_GET['idAlbum'])) {
                                                 Donate
                                             </button>
                                         </form>
-                                        <?php 
-                                        if(isset($_POST['donate'])){
+                                        <?php
+                                        if (isset($_POST['donate'])) {
                                             // echo 'idArtist =====' . $data['idArtist'];
-                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $data['idArtist'], 9.99, "VISA-xxx09436552"); 
+                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $data['idArtist'], 9.99, "VISA-xxx09436552");
                                             // echo $insert_donate;
                                             $result = $mysqli->query($insert_donate);
-                                            if(!$result) { echo $mysqli->error; }
+                                            if (!$result) {
+                                                echo $mysqli->error;
+                                            }
                                             // else { header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid); }
                                         }
                                         ?>
@@ -174,6 +181,18 @@ if (isset($_GET['idAlbum'])) {
 
                         <div class="row">
                             <h1> Album </h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p>Name</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Popularity</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Duration</p>
+                            </div>
+                      
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php

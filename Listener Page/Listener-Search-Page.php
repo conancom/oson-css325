@@ -24,6 +24,12 @@ if (isset($_GET['searchResult'])) {
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="search.js"></script>
 
+    <style>
+    img.rounded-corners {
+    border-radius: 202px;
+    }
+    </style>
+
 </head>
 
 <body>

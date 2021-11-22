@@ -6,8 +6,9 @@ $mysqli = new mysqli("localhost", "root", null, "oson-v2");
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 } else {
-    $query = "SELECT * FROM `followalbum` WHERE `idListener` = " . $_SESSION['id-listener'];
+    $query = "SELECT * FROM `followalbum` WHERE `idListener` = " . $listenerid;
     $followalbum_result = $mysqli->query($query);
+    print_r($followalbum_result);
 }
 
 ?>

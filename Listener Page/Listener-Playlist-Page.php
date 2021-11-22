@@ -15,7 +15,7 @@
         $insert = sprintf("INSERT INTO `playlist`(`idListener`, `TotalDuration`, `PlaylistName`, `AmountOfSongs`, `Description`, `Genre`, `Publicity`) VALUES (%d, 0, 'New Playlist-%d', 0, 'Create New Playlist-%d', '', 'P')", $idListener, $idListener, $idListener);
         $result = $mysqli->query($insert);
         if ($result) { 
-            // header("Refresh:0");
+            header("Refresh:0");
         }
     }
     

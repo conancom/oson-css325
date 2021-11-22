@@ -168,7 +168,19 @@ if (isset($_GET['idArtist'])) {
                         <!---------------------------------------------------------------------------------------------------->
 
                         <div class="row">
-                            <h1>Top Songs From <?php echo $art['ArtistName'] ?></h1>
+                            <h1>Top 5 Songs From <?php echo $art['ArtistName'] ?></h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p>Name</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Popularity</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Duration</p>
+                            </div>
+                      
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
