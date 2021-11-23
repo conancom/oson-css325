@@ -15,7 +15,7 @@ if (isset($_GET['searchResult'])) {
     <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Search-Page-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    
+
     <!--Bootstrap-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,10 +99,10 @@ if (isset($_GET['searchResult'])) {
                         <h3 id="search-header" style="color: white; display:none; ">
                             Search Result
                         </h3>
-                            
+
                         <div id="search-result" class="row" style="display: none; ">
-                            <div class="Artist-Container" >
-                                <div id="display" class="row"  style="display: flex; text-decoration: none; margin-bottom: 15px;" >
+                            <div class="Artist-Container">
+                                <div id="display" class="row" style="display: flex; text-decoration: none; margin-bottom: 15px;">
                                     <!-- SEARCH RESULT RENDER HERE -->
                                 </div>
                             </div>
@@ -113,54 +113,29 @@ if (isset($_GET['searchResult'])) {
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-3 " style="width: 250px;">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">IU</h3>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Playlist</p>
-                                </div>
-                            </div>
+                            <?php
+                            $query = "SELECT * FROM playlist WHERE idListener = 999";
+                            $result = $mysqli->query($query);
+                            if ($result) {
+                                while ($row = $result->fetch_array()) {
+                            ?>
+                                    <div class="col-md-3" style="width: 250px; margin-left: 20px;">
+                                        <div class="row Artist-Pic">
+                                            <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $row['idPlaylist'] ?>">
+                                                <img width="250" height="250" src="Images/playlist-cover.jpg" alt="Playlist-Picture" style="padding-bottom: 20px;"></a>
+                                        </div>
+                                        <div class="row Artist-Name">
+                                            <a style="text-decoration: none;" href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $row['idPlaylist'] ?>">
+                                                <h3 style="text-align: center;"><?php echo $row['PlaylistName'] ?></h3>
+                                            </a>
+                                        </div>
+                                        <div class="row Playlist-Type">
+                                            <p style="text-align: center;">Playlist</p>
+                                        </div>
+                                    </div>
+                            <?php }
+                            } ?>
 
-                            <div class="col-md-3 " style="width: 250px;">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">LISA</h3>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Playlist</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 " style="width: 250px;">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture" style="padding-bottom: 20px;">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">Code Kunst</h3>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Playlist</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 " style="width: 250px;">
-                                <div class="row Artist-Pic">
-                                    <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture" style="padding-bottom: 20px;">
-                                </div>
-                                <div class="row Artist-Name">
-                                    <h3 style="text-align: center;">Lil Beethoven</h3>
-                                </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Playlist</p>
-                                </div>
-                            </div>
-                        </div>
 
                         <h3 style="color: white;">
                             Genre by oson
@@ -178,7 +153,7 @@ if (isset($_GET['searchResult'])) {
                                     <p style="text-align: center;">Playlist</p>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
@@ -265,7 +240,6 @@ if (isset($_GET['searchResult'])) {
 
 
     <script>
-        
         let previous = document.querySelector('#pre');
         let play = document.querySelector('#play');
         let next = document.querySelector('#next');
@@ -464,6 +438,7 @@ if (isset($_GET['searchResult'])) {
                 }
             }
         }
+
         function hide_header() {
             var s = document.getElementById("search").value;
             var header = document.getElementById("search-header");
