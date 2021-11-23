@@ -92,7 +92,7 @@ if (isset($_GET['searchResult'])) {
                                 $search_result = "";
                             }
                             ?>
-                            <input type="text" id="search" oninput="hide_header()" placeholder="Search..." value="<?php echo $search_result ?>">
+                            <input type="text" id="search" oninput="hide_header()" placeholder="Search..." style="margin-bottom: 15px;" value="<?php echo $search_result ?>">
 
                         </div>
                         <!-- <div id="display" class="row" style="background-color: lightblue;"></div> -->
@@ -100,15 +100,15 @@ if (isset($_GET['searchResult'])) {
                             Search Result
                         </h3>
                             
-                        <div id="search-result" class="row" style="display: none;">
+                        <div id="search-result" class="row" style="display: none; ">
                             <div class="Artist-Container" >
-                                <div id="display" class="row"  style="display: flex;">
+                                <div id="display" class="row"  style="display: flex; text-decoration: none; margin-bottom: 15px;" >
                                     <!-- SEARCH RESULT RENDER HERE -->
                                 </div>
                             </div>
                         </div>
 
-                        <h3 style="color: white;">
+                        <h3 style="color: white; margin-top: 15px;text-decoration: none; ">
                             Made by oson
                         </h3>
 
