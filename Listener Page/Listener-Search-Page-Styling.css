@@ -16,8 +16,9 @@ body {
     position: relative;
     margin-left: -190px;
     margin-right: -20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     flex: 80%;
+    height: 100%;
     background-color: #372F2F;
 }
 
@@ -120,11 +121,8 @@ body {
 /*Main Section Codes*/
 
 .Artist-Pic {
-    padding: 20px;
     line-height: 20px;
-    position: relative;
-    margin-bottom: -12%;
-    width: 270px;
+    margin-bottom: -2%;
 }
 
 

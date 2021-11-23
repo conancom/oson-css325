@@ -10,9 +10,10 @@ if (isset($_GET['searchResult'])) {
 <html>
 
 <head>
+    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Search-Page-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
+    
     <!--Bootstrap-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,7 +102,7 @@ if (isset($_GET['searchResult'])) {
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -113,7 +114,7 @@ if (isset($_GET['searchResult'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -125,7 +126,7 @@ if (isset($_GET['searchResult'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -137,7 +138,7 @@ if (isset($_GET['searchResult'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -155,7 +156,7 @@ if (isset($_GET['searchResult'])) {
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/IU.jpeg" alt="IU Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -166,8 +167,8 @@ if (isset($_GET['searchResult'])) {
                                     <p style="text-align: center;">Playlist</p>
                                 </div>
                             </div>
-
-                            <div class="col-md-3">
+                            
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lisa.jfif" alt="Lisa Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -179,7 +180,7 @@ if (isset($_GET['searchResult'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/PEOPLE.JPG" alt="Code Kunst Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -191,7 +192,7 @@ if (isset($_GET['searchResult'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 " style="width: 250px;">
                                 <div class="row Artist-Pic">
                                     <img src="Images/Lil-Beethoven-Playlist.JPG" alt="Lil Beethoven Profile Picture" style="padding-bottom: 20px;">
                                 </div>
@@ -253,7 +254,7 @@ if (isset($_GET['searchResult'])) {
 
 
 <script>
-    
+
         function hide_header() {
             var s = document.getElementById("search").value;
             var header = document.getElementById("search-header");
