@@ -321,14 +321,14 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-listener'])) {
                 <?php
 
                 $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-            WHERE `listener`.`idListener` = '$listenerid'
-            AND `listener`.`idListener` = `ListenToSong`.`idListener`
-            AND `artist`.`idArtist` = `createsong`.`idArtist` 
-            AND `createsong`.`idSong` = `song`.`idSong` 
-            AND `ListenToSong`.`idSong` = `song`.`idSong`  
-            ORDER BY `ListenToSongId` DESC
-            LIMIT 0, 10;";
+                    FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                    WHERE `listener`.`idListener` = '$listenerid'
+                    AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                    AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                    AND `createsong`.`idSong` = `song`.`idSong` 
+                    AND `ListenToSong`.`idSong` = `song`.`idSong`  
+                    ORDER BY `ListenToSongId` DESC
+                    LIMIT 0, 10;";
                 $result = $mysqli->query($query);
                 if (!$result) {
                     echo $mysqli->error;
@@ -348,11 +348,66 @@ if (isset($_POST['submit-edit']) and isset($_SESSION['id-listener'])) {
                                 echo '}';
                             }
 
+                            $song = $data['idSong'];
+
+
+
+                            $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+            VALUES ('$listenerid', '$song', '1.0') ";
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            }
+
+
                             $x++;
+                        }
+                    } else {
+                        $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
+                            FROM `artist`, `song`, `createsong`, `ListenToSong` 
+                            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `song`.`idSong` 
+                            ORDER BY COUNT(`ListenToSong`.`ListenToSongId`) DESC 
+                            LIMIT 0, 10; ";
+                        $result1 = $mysqli->query($query1);
+                        if (!$result1) {
+                            echo $mysqli->error;
+                        } else {
+                            if (mysqli_num_rows($result1) > 0) {
+                                $numrows = mysqli_num_rows($result1);
+                                $x = 1;
+                                while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
+                                    echo '{';
+                                    echo 'name: "' . $data1['Name'] . ' |",';
+                                    echo 'path: "song/' . $data1['idSong'] . '.mp3",';
+                                    echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
+                                    echo 'singer: "| ' . $data1['ArtistName'] . '"';
+                                    if ($x < $numrows) {
+                                        echo '},';
+                                    } else {
+                                        echo '}';
+                                    }
+
+
+                                    $song = $data1['idSong'];
+
+
+
+                                    $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+                                        VALUES ('$listenerid', '$song', '1.0') ";
+                                    $result3 = $mysqli->query($query3);
+                                    if (!$result3) {
+                                        echo $mysqli->error;
+                                    }
+
+                                    $x++;
+                                }
+                            }
                         }
                     }
                 }
-
                 ?>
             ];
 

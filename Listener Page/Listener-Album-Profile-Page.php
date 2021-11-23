@@ -45,7 +45,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
     <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Album-Profile-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    
+
     <!--Bootstrap-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,7 +66,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 <body>
     <div class="row">
         <div class="columntest-side">
-        <div class="Sidebar" style="position: fixed;">
+            <div class="Sidebar" style="position: fixed;">
                 <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>
@@ -87,7 +87,8 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                 </a>
                 <a href="Listener-Album-Page.php">
                     <p>
-                        <ion-icon name="albums-outline"></ion-icon></ion-icon>
+                        <ion-icon name="albums-outline"></ion-icon>
+                        </ion-icon>
                         Album
                     </p>
                 </a>
@@ -123,9 +124,11 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                     </h1>
                                 </div>
                                 <div class="row">
-                                    <a class="ArtistName" href="<?php echo "Listener-Artist-Profile-Page.php?idArtist=".$al['idArtist']?>"><p>
-                                        <?php echo $al['ArtistName'] ?>
-                                    </p></a>
+                                    <a class="ArtistName" href="<?php echo "Listener-Artist-Profile-Page.php?idArtist=" . $al['idArtist'] ?>">
+                                        <p>
+                                            <?php echo $al['ArtistName'] ?>
+                                        </p>
+                                    </a>
                                 </div>
 
                                 <div class="row">
@@ -145,7 +148,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         $data = $result->fetch_array();
 
                                         ?>
-                                        
+
                                         <form action="#fllw" method="post">
                                             <input type="hidden" name="is-follow" value="<?php echo $data['ISFOLLOW'] ?>">
                                             <button name="follow-album" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">
@@ -156,6 +159,31 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                 } ?>
                                             </button>
                                         </form>
+
+
+                                        <?php
+                                        $albumid = $_GET['idAlbum'];
+                                        $query = "SELECT * FROM `album` WHERE idAlbum = " . $albumid;
+
+                                        $result = $mysqli->query($query);
+                                        if (!$result) {
+                                            echo $mysqli->error;
+                                        } else {
+                                            if (mysqli_num_rows($result) > 0) {
+                                                $data = $result->fetch_array();
+                                                echo ' <form action="#fllw" method="post">';
+                                                echo '<input type="hidden" name="start-play-id" value="' . $data['idAlbum'] . '">';
+                                                echo '<button type="submit" name="startplay" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">Play';
+                                                echo '</button>';
+                                                echo '</form>';
+                                            }
+                                        }
+
+
+
+                                        ?>
+
+
                                         <?php
                                         // if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         //     // $check_if_exist = "";
@@ -223,7 +251,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                             <div class="col-md-3">
                                 <p>Duration</p>
                             </div>
-                      
+
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
@@ -329,81 +357,84 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
     <div class="row Trackbar">
 
-            <div class="col">
-                <div class="buttonsContainer" style="position:relative; top: 20%; left: 10%;">
-                    <button style="width: 50px; height: 50px; border: none; border-radius: 360%; padding: 10px;" onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-                    <button style="width: 50px; height: 50px; border: none; border-radius: 360%;" onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
-                    <button style="width: 50px; height: 50px; border: none; border-radius: 360%;" onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-                </div>
-            </div>
-
-            <div class="col-8">
-                <div class="row">
-                    <div class="music-data">
-                        <p id="title" class="title">Title.mp3</p>
-                        <p id="artist" class="artistName">Artist name</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="duration" style="margin-left: 100px;">
-                        <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-                        <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden; width:0;">
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="music-option">
-                    <div class="volume">
-                        <p id="volume_show">75</p>
-                        <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
-                        <input type="range" min="0" max="100" value="75" onchange="volume_change()" id="volume">
-                        <button style="border: none;" id="auto" onclick="autoplay_switch()"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
-                    </div>
-                </div>
+        <div class="col">
+            <div class="buttonsContainer" style="position:relative; top: 20%; left: 10%;">
+                <button style="width: 50px; height: 50px; border: none; border-radius: 360%; padding: 10px;" onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+                <button style="width: 50px; height: 50px; border: none; border-radius: 360%;" onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+                <button style="width: 50px; height: 50px; border: none; border-radius: 360%;" onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
             </div>
         </div>
 
-        <script>
-            let previous = document.querySelector('#pre');
-            let play = document.querySelector('#play');
-            let next = document.querySelector('#next');
-            let title = document.querySelector('#title');
-            let recent_volume = document.querySelector('#volume');
-            let volume_show = document.querySelector('#volume_show');
-            let slider = document.querySelector("#duration_slider");
-            let show_duration = document.querySelector('#show_duration');
-            let track_image = document.querySelector('#track_image');
-            let auto_play = document.querySelector('#auto');
-            let present = document.querySelector('#present');
-            let total = document.querySelector('#total');
-            let artist = document.querySelector('#artist');
+        <div class="col-8">
+            <div class="row">
+                <div class="music-data">
+                    <p id="title" class="title">Title.mp3</p>
+                    <p id="artist" class="artistName">Artist name</p>
+                </div>
+            </div>
 
-            let timer;
+            <div class="row">
+                <div class="duration" style="margin-left: 100px;">
+                    <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+                    <img type="hidden" id="track_image" class="track_image" style=" visibility: hidden; width:0;">
+                </div>
 
-            let autoplay = 0;
+            </div>
+        </div>
 
-            let index_no = 0;
-            let Playing_song = false;
+        <div class="col">
+            <div class="music-option">
+                <div class="volume">
+                    <p id="volume_show">75</p>
+                    <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
+                    <input type="range" min="0" max="100" value="75" onchange="volume_change()" id="volume">
+                    <button style="border: none;" id="auto" onclick="autoplay_switch()"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            //create a audio Element
-            let track = document.createElement('audio');
+    <script>
+        let previous = document.querySelector('#pre');
+        let play = document.querySelector('#play');
+        let next = document.querySelector('#next');
+        let title = document.querySelector('#title');
+        let recent_volume = document.querySelector('#volume');
+        let volume_show = document.querySelector('#volume_show');
+        let slider = document.querySelector("#duration_slider");
+        let show_duration = document.querySelector('#show_duration');
+        let track_image = document.querySelector('#track_image');
+        let auto_play = document.querySelector('#auto');
+        let present = document.querySelector('#present');
+        let total = document.querySelector('#total');
+        let artist = document.querySelector('#artist');
 
-            //All songs list
-            let All_song = [
-                <?php
+        let timer;
 
+        let autoplay = 0;
+
+        let index_no = 0;
+        let Playing_song = false;
+
+        //create a audio Element
+        let track = document.createElement('audio');
+
+        //All songs list
+        let All_song = [
+            <?php
+
+
+
+            if (!isset($_POST['startplay'])) {
                 $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-            WHERE `listener`.`idListener` = '$listenerid'
-            AND `listener`.`idListener` = `ListenToSong`.`idListener`
-            AND `artist`.`idArtist` = `createsong`.`idArtist` 
-            AND `createsong`.`idSong` = `song`.`idSong` 
-            AND `ListenToSong`.`idSong` = `song`.`idSong`  
-            ORDER BY `ListenToSongId` DESC
-            LIMIT 0, 10;";
+                    FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                    WHERE `listener`.`idListener` = '$listenerid'
+                    AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                    AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                    AND `createsong`.`idSong` = `song`.`idSong` 
+                    AND `ListenToSong`.`idSong` = `song`.`idSong`  
+                    ORDER BY `ListenToSongId` DESC
+                    LIMIT 0, 10;";
                 $result = $mysqli->query($query);
                 if (!$result) {
                     echo $mysqli->error;
@@ -423,149 +454,248 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                 echo '}';
                             }
 
+                            $song = $data['idSong'];
+
+
+
+                            $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+            VALUES ('$listenerid', '$song', '1.0') ";
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            }
+
+
                             $x++;
+                        }
+                    } else {
+                        $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
+                            FROM `artist`, `song`, `createsong`, `ListenToSong` 
+                            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `song`.`idSong` 
+                            ORDER BY COUNT(`ListenToSong`.`ListenToSongId`) DESC 
+                            LIMIT 0, 10; ";
+                        $result1 = $mysqli->query($query1);
+                        if (!$result1) {
+                            echo $mysqli->error;
+                        } else {
+                            if (mysqli_num_rows($result1) > 0) {
+                                $numrows = mysqli_num_rows($result1);
+                                $x = 1;
+                                while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
+                                    echo '{';
+                                    echo 'name: "' . $data1['Name'] . ' |",';
+                                    echo 'path: "song/' . $data1['idSong'] . '.mp3",';
+                                    echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
+                                    echo 'singer: "| ' . $data1['ArtistName'] . '"';
+                                    if ($x < $numrows) {
+                                        echo '},';
+                                    } else {
+                                        echo '}';
+                                    }
+
+
+                                    $song = $data1['idSong'];
+
+
+
+                                    $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+                                        VALUES ('$listenerid', '$song', '1.0') ";
+                                    $result3 = $mysqli->query($query3);
+                                    if (!$result3) {
+                                        echo $mysqli->error;
+                                    }
+
+                                    $x++;
+                                }
+                            }
                         }
                     }
                 }
-
-                ?>
-            ];
+            } else {
 
 
-            // All functions
 
-            // function load the track
-            function load_track(index_no) {
-                clearInterval(timer);
-                reset_slider();
-
-                track.src = All_song[index_no].path;
-                title.innerHTML = All_song[index_no].name;
-                track_image.src = All_song[index_no].img;
-                artist.innerHTML = All_song[index_no].singer;
-                track.load();
-
-                timer = setInterval(range_slider, 1000);
-            }
-
-            load_track(index_no);
+                $playalbum = $_POST['start-play-id'];
 
 
-            //mute sound function
-            function mute_sound() {
-                track.volume = 0;
-                volume.value = 0;
-                volume_show.innerHTML = 0;
-            }
+                $query = "SELECT `song`.*, `artist`.`ArtistName`
+                FROM `artist`, `song`, `createsong`, `ListenToSong`, `album`
+                WHERE `artist`.`idArtist` = `createsong`.`idArtist`
+                 AND  `album`.`idAlbum` = `ConsistAlbum`.`idAlbum`
+                 AND `ConsistAlbum`.`idSong` = `ConsistAlbum`.`idSong`
+                 AND  `album`.`idAlbum`= '$playalbum'
+                AND `createsong`.`idSong` = `song`.`idSong` 
+                AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                GROUP BY `song`.`idSong` ";
 
-
-            // checking.. the song is playing or not
-            function justplay() {
-                if (Playing_song == false) {
-                    playsong();
-
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
                 } else {
-                    pausesong();
-                }
-            }
+                    if (mysqli_num_rows($result) > 0) {
+
+                        $data = $result->fetch_array();
+                        echo '{';
+                        echo 'name: "' . $data['Name'] . ' |",';
+                        echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                        echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                        echo 'singer: "| ' . $data['ArtistName'] . '"';
+                        echo '}';
+
+                        $song = $data['idSong'];
 
 
-            // reset song slider
-            function reset_slider() {
-                slider.value = 0;
-            }
 
-            // play song
-            function playsong() {
-                track.play();
-                Playing_song = true;
-                play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
-            }
-
-            //pause song
-            function pausesong() {
-                track.pause();
-                Playing_song = false;
-                play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-            }
-
-
-            // next song
-            function next_song() {
-                play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-                if (index_no < All_song.length - 1) {
-                    index_no += 1;
-                    load_track(index_no);
-                    playsong();
-
-                } else {
-                    index_no = 0;
-                    load_track(index_no);
-                    playsong();
-                }
-            }
-
-
-            // previous song
-            function previous_song() {
-                play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-                if (index_no > 0) {
-                    index_no -= 1;
-                    load_track(index_no);
-                    playsong();
-
-                } else {
-                    index_no = All_song.length;
-                    load_track(index_no);
-                    playsong();
-                }
-            }
-
-
-            // change volume
-            function volume_change() {
-                volume_show.innerHTML = recent_volume.value;
-                track.volume = recent_volume.value / 100;
-            }
-
-            // change slider position 
-            function change_duration() {
-                slider_position = track.duration * (slider.value / 100);
-                track.currentTime = slider_position;
-            }
-
-            // autoplay function
-            function autoplay_switch() {
-                if (autoplay == 1) {
-                    autoplay = 0;
-                    auto_play.style.background = "rgba(255,255,255,0.2)";
-                } else {
-                    autoplay = 1;
-                    auto_play.style.background = "#FF8A65";
-                }
-            }
-
-
-            function range_slider() {
-                let position = 0;
-
-                // update slider position
-                if (!isNaN(track.duration)) {
-                    position = track.currentTime * (100 / track.duration);
-                    slider.value = position;
-                }
-
-                // function will run when the song is over
-                if (track.ended) {
-                    play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-                    if (autoplay == 1) {
-                        index_no += 1;
-                        load_track(index_no);
-                        playsong();
+                        $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+VALUES ('$listenerid', '$song', '1.0') ";
+                        $result2 = $mysqli->query($query2);
+                        if (!$result2) {
+                            echo $mysqli->error;
+                        }
                     }
                 }
             }
-        </script>
+            ?>
+        ];
+
+
+        // All functions
+
+        // function load the track
+        function load_track(index_no) {
+            clearInterval(timer);
+            reset_slider();
+
+            track.src = All_song[index_no].path;
+            title.innerHTML = All_song[index_no].name;
+            track_image.src = All_song[index_no].img;
+            artist.innerHTML = All_song[index_no].singer;
+            track.load();
+
+            timer = setInterval(range_slider, 1000);
+        }
+
+        load_track(index_no);
+
+
+        //mute sound function
+        function mute_sound() {
+            track.volume = 0;
+            volume.value = 0;
+            volume_show.innerHTML = 0;
+        }
+
+
+        // checking.. the song is playing or not
+        function justplay() {
+            if (Playing_song == false) {
+                playsong();
+
+            } else {
+                pausesong();
+            }
+        }
+
+
+        // reset song slider
+        function reset_slider() {
+            slider.value = 0;
+        }
+
+        // play song
+        function playsong() {
+            track.play();
+            Playing_song = true;
+            play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
+        }
+
+        //pause song
+        function pausesong() {
+            track.pause();
+            Playing_song = false;
+            play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+        }
+
+
+        // next song
+        function next_song() {
+            play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+            if (index_no < All_song.length - 1) {
+                index_no += 1;
+                load_track(index_no);
+                playsong();
+
+            } else {
+                index_no = 0;
+                load_track(index_no);
+                playsong();
+            }
+        }
+
+
+        // previous song
+        function previous_song() {
+            play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+            if (index_no > 0) {
+                index_no -= 1;
+                load_track(index_no);
+                playsong();
+
+            } else {
+                index_no = All_song.length;
+                load_track(index_no);
+                playsong();
+            }
+        }
+
+
+        // change volume
+        function volume_change() {
+            volume_show.innerHTML = recent_volume.value;
+            track.volume = recent_volume.value / 100;
+        }
+
+        // change slider position 
+        function change_duration() {
+            slider_position = track.duration * (slider.value / 100);
+            track.currentTime = slider_position;
+        }
+
+        // autoplay function
+        function autoplay_switch() {
+            if (autoplay == 1) {
+                autoplay = 0;
+                auto_play.style.background = "rgba(255,255,255,0.2)";
+            } else {
+                autoplay = 1;
+                auto_play.style.background = "#FF8A65";
+            }
+        }
+
+
+        function range_slider() {
+            let position = 0;
+
+            // update slider position
+            if (!isNaN(track.duration)) {
+                position = track.currentTime * (100 / track.duration);
+                slider.value = position;
+            }
+
+            // function will run when the song is over
+            if (track.ended) {
+                play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+                if (autoplay == 1) {
+                    index_no += 1;
+                    load_track(index_no);
+                    playsong();
+                }
+            }
+        }
+    </script>
 
 
 </body>

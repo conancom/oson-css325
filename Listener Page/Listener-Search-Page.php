@@ -300,7 +300,6 @@ if (isset($_GET['searchResult'])) {
                     }
                 }
             }
-
             ?>
         ];
 
