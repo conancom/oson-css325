@@ -25,10 +25,10 @@ if (isset($_POST['delete-playlist'])) {
 <html>
 
 <head>
-
+    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Playlist-Profile-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
+    
 
     <!--Bootstrap-->
     <meta charset="utf-8">
@@ -84,10 +84,10 @@ if (isset($_POST['delete-playlist'])) {
             </div>
         </div>
 
-        <div class="columntest-artist">
+        <div class="columntest-artist" >
             <div class="Main">
                 <div class="ArtistProfile">
-                    <div class="ArtistContainer">
+                    <div class="ArtistContainer" style="padding-top: 20px;  color: white;">
                         <div class="row">
                             <?php
                             $query = "SELECT cp.*, s.*, cs.*, art.* FROM consistplaylist cp, song s, createsong cs, artist art 
@@ -96,7 +96,6 @@ if (isset($_POST['delete-playlist'])) {
                             $playlist_eles = $mysqli->query($query);
                             // print_r($playlist_eles);
                             ?>
-
 
                             <div class="col-md-3">
                                 <img src="Images/playlist-cover.jpg" style="clip-path: circle(36.9% at 50% 50%); width: 55%;">
@@ -119,7 +118,7 @@ if (isset($_POST['delete-playlist'])) {
                                         <form action="#ed" method="post">
                                             <?php
                                             if (isset($_POST['edit-pl-name'])) { ?>
-                                                <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>"><?php
+                                                <input type="text" name="input-pl-name" style="text-indent: 10px;" value="<?php echo $pl['PlaylistName'] ?>"><?php
                                                                                                                                 } else { ?>
                                                 <h1><?php echo $pl['PlaylistName'] ?></h1><?php
                                                                                                                                 }
@@ -128,7 +127,7 @@ if (isset($_POST['delete-playlist'])) {
                                         <h1><?php echo $pl['PlaylistName'] ?></h1> -->
 
 
-                                            <button type="submit" name="edit-pl-name">Edit</button>
+                                            <button type="submit" name="edit-pl-name" class="EditButton" style="margin-top: 15px; margin-bottom: 15px;">Edit</button>
                                         </form>
                                     </div>
                                 </div>
@@ -149,7 +148,7 @@ if (isset($_POST['delete-playlist'])) {
                                     
                                     <div class="col FollowButton ">
                                         <form action="#del" method="post">
-                                            <button type="submit" name="delete-playlist" style="background-color: #DC143C; border: none; padding: 10px 30px; border-radius: 10px;">- Delete This Playlist</button>
+                                            <button type="submit" name="delete-playlist" class="DeletePlaylistButton" >Delete This Playlist</button>
                                         </form>
                                     </div>
                                 </div>

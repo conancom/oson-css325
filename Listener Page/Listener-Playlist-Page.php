@@ -92,7 +92,7 @@ if (isset($_POST['create-playlist'])) {
                             </h3>
                             <form action="#" method="post">
                                 <input type="hidden" name="listenerid" value=<?php echo $idListener ?>>
-                                <button name="create-playlist" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                <button name="create-playlist" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px; margin-left: 20px;">
                                     + Create Playlist
                                 </button>
                             </form>
@@ -103,8 +103,7 @@ if (isset($_POST['create-playlist'])) {
                                     while ($playlist = $playlist_result->fetch_array()) {
 
                                 ?>
-
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" style="width: 250px; margin-left: 20px;">
                                             <div class="row Artist-Pic">
                                                 <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist'] ?>">
                                                     <img width="250" height="250" src="Images/playlist-cover.jpg" alt="Playlist-Picture" style="padding-bottom: 20px;"></a>
@@ -160,60 +159,8 @@ if (isset($_POST['create-playlist'])) {
                                 </div>
                             </div> -->
 
-                                <div class="row blank">
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-
-                                        </div>
-                                        <div class="row Artist-Name">
-
-                                        </div>
-                                        <div class="row Playlist-Type">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-
-                                        </div>
-                                        <div class="row Artist-Name">
-
-                                        </div>
-                                        <div class="row Playlist-Type">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-
-                                        </div>
-                                        <div class="row Artist-Name">
-
-                                        </div>
-                                        <div class="row Playlist-Type">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="row Artist-Pic">
-
-                                        </div>
-                                        <div class="row Artist-Name">
-
-                                        </div>
-                                        <div class="row Playlist-Type">
-
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

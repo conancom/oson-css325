@@ -16,10 +16,9 @@ if ($mysqli->connect_errno) {
 
 <html>
 
-<head>
+<head><link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Album-Page-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     
     <!--Bootstrap-->
     <meta charset="utf-8">
@@ -92,15 +91,15 @@ if ($mysqli->connect_errno) {
                                     $album = $album_result->fetch_array();
                             ?>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="width: 250px; margin-left: 20px;">
                                         
                                             <div class="row Artist-Pic">
                                                 <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
-                                                <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg';?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
+                                                <img width="250px" height="250px" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg';?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
                                             </div>
                                             <div class="row Artist-Name">
-                                                <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
-                                                <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3></a>
+                                                <a style="text-decoration:none;" href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                                <h3 style="text-decoration:none; text-align: center;"><?php echo $album['AlbumName'] ?></h3></a>
                                             </div>
                                             <div class="row Playlist-Type">
                                                 <p style="text-align: center;">Album [<?php echo $album['Genre'] ?>]</p>

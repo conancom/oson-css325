@@ -129,14 +129,6 @@ body {
 
 /*Main Section Codes*/
 
-.Artist-Pic {
-    padding: 20px;
-    line-height: 20px;
-    position: relative;
-    margin-bottom: -12%;
-    width: 270px;
-}
-
 
 /*
 .Artist-Pic img {
@@ -145,7 +137,7 @@ clip-path: circle(36.9% at 50% 50%);
 */
 
 .columntest-artist {
-    padding-bottom: 180px;
+    padding-bottom: 120px;
 }
 
 
@@ -228,4 +220,29 @@ button:hover {
 i:before {
     color: rgb(61, 50, 50);
     font-size: 20px;
+}
+
+.EditButton {
+    background-color: rgba(255, 115, 21, 1);
+    border: none;
+    padding: 10px;
+    width: 70px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.EditButton:hover {
+    background-color: rgb(197, 84, 8);
+}
+
+.DeletePlaylistButton {
+    background-color: #DC143C;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.DeletePlaylistButton:hover {
+    background-color: #b30124;
 }
