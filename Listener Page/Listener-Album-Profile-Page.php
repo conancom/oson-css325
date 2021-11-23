@@ -42,10 +42,10 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
 <head>
 
+    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Album-Profile-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
-
+    
     <!--Bootstrap-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +103,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
         <div class="columntest-artist">
             <div class="Main">
                 <div class="ArtistProfile">
-                    <div class="ArtistContainer">
+                    <div class="ArtistContainer" style="padding-top: 20px;  color: white;">
                         <div class="row">
                             <?php
                             $query = "SELECT COUNT(fa.`FollowAlbumid`) as NUMFOLLOWER, a.*, art.ArtistName, art.idArtist FROM `album` a, `followalbum` fa, `artist` art WHERE a.idArtist = art.idArtist AND fa.`idAlbum` = a.`idAlbum` AND a.`idAlbum` = " . $albumid;
@@ -123,7 +123,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                     </h1>
                                 </div>
                                 <div class="row">
-                                    <a href="<?php echo "Listener-Artist-Profile-Page.php?idArtist=".$al['idArtist']?>"><p>
+                                    <a class="ArtistName" href="<?php echo "Listener-Artist-Profile-Page.php?idArtist=".$al['idArtist']?>"><p>
                                         <?php echo $al['ArtistName'] ?>
                                     </p></a>
                                 </div>
@@ -186,7 +186,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                     <div class="col FollowButton ">
                                         <form action="#don" method="post">
                                             <input type="hidden" name="id-artist" value="<?php echo $albumid ?>">
-                                            <button name="donate" style="border: none; padding: 10px 30px; border-radius: 10px;" class="Donate">
+                                            <button name="donate" style="border: none; padding: 10px 30px; border-radius: 10px; margin-left: -150px" class="Donate">
                                                 Donate
                                             </button>
                                         </form>

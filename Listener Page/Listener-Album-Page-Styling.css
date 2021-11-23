@@ -130,11 +130,11 @@ body {
 /*Main Section Codes*/
 
 .Artist-Pic {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     line-height: 20px;
     position: relative;
     margin-bottom: -12%;
-    width: 270px;
 }
 
 
