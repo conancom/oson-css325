@@ -60,7 +60,7 @@ if (isset($_GET['idArtist'])) {
                         Album
                     </p>
                 </a>
-                <a href="Listener-Settings-Page.html">
+                <a href="Listener-Settings-Page.php">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -97,7 +97,7 @@ if (isset($_GET['idArtist'])) {
                                 </div>
 
                                 <div class="row g-0">
-                                <div class="col FollowButton ">
+                                    <div class="col FollowButton ">
                                         <?php
                                         // $query = sprintf("SELECT COUNT(*) ISFOLLOW FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
                                         $query = sprintf("SELECT COUNT(fart.FollowArtistId) as ISFOLLOW, art.* FROM `followarist` fart, `artist` art  
@@ -180,7 +180,7 @@ if (isset($_GET['idArtist'])) {
                             <div class="col-md-3">
                                 <p>Duration</p>
                             </div>
-                      
+
                         </div>
                         <!---------------------------------------------------------------------------------------------------->
                         <?php
@@ -192,7 +192,7 @@ if (isset($_GET['idArtist'])) {
                         $query = "SELECT s.Popularity, cs.* FROM createsong cs, song s WHERE cs.idArtist =" . $artistid . " AND cs.idSong = s.idSong ORDER BY s.Popularity DESC LIMIT 0,5";
                         $artist_eles = $mysqli->query($query);
                         while ($ele = $artist_eles->fetch_array()) {
-                            $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'] ;
+                            $query = "SELECT * FROM `song` WHERE idSong = " . $ele['idSong'];
                             $song = $mysqli->query($query);
                             $song = $song->fetch_array();
                         ?>
@@ -277,27 +277,27 @@ if (isset($_GET['idArtist'])) {
                         </div> -->
                         <div class="row">
                             <?php
-                                $query = "SELECT al.* FROM album al WHERE al.idArtist = " . $artistid;
-                                $result = $mysqli->query($query);
-                                while($album = $result-> fetch_array()) {
+                            $query = "SELECT al.* FROM album al WHERE al.idArtist = " . $artistid;
+                            $result = $mysqli->query($query);
+                            while ($album = $result->fetch_array()) {
                             ?>
 
-                            <div class="col-md-3">
+                                <div class="col-md-3">
 
-                                <div class="row Artist-Pic">
-                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
-                                        <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg'; ?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
-                                </div>
-                                <div class="row Artist-Name">
-                                    <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
-                                        <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3>
+                                    <div class="row Artist-Pic">
+                                        <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                            <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg'; ?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
+                                    </div>
+                                    <div class="row Artist-Name">
+                                        <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                            <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3>
+                                        </a>
+                                    </div>
+                                    <div class="row Playlist-Type">
+                                        <p style="text-align: center;">Album [<?php echo $album['Genre'] ?>]</p>
+                                    </div>
                                     </a>
                                 </div>
-                                <div class="row Playlist-Type">
-                                    <p style="text-align: center;">Album [<?php echo $album['Genre'] ?>]</p>
-                                </div>
-                                </a>
-                            </div>
                             <?php } ?>
                         </div>
 

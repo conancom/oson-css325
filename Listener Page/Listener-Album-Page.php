@@ -59,7 +59,7 @@ if ($mysqli->connect_errno) {
                         Album
                     </p>
                 </a>
-                <a href="Listener-Settings-Page.html">
+                <a href="Listener-Settings-Page.php">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings

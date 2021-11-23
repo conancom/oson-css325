@@ -58,7 +58,7 @@ $pl = $result->fetch_array();
                         Album
                     </p>
                 </a>
-                <a href="Listener-Settings-Page.html">
+                <a href="Listener-Settings-Page.php">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
@@ -88,29 +88,32 @@ $pl = $result->fetch_array();
                             <div class="col-md-9">
                                 <div class="row">
                                     <?php
-                                        if(isset($_POST['input-pl-name'])){
-                                            $update = sprintf("UPDATE `playlist` SET `PlaylistName`= '%s' WHERE idPlaylist = %d  AND idListener = %d", $_POST['input-pl-name'], $id_playlist, $listenerid);
-                                            $result = $mysqli->query($update);
-                                            if(!$result) { echo "You are not the owner of this playlist.";}
-
-                                            header("Refresh:0");
+                                    if (isset($_POST['input-pl-name'])) {
+                                        $update = sprintf("UPDATE `playlist` SET `PlaylistName`= '%s' WHERE idPlaylist = %d  AND idListener = %d", $_POST['input-pl-name'], $id_playlist, $listenerid);
+                                        $result = $mysqli->query($update);
+                                        if (!$result) {
+                                            echo "You are not the owner of this playlist.";
                                         }
+
+                                        header("Refresh:0");
+                                    }
                                     ?>
                                     <div>
                                         <form action="#ed" method="post">
-                                        <?php
-                                            if(isset($_POST['edit-pl-name'])){?>
+                                            <?php
+                                            if (isset($_POST['edit-pl-name'])) { ?>
                                                 <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>"><?php
-                                            }
-                                            else { ?>
-                                                <h1><?php echo $pl['PlaylistName']?></h1><?php
-                                            }
-                                        ?>
-                                        <!-- <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>">
-                                        <h1><?php echo $pl['PlaylistName']?></h1> -->
-                                            
-                                        
-                                        <button type="submit" name="edit-pl-name">Edit</button></form></div>
+                                                                                                                                } else { ?>
+                                                <h1><?php echo $pl['PlaylistName'] ?></h1><?php
+                                                                                                                                }
+                                                                                            ?>
+                                            <!-- <input type="text" name="input-pl-name" value="<?php echo $pl['PlaylistName'] ?>">
+                                        <h1><?php echo $pl['PlaylistName'] ?></h1> -->
+
+
+                                            <button type="submit" name="edit-pl-name">Edit</button>
+                                        </form>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -126,19 +129,23 @@ $pl = $result->fetch_array();
                                 </div>
                                 <p></p>
                                 <div class="row g-0">
-                                <?php
-                                    if(isset($_POST['delete-playlist'])){
+                                    <?php
+                                    if (isset($_POST['delete-playlist'])) {
                                         $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
                                         $result = $mysqli->query($delete);
                                         // echo $delete;
-                                        if($result) { header("Location: Listener-Playlist-Page.php"); }
-                                        else { echo $mysqli->error;}
+                                        if ($result) {
+                                            header("Location: Listener-Playlist-Page.php");
+                                        } else {
+                                            echo $mysqli->error;
+                                        }
                                     }
-                                ?>
+                                    ?>
                                     <div class="col FollowButton ">
-                                            <form action="#del" method="post">
-                                                <button type="submit" name="delete-playlist"style="background-color: #DC143C; border: none; padding: 10px 30px; border-radius: 10px;">- Delete This Playlist</button></form>
-                                        </div>
+                                        <form action="#del" method="post">
+                                            <button type="submit" name="delete-playlist" style="background-color: #DC143C; border: none; padding: 10px 30px; border-radius: 10px;">- Delete This Playlist</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +194,7 @@ $pl = $result->fetch_array();
                                     <div class="col-md-2">
                                         <?php
                                         $query = "SELECT COUNT(cal.ConsistAlbumId) as EXIST , cal.*, al.* FROM consistalbum cal, song s, album al
-                                                WHERE cal.idSong = s.idSong AND cal.idAlbum = al.idAlbum AND s.idSong = " . $row['idSong']  ;
+                                                WHERE cal.idSong = s.idSong AND cal.idAlbum = al.idAlbum AND s.idSong = " . $row['idSong'];
                                         $album_eles = $mysqli->query($query);
                                         //  print_r($playlist_eles);
                                         $al_temp = $album_eles->fetch_array();
@@ -199,7 +206,7 @@ $pl = $result->fetch_array();
                                         ?>
 
                                     </div>
-                                    <div class="col-md-2" >
+                                    <div class="col-md-2">
                                         <p><?php echo $row['ArtistName'] ?></p>
                                     </div>
                                     <div class="col-md-2">
@@ -208,89 +215,88 @@ $pl = $result->fetch_array();
                                     <div class="col-md-2">
                                         <p><?php echo $row['Explicity'] ?></p>
                                     </div>
-                               
+
                                     <hr>
                                 </div>
 
-                            <?php
+                        <?php
                                 // echo $index;
                                 $index++;
-                                
-                                    }
-                                }
-                            ?>
+                            }
+                        }
+                        ?>
 
-                            <!---------------------------------------------------------------------------------------------------->
+                        <!---------------------------------------------------------------------------------------------------->
 
-                            <!---------------------------------------------------------------------------------------------------->
+                        <!---------------------------------------------------------------------------------------------------->
 
-                            <!-- <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             </div> -->
 
-                            </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="Trackbar" style="position: fixed;">
-            <div class="row">
-                <div class="col">
-                    <div class="music-control">
-                        <p>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="play-skip-back-outline"></ion-icon>
-                            </a>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="play-outline"></ion-icon>
-                            </a>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="play-skip-forward-outline"></ion-icon>
-                            </a>
-                        </p>
-                    </div>
+    <div class="Trackbar" style="position: fixed;">
+        <div class="row">
+            <div class="col">
+                <div class="music-control">
+                    <p>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="play-skip-back-outline"></ion-icon>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="play-outline"></ion-icon>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="play-skip-forward-outline"></ion-icon>
+                        </a>
+                    </p>
                 </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <div class="music-data">
-                            <div>
-                                <p class="Song-name">Lucid Dreams | Juice WRLD </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="music-progressbar">
-                            <div class="bar">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="music-option">
-                        <p>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="shuffle-outline"></ion-icon>
-                            </a>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="swap-horizontal-outline"></ion-icon>
-                            </a>
-                            <a href="#" style="text-decoration: none;">
-                                <ion-icon name="volume-high-outline"></ion-icon>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="col-8">
+                <div class="row">
+                    <div class="music-data">
+                        <div>
+                            <p class="Song-name">Lucid Dreams | Juice WRLD </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="music-progressbar">
+                        <div class="bar">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="music-option">
+                    <p>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="shuffle-outline"></ion-icon>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="swap-horizontal-outline"></ion-icon>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <ion-icon name="volume-high-outline"></ion-icon>
+                        </a>
+                    </p>
+                </div>
+            </div>
+
         </div>
+    </div>
 </body>
 
 </html>

@@ -25,9 +25,9 @@ if (isset($_GET['searchResult'])) {
     <script type="text/javascript" src="search.js"></script>
 
     <style>
-    img.rounded-corners {
-    border-radius: 202px;
-    }
+        img.rounded-corners {
+            border-radius: 202px;
+        }
     </style>
 
 </head>
@@ -60,7 +60,7 @@ if (isset($_GET['searchResult'])) {
                         Album
                     </p>
                 </a>
-                <a href="Listener-Settings-Page.html">
+                <a href="Listener-Settings-Page.php">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings

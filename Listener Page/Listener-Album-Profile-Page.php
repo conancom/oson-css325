@@ -35,7 +35,7 @@ if (isset($_GET['idAlbum'])) {
 <body>
     <div class="row">
         <div class="columntest-side">
-            <div class="Sidebar" style="position: fixed;">
+        <div class="Sidebar" style="position: fixed;">
                 <a href="Listener-Main-Page.php">
                     <p>
                         <ion-icon name="home-outline"></ion-icon>

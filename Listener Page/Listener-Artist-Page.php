@@ -36,31 +36,31 @@ if ($mysqli->connect_errno) {
         <div class="row">
             <div class="columntest-side">
                 <div class="Sidebar" style="position: fixed;">
-                    <a href="#">
+                    <a href="Listener-Main-Page.php">
                         <p>
                             <ion-icon name="home-outline"></ion-icon>
                             Home
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Search-Page.php">
                         <p>
                             <ion-icon name="search-outline"></ion-icon>
                             Search
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Playlist-Page.php">
                         <p>
                             <ion-icon name="reorder-four-outline"></ion-icon>
                             Playlist
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Album-Page.php">
                         <p>
                             <ion-icon name="search-outline"></ion-icon>
                             Album
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="Listener-Settings-Page.php">
                         <p>
                             <ion-icon name="settings-outline"></ion-icon>
                             Settings
@@ -82,22 +82,24 @@ if ($mysqli->connect_errno) {
                                     $index = 0;
                                     while ($followartist = $followartist_result->fetch_array()) {
                                 ?>
-                                <div class="col-md-3">
-                                    <div class="row Artist-Pic">
-                                        <a href="Listener-Artist-Profile-Page.php?idArtist=<?php echo $followartist['idArtist'] ?>">
-                                        <img width="250" height="250" src="<?php echo 'profileimg/'.$followartist['idArtist'].'.jpg'?>" alt="Artist Picture"></a>
-                                    </div>
-                                    <div class="row Artist-Name">
-                                        <a href="Listener-Artist-Profile-Page.php?idArtist=<?php echo $followartist['idArtist'] ?>">
-                                        <h3 style="text-align: center;"><?php echo $followartist['ArtistName'] ?></h3></a>
-                                    </div>
-                                    <div class="row Artist-Type">
-                                        <p style="text-align: center;">Artists</p>
-                                    </div>
-                                </div>
-                                <?php }} ?>
+                                        <div class="col-md-3">
+                                            <div class="row Artist-Pic">
+                                                <a href="Listener-Artist-Profile-Page.php?idArtist=<?php echo $followartist['idArtist'] ?>">
+                                                    <img width="250" height="250" src="<?php echo 'profileimg/' . $followartist['idArtist'] . '.jpg' ?>" alt="Artist Picture"></a>
+                                            </div>
+                                            <div class="row Artist-Name">
+                                                <a href="Listener-Artist-Profile-Page.php?idArtist=<?php echo $followartist['idArtist'] ?>">
+                                                    <h3 style="text-align: center;"><?php echo $followartist['ArtistName'] ?></h3>
+                                                </a>
+                                            </div>
+                                            <div class="row Artist-Type">
+                                                <p style="text-align: center;">Artists</p>
+                                            </div>
+                                        </div>
+                                <?php }
+                                } ?>
 
-                                
+
 
                             </div>
                         </div>
