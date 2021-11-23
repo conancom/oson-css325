@@ -111,7 +111,7 @@ if (isset($_POST['create-playlist'])) {
                                                     <img width="250" height="250" src="Images/playlist-cover.jpg" alt="Playlist-Picture" style="padding-bottom: 20px;"></a>
                                             </div>
                                             <div class="row Artist-Name">
-                                                <a href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist'] ?>">
+                                                <a style="text-decoration: none;" href="Listener-Playlist-Profile-Page.php?idPlaylist=<?php echo $playlist['idPlaylist'] ?>">
                                                     <h3 style="text-align: center;"><?php echo $playlist['PlaylistName'] ?></h3>
                                                 </a>
                                             </div>

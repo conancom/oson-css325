@@ -124,14 +124,9 @@ if ($mysqli->connect_errno) {
                                     <p style="text-align: center;">Playlist</p>
                                 </div>
                             </div> -->
-
-
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

@@ -101,7 +101,7 @@ if (isset($_GET['searchResult'])) {
                         </h3>
                             
                         <div id="search-result" class="row" style="display: none;">
-                            <div class="Artist-Container" style="height: 500px;">
+                            <div class="Artist-Container" >
                                 <div id="display" class="row"  style="display: flex;">
                                     <!-- SEARCH RESULT RENDER HERE -->
                                 </div>

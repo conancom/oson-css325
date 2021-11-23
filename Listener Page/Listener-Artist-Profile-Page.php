@@ -41,10 +41,10 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 <html>
 
 <head>
-
+    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Artist-Profile-Page-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
+    
 
     <!--Bootstrap-->
     <meta charset="utf-8">
@@ -103,7 +103,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
         <div class="columntest-artist">
             <div class="Main">
                 <div class="ArtistProfile">
-                    <div class="ArtistContainer">
+                    <div class="ArtistContainer" style="padding-top: 20px;  color: white;">
                         <div class="row">
                             <?php
                             $query = "SELECT COUNT(fart.`FollowArtistId`) as NUMFOLLOWER, art.* FROM `artist` art, `followarist` fart WHERE fart.`idArtist` = art.`idArtist` AND art.`idArtist` = " . $artistid;
@@ -135,11 +135,10 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                             WHERE fart.idListener = %d AND art.idArtist = fart.idArtist AND fart.idArtist = %d", $listenerid, $artistid);
                                         $result = $mysqli->query($query);
                                         $data = $result->fetch_array();
-
                                         ?>
                                         <form action="#fllw" method="post">
                                             <input type="hidden" name="is-follow" value="<?php echo $data['ISFOLLOW'] ?>">
-                                            <button name="follow-album" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                            <button class="FollowBtn" name="follow-album">
                                                 <?php if ($data['ISFOLLOW'] == 0) {
                                                     echo "Follow";
                                                 } else {
@@ -154,7 +153,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
                                     <div class="col FollowButton ">
                                         <form action="#don" method="post">
-                                            <button name="donate" type="button" onclick="location.href='Donation-Gateway.php'" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                            <button class="DonateBtn" name="donate" style="margin-left: -500px;">
                                                 Donate
                                             </button>
                                         </form>
@@ -175,7 +174,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
                         <!---------------------------------------------------------------------------------------------------->
 
-                        <div class="row">
+                        <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
                             <h1>Top 5 Songs From <?php echo $art['ArtistName'] ?></h1>
                         </div>
                         <div class="row">
@@ -251,7 +250,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                     ?>
                                     <form action="#" method="post">
                                         <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
-                                        <button type="submit" name="first-hit">+PL</button>
+                                        <button class="AddToPlaylist" type="submit" name="first-hit">Add to Playlist</button>
                                     </form>
 
                                     <?php
@@ -266,7 +265,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                 <form action="##" method="post">
                                                     <input type="hidden" name="id-playlist" value=<?php echo $row['idPlaylist'] ?>>
                                                     <input type="hidden" name="add-id-song-2-pl" value=<?php echo $_POST['add-id-song'] ?>>
-                                                    <button name="add-to-playlist" type="submit">
+                                                    <button class="AddToPlaylistClicked" name="add-to-playlist" type="submit">
                                                         <p><?php echo $row['PlaylistName'] ?></p>
                                                     </button>
                                                 </form>
@@ -301,14 +300,14 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                             while ($album = $result->fetch_array()) {
                             ?>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="width: 250px; margin-left: 20px;">
 
                                     <div class="row Artist-Pic">
-                                        <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                        <a style="text-decoration: none;" href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
                                             <img width="250" height="250" src="<?php echo 'albumimg /' . $album['idAlbum'] . '.jpg'; ?>" alt="Album Picture" style="padding-bottom: 20px;"></a>
                                     </div>
-                                    <div class="row Artist-Name">
-                                        <a href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
+                                    <div class="row Artist-Name" style="margin-top: 15px;">
+                                        <a style="text-decoration: none;" href="Listener-Album-Profile-Page.php?idAlbum=<?php echo $album['idAlbum'] ?>">
                                             <h3 style="text-align: center;"><?php echo $album['AlbumName'] ?></h3>
                                         </a>
                                     </div>
@@ -507,6 +506,7 @@ AND `song`.`idSong` = '$playsong'";
                         echo 'path: "song/' . $data['idSong'] . '.mp3",';
                         echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
                         echo 'singer: "| ' . $data['ArtistName'] . '"';
+                        echo '}';
                     }
                 }
             }
