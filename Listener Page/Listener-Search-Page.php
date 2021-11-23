@@ -251,7 +251,9 @@ if (isset($_GET['searchResult'])) {
             </div>
         </div>
 
-    <script>
+
+<script>
+    
         function hide_header() {
             var s = document.getElementById("search").value;
             var header = document.getElementById("search-header");
@@ -265,9 +267,6 @@ if (isset($_GET['searchResult'])) {
             }
 
         }
-    </script>
-
-<script>
             let previous = document.querySelector('#pre');
             let play = document.querySelector('#play');
             let next = document.querySelector('#next');
