@@ -87,7 +87,6 @@ $listenerid = $_SESSION['id-listener'];
                         <div class="RecentsContainer">
                             <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
                                 <?php
-
                                 $query = "SELECT `artist`.*
                             FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
@@ -129,25 +128,25 @@ $listenerid = $_SESSION['id-listener'];
                                     } else {
                                         if (mysqli_num_rows($result) > 0) {
                                             $x = 1;
-                                            echo '  <div class="col-md-3>"';
+                                            echo '<div class="row" style ="display: flex;" >';
                                             while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-
+                                                echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                                 echo '      <div class="row">';
-                                                echo '          <div class="Artist-Pic">';
+                                                echo '          <div class="Artist-Pic" style="margin-left: 3%;">';
                                                 echo '              <a href="Listener-Playlist-Page.php"><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '          </div>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
-                                                echo '           <h3 style="color: white; margin-top: 3%; margin-left: 7%;">' . $data['ArtistName'] . '</h3>';
+                                                echo '           <h3 style="color: white; text-align: center; margin-top: 20px;">' . $data['ArtistName'] . '</h3>';
                                                 echo '      </div>';
                                                 echo '      <div class="row ">';
                                                 echo '          <div class="Artist-Type">';
-                                                echo '              <p style="color: white; margin-left: 8%;">Artists</p>';
+                                                echo '              <p style="color: white; text-align: center;">Artists</p>';
                                                 echo '          </div>';
                                                 echo '      </div>';
+                                                echo '      </div>';
                                             }
-
-                                            echo '  </div>';
+                                            echo '</div>';
                                         }
                                     }
                                     ?>
@@ -162,9 +161,7 @@ $listenerid = $_SESSION['id-listener'];
                     <div class="Albums">
                         <div class="row">
                             <div class="AlbumsContainer">
-
-                                <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 20px; font-weight: bold; margin-bottom: 20px;">
-
+                                <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 40px; font-weight: bold; margin-bottom: 20px;">
                                     <?php
                                     $query = "SELECT `album`.*                              
                                     FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
@@ -181,12 +178,9 @@ $listenerid = $_SESSION['id-listener'];
                                             echo 'Albums you might love';
                                         }
                                     } ?>
-
                                 </h3>
                             </div>
 
-
-                            ">
                                 <?php
                                 $query = "SELECT `album`.*                              
                                     FROM `artist`, `song`, `consistAlbum`, `Album`,  `listener`                             
@@ -204,8 +198,7 @@ $listenerid = $_SESSION['id-listener'];
                                         echo '<div class="row" style ="display: flex;" >';
                                         while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
                                             
-                                            echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;;">';
-
+                                            echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                             echo ' ';
                                             echo '     <div class="row"  >';
                                             echo '         <div class="Album-Pic">';
@@ -221,29 +214,25 @@ $listenerid = $_SESSION['id-listener'];
                                             echo '         </div>';
                                             echo '     </div>';
                                             echo '     </div>';
-                                            
-                                            
                                             echo ' ';
                                         }
                                         echo ' </div>';
                                     }
                                 }
                                 ?>
-                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <!--Artists You might love-->
         <div class="row">
             <div class="Artists-Suggest">
-                <div class="ArtistsSuggestContainer" style="position:relative; left: 15%;">
-                    <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 10px; font-weight: bold;">
-
+            <div class="row">
+                <div class="ArtistsSuggestContainer" style="position:relative; ">
+                    <h3 style="color: white; font-size: 35px; margin-left: 10px; margin-top: 80px; font-weight: bold;">
                         <?php
-
                         //AND `listener`.`idListener` = '$listenerid' 
                         $query = "SELECT `artist`.* 
                         FROM `artist`, `song`, `listener`
@@ -263,24 +252,18 @@ $listenerid = $_SESSION['id-listener'];
                             }
                         }
                         ?>
-
                     </h3>
 
                     <div class=" row">
                         <div class="Artist-Container">
-
                             <?php
-
                             //AND `listener`.`idListener` = '$listenerid' 
                             $query = "SELECT `artist`.* 
                             FROM `artist`, `song`, `listener`
                             WHERE `listener`.`idListener` = '$listenerid' 
-                           
                             AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
                             GROUP BY `artist`.`idArtist` 
-                          
                             LIMIT 0,3;";
-
                             $result = $mysqli->query($query);
                             if (!$result) {
                                 echo $mysqli->error;
@@ -290,8 +273,7 @@ $listenerid = $_SESSION['id-listener'];
                                     echo '<div class="row" style ="display: flex;" >';
                                     while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
 
-                                        echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;;">';
-                                       
+                                        echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                         echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
                                         echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                         echo '      </div>';
@@ -303,12 +285,10 @@ $listenerid = $_SESSION['id-listener'];
                                         echo '              <p style="color: white; margin-left: 29%;">Artists</p>';
                                         echo '          </div>';
                                         echo '      </div>';
-                                       
                                         echo '</div>';
                                     }
                                     echo '</div>';
                                 }
-
                             }
                             ?>
                         </div>
@@ -317,6 +297,7 @@ $listenerid = $_SESSION['id-listener'];
             </div>
         </div>
     </div>
+    
     
 
     <div class="row Trackbar">
