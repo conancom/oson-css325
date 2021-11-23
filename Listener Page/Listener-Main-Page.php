@@ -60,7 +60,7 @@ $listenerid = $_SESSION['id-listener'];
                 </a>
                 <a href="Listener-Album-Page.php">
                     <p>
-                        <ion-icon name="search-outline"></ion-icon>
+                        <ion-icon name="albums-outline"></ion-icon>
                         Album
                     </p>
                 </a>
