@@ -18,12 +18,12 @@ body {
 }
 
 .columntest-artist {
-    margin-left: -220px;
+    position: relative;
+    margin-left: -190px;
     margin-right: -20px;
+    padding-bottom: 20px;
     flex: 80%;
     background-color: #372F2F;
-    padding-bottom: 50px;
-    padding-left: 700px;
 }
 
 
