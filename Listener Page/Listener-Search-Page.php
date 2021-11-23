@@ -1,5 +1,7 @@
 <?php
 session_start();
+$listenerid = $_SESSION['id-listener'];
+$mysqli = new mysqli("localhost", "root", null, "oson-v2");
 if (isset($_GET['searchResult'])) {
     // echo "Yes"; 
 }
@@ -29,12 +31,15 @@ if (isset($_GET['searchResult'])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
 
-    <style>
+    <!-- <style>
         img.rounded-corners {
             border-radius: 202px;
         }
-    </style>
+    </style> -->
 
+    <!-- DONT DELETE -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="search.js"></script>
 </head>
 
 <body>
@@ -82,6 +87,7 @@ if (isset($_GET['searchResult'])) {
                             <?php
                             if (isset($_GET['searchResult'])) {
                                 $search_result = $_GET['searchResult'];
+                                echo "FROM search result" . $search_result;
                             } else {
                                 $search_result = "";
                             }
@@ -93,8 +99,13 @@ if (isset($_GET['searchResult'])) {
                         <h3 id="search-header" style="color: white; display:none; ">
                             Search Result
                         </h3>
-                        <div id="display" class="row">
-                            <!-- SEARCH RESULT RENDER HERE -->
+                            
+                        <div id="search-result" class="row" style="display: none;">
+                            <div class="Artist-Container" style="height: 500px;">
+                                <div id="display" class="row"  style="display: flex;">
+                                    <!-- SEARCH RESULT RENDER HERE -->
+                                </div>
+                            </div>
                         </div>
 
                         <h3 style="color: white;">
@@ -254,19 +265,7 @@ if (isset($_GET['searchResult'])) {
 
 
     <script>
-        function hide_header() {
-            var s = document.getElementById("search").value;
-            var header = document.getElementById("search-header");
-            console.log("value =", s);
-            if (s != "") {
-                console.log('block');
-                header.style.display = "block";
-            } else {
-                console.log("none");
-                header.style.display = "none";
-            }
-
-        }
+        
         let previous = document.querySelector('#pre');
         let play = document.querySelector('#play');
         let next = document.querySelector('#next');
@@ -296,14 +295,14 @@ if (isset($_GET['searchResult'])) {
             <?php
 
             $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-                    FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-                    WHERE `listener`.`idListener` = '$listenerid'
-                    AND `listener`.`idListener` = `ListenToSong`.`idListener`
-                    AND `artist`.`idArtist` = `createsong`.`idArtist` 
-                    AND `createsong`.`idSong` = `song`.`idSong` 
-                    AND `ListenToSong`.`idSong` = `song`.`idSong`  
-                    ORDER BY `ListenToSongId` DESC
-                    LIMIT 0, 10;";
+            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+            WHERE `listener`.`idListener` = '$listenerid'
+            AND `listener`.`idListener` = `ListenToSong`.`idListener`
+            AND `artist`.`idArtist` = `createsong`.`idArtist` 
+            AND `createsong`.`idSong` = `song`.`idSong` 
+            AND `ListenToSong`.`idSong` = `song`.`idSong`  
+            ORDER BY `ListenToSongId` DESC
+            LIMIT 0, 10;";
             $result = $mysqli->query($query);
             if (!$result) {
                 echo $mysqli->error;
@@ -323,63 +322,7 @@ if (isset($_GET['searchResult'])) {
                             echo '}';
                         }
 
-                        $song = $data['idSong'];
-
-
-
-                        $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
-            VALUES ('$listenerid', '$song', '1.0') ";
-                        $result2 = $mysqli->query($query2);
-                        if (!$result2) {
-                            echo $mysqli->error;
-                        }
-
-
                         $x++;
-                    }
-                } else {
-                    $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
-                            FROM `artist`, `song`, `createsong`, `ListenToSong` 
-                            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
-                            AND `createsong`.`idSong` = `song`.`idSong` 
-                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
-                            GROUP BY `song`.`idSong` 
-                            ORDER BY COUNT(`ListenToSong`.`ListenToSongId`) DESC 
-                            LIMIT 0, 10; ";
-                    $result1 = $mysqli->query($query1);
-                    if (!$result1) {
-                        echo $mysqli->error;
-                    } else {
-                        if (mysqli_num_rows($result1) > 0) {
-                            $numrows = mysqli_num_rows($result1);
-                            $x = 1;
-                            while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
-                                echo '{';
-                                echo 'name: "' . $data1['Name'] . ' |",';
-                                echo 'path: "song/' . $data1['idSong'] . '.mp3",';
-                                echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
-                                echo 'singer: "| ' . $data1['ArtistName'] . '"';
-                                if ($x < $numrows) {
-                                    echo '},';
-                                } else {
-                                    echo '}';
-                                }
-
-
-                                $song = $data1['idSong'];
-
-
-
-                                $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
-                                        VALUES ('$listenerid', '$song', '1.0') ";
-                                $result3 = $mysqli->query($query3);
-                                if (!$result3) {
-                                    echo $mysqli->error;
-                                }
-
-                                $x++;
-                            }
-                        }
                     }
                 }
             }
@@ -518,6 +461,21 @@ if (isset($_GET['searchResult'])) {
                     load_track(index_no);
                     playsong();
                 }
+            }
+        }
+        function hide_header() {
+            var s = document.getElementById("search").value;
+            var header = document.getElementById("search-header");
+            var s_result = document.getElementById("search-result");
+            console.log("value =", s);
+            if (s != "") {
+                console.log('block');
+                header.style.display = "block";
+                s_result.style.display = "block";
+            } else {
+                console.log("none");
+                header.style.display = "none";
+                s_result.style.display = "none";
             }
         }
     </script>
