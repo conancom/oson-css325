@@ -145,6 +145,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         $data = $result->fetch_array();
 
                                         ?>
+                                        
                                         <form action="#fllw" method="post">
                                             <input type="hidden" name="is-follow" value="<?php echo $data['ISFOLLOW'] ?>">
                                             <button name="follow-album" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">
@@ -182,7 +183,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         // }
                                         ?>
                                     </div>
-
+                                    <!--
                                     <div class="col FollowButton ">
                                         <form action="#don" method="post">
                                             <input type="hidden" name="id-artist" value="<?php echo $albumid ?>">
@@ -202,8 +203,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                             // else { header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid); }
                                         }
                                         ?>
-                                    </div>
-
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
