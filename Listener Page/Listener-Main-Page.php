@@ -445,14 +445,14 @@ $listenerid = $_SESSION['id-listener'];
                     <?php
 
                     $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-            WHERE `listener`.`idListener` = '$listenerid'
-            AND `listener`.`idListener` = `ListenToSong`.`idListener`
-            AND `artist`.`idArtist` = `createsong`.`idArtist` 
-            AND `createsong`.`idSong` = `song`.`idSong` 
-            AND `ListenToSong`.`idSong` = `song`.`idSong`  
-            ORDER BY `ListenToSongId` DESC
-            LIMIT 0, 10;";
+                    FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                    WHERE `listener`.`idListener` = '$listenerid'
+                    AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                    AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                    AND `createsong`.`idSong` = `song`.`idSong` 
+                    AND `ListenToSong`.`idSong` = `song`.`idSong`  
+                    ORDER BY `ListenToSongId` DESC
+                    LIMIT 0, 10;";
                     $result = $mysqli->query($query);
                     if (!$result) {
                         echo $mysqli->error;
@@ -475,14 +475,14 @@ $listenerid = $_SESSION['id-listener'];
                                 $x++;
                             }
                         } else {
-                            $query1 = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-            FROM `artist`, `song`, `createsong`, `ListenToSong`
-            
-            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
-            AND `createsong`.`idSong` = `song`.`idSong` 
-            
-            ORDER BY `ListenToSongId` DESC
-            LIMIT 0, 10;";
+                            $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
+                            FROM `artist`, `song`, `createsong`, `ListenToSong` 
+                            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
+                            AND `createsong`.`idSong` = `song`.`idSong` 
+                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                            GROUP BY `song`.`idSong` 
+                            ORDER BY COUNT(`ListenToSong`.`ListenToSongId`) DESC 
+                            LIMIT 0, 10; ";
                             $result1 = $mysqli->query($query1);
                             if (!$result1) {
                                 echo $mysqli->error;
@@ -523,6 +523,22 @@ $listenerid = $_SESSION['id-listener'];
                     title.innerHTML = All_song[index_no].name;
                     track_image.src = All_song[index_no].img;
                     artist.innerHTML = All_song[index_no].singer;
+                    var imgpath = track_image.src;
+
+                    <?php
+
+                    $str = "<script>document.write(imgpath)</script>";
+                    $int = (int) filter_var($str, FILTER_SANITIZE_NUMBER_INT);
+
+
+
+                    $query1 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`, ) 
+VALUES ('$listenerid', '1', '1.0') ";
+                    $result1 = $mysqli->query($query1);
+                    if (!$result1) {
+                        echo $mysqli->error;
+                    }
+                    ?>
                     track.load();
 
                     timer = setInterval(range_slider, 1000);
@@ -558,6 +574,8 @@ $listenerid = $_SESSION['id-listener'];
                 // play song
                 function playsong() {
                     track.play();
+
+
                     Playing_song = true;
                     play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
                 }
