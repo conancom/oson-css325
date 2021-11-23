@@ -44,7 +44,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
     <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
     <link rel="Stylesheet" href="Listener-Artist-Profile-Page-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
-    
+
 
     <!--Bootstrap-->
     <meta charset="utf-8">
@@ -507,6 +507,17 @@ AND `song`.`idSong` = '$playsong'";
                         echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
                         echo 'singer: "| ' . $data['ArtistName'] . '"';
                         echo '}';
+
+                        $song = $data['idSong'];
+
+
+
+                        $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+VALUES ('$listenerid', '$song', '1.0') ";
+                        $result2 = $mysqli->query($query2);
+                        if (!$result2) {
+                            echo $mysqli->error;
+                        }
                     }
                 }
             }
