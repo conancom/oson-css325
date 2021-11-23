@@ -152,7 +152,7 @@ if (isset($_GET['idArtist'])) {
 
                                     <div class="col FollowButton ">
                                         <form action="#don" method="post">
-                                            <button name="donate" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
+                                            <button name="donate" type="button" onclick="location.href='Donation-Gateway.php'" style="background-color: #FF7315; border: none; padding: 10px 30px; border-radius: 10px;">
                                                 Donate
                                             </button>
                                         </form>

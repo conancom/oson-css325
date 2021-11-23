@@ -124,21 +124,20 @@ $listenerid = $_SESSION['id-listener'];
                                             $x = 1;
                                             echo '<div class="row" style ="display: flex;" >';
                                             while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+
                                                 echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
-                                                echo '      <div class="row">';
-                                                echo '          <div class="Artist-Pic" style="margin-left: 3%;">';
-                                                echo '              <a href="Listener-Playlist-Page.php"><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
-                                                echo '          </div>';
+                                                echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
+                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist='.  $data['idArtist']  .'" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
-                                                echo '           <h3 style="color: white; text-align: center; margin-top: 20px;">' . $data['ArtistName'] . '</h3>';
+                                                echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
                                                 echo '      </div>';
                                                 echo '      <div class="row ">';
-                                                echo '          <div class="Artist-Type">';
-                                                echo '              <p style="color: white; text-align: center;">Artists</p>';
+                                                echo '          <div class="Artist-Type>"';
+                                                echo '              <p style="color: white; margin-left: 29%;">Artists</p>';
                                                 echo '          </div>';
                                                 echo '      </div>';
-                                                echo '      </div>';
+                                                echo '</div>';
                                             }
                                             echo '</div>';
                                         }
@@ -269,7 +268,7 @@ $listenerid = $_SESSION['id-listener'];
 
                                                 echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                                 echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
-                                                echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist='.  $data['idArtist']  .'" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
                                                 echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
