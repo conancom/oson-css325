@@ -70,7 +70,7 @@ $listenerid = $_SESSION['id-listener'];
                         Artists
                     </p>
                 </a>
-                <a href="#">
+                <a href="Listener-Settings-Page.php">
                     <p>
                         <ion-icon name="settings-outline"></ion-icon>
                         Settings
