@@ -8,7 +8,7 @@ if ($mysqli->connect_errno) {
 } else {
     $query = "SELECT * FROM `followalbum` WHERE `idListener` = " . $listenerid;
     $followalbum_result = $mysqli->query($query);
-    print_r($followalbum_result);
+    //print_r($followalbum_result);
 }
 
 ?>
