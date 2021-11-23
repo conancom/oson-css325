@@ -127,7 +127,7 @@ $listenerid = $_SESSION['id-listener'];
 
                                                 echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                                 echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
-                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist='.  $data['idArtist']  .'" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist=' .  $data['idArtist']  . '" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
                                                 echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
@@ -268,7 +268,7 @@ $listenerid = $_SESSION['id-listener'];
 
                                                 echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                                 echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
-                                                echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist=' .  $data['idArtist']  . '"  ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
                                                 echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
@@ -450,9 +450,40 @@ $listenerid = $_SESSION['id-listener'];
 
                                 $x++;
                             }
+                        } else {
+                            $query1 = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
+            FROM `artist`, `song`, `createsong`, `ListenToSong`
+            
+            WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
+            AND `createsong`.`idSong` = `song`.`idSong` 
+            
+            ORDER BY `ListenToSongId` DESC
+            LIMIT 0, 10;";
+                            $result1 = $mysqli->query($query1);
+                            if (!$result1) {
+                                echo $mysqli->error;
+                            } else {
+                                if (mysqli_num_rows($result1) > 0) {
+                                    $numrows = mysqli_num_rows($result1);
+                                    $x = 1;
+                                    while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
+                                        echo '{';
+                                        echo 'name: "' . $data1['Name'] . ' |",';
+                                        echo 'path: "song/' . $data1['idSong'] . '.mp3",';
+                                        echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
+                                        echo 'singer: "| ' . $data1['ArtistName'] . '"';
+                                        if ($x < $numrows) {
+                                            echo '},';
+                                        } else {
+                                            echo '}';
+                                        }
+
+                                        $x++;
+                                    }
+                                }
+                            }
                         }
                     }
-
                     ?>
                 ];
 
