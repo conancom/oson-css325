@@ -472,6 +472,18 @@ $listenerid = $_SESSION['id-listener'];
                                     echo '}';
                                 }
 
+                                $song = $data['idSong'];
+
+
+
+                                $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+            VALUES ('$listenerid', '$song', '1.0') ";
+                                $result2 = $mysqli->query($query2);
+                                if (!$result2) {
+                                    echo $mysqli->error;
+                                }
+
+
                                 $x++;
                             }
                         } else {
@@ -502,6 +514,18 @@ $listenerid = $_SESSION['id-listener'];
                                             echo '}';
                                         }
 
+
+                                        $song = $data1['idSong'];
+                                        
+
+
+                                        $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+                                        VALUES ('$listenerid', '$song', '1.0') ";
+                                        $result3 = $mysqli->query($query3);
+                                        if (!$result3) {
+                                            echo $mysqli->error;
+                                        }
+
                                         $x++;
                                     }
                                 }
@@ -523,22 +547,6 @@ $listenerid = $_SESSION['id-listener'];
                     title.innerHTML = All_song[index_no].name;
                     track_image.src = All_song[index_no].img;
                     artist.innerHTML = All_song[index_no].singer;
-                    var imgpath = track_image.src;
-
-                    <?php
-
-                    $str = "<script>document.write(imgpath)</script>";
-                    $int = (int) filter_var($str, FILTER_SANITIZE_NUMBER_INT);
-
-
-
-                    $query1 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`, ) 
-VALUES ('$listenerid', '1', '1.0') ";
-                    $result1 = $mysqli->query($query1);
-                    if (!$result1) {
-                        echo $mysqli->error;
-                    }
-                    ?>
                     track.load();
 
                     timer = setInterval(range_slider, 1000);
