@@ -268,7 +268,7 @@ $listenerid = $_SESSION['id-listener'];
 
                                                 echo '<div class="Artist-Container" style=" margin-left: 55px; width: 240px; height: 240px; display: inline;">';
                                                 echo '      <div class="Artist-Pic" style="margin-bottom: 10px;">';
-                                                echo '          <a href="Listener-Artist-Profile-Page.php?idArtist='.  $data['idArtist']  .'" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
+                                                echo '          <a href="Listener-Playlist-Page.php" ><img src="profileimg/' . $data['idArtist'] . '.jpg"></a>';
                                                 echo '      </div>';
                                                 echo '      <div class="row Artist-Name">';
                                                 echo '          <h3 style="color: white; margin-top: 3%; margin-left: 24%;">' . $data['ArtistName'] . '</h3>';
