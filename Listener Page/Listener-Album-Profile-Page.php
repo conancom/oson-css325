@@ -140,7 +140,7 @@ if (isset($_GET['idAlbum'])) {
                                                 }
                                             } else {
                                                 $unfollow_q = sprintf("DELETE FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
-                                                echo $unfollow_q;
+                                                //echo $unfollow_q;
                                                 $result = $mysqli->query($unfollow_q);
                                                 if (!$result) {
                                                     echo $mysqli->error;
