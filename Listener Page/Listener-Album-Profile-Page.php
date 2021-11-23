@@ -9,6 +9,31 @@ if (isset($_GET['idAlbum'])) {
     $query = "SELECT * FROM `album` WHERE idAlbum = " . $albumid;
 }
 
+if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
+    // $check_if_exist = "";
+    if ($_POST['is-follow'] == 0) {
+        $date = date('Y-m-d');
+        $time = date('H:i:s');
+        $follow_q = sprintf("INSERT INTO `followalbum`(`idListener`, `idAlbum`, `FollowDate`, `FollowTime`) VALUES(%d, %d, '%s', '%s')", $listenerid, $albumid, $date, $time);
+        echo $follow_q;
+        $result = $mysqli->query($follow_q);
+        if (!$result) {
+            echo $mysqli->error;
+        } else {
+            header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
+        }
+    } else {
+        $unfollow_q = sprintf("DELETE FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
+        echo $unfollow_q;
+        $result = $mysqli->query($unfollow_q);
+        if (!$result) {
+            echo $mysqli->error;
+        } else {
+            header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -131,30 +156,30 @@ if (isset($_GET['idAlbum'])) {
                                             </button>
                                         </form>
                                         <?php
-                                        if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
-                                            // $check_if_exist = "";
-                                            if ($_POST['is-follow'] == 0) {
-                                                $date = date('Y-m-d');
-                                                $time = date('H:i:s');
-                                                $follow_q = sprintf("INSERT INTO `followalbum`(`idListener`, `idAlbum`, `FollowDate`, `FollowTime`) VALUES(%d, %d, '%s', '%s')", $listenerid, $albumid, $date, $time);
-                                                echo $follow_q;
-                                                $result = $mysqli->query($follow_q);
-                                                if (!$result) {
-                                                    echo $mysqli->error;
-                                                } else {
-                                                    header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
-                                                }
-                                            } else {
-                                                $unfollow_q = sprintf("DELETE FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
-                                                echo $unfollow_q;
-                                                $result = $mysqli->query($unfollow_q);
-                                                if (!$result) {
-                                                    echo $mysqli->error;
-                                                } else {
-                                                    header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
-                                                }
-                                            }
-                                        }
+                                        // if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
+                                        //     // $check_if_exist = "";
+                                        //     if ($_POST['is-follow'] == 0) {
+                                        //         $date = date('Y-m-d');
+                                        //         $time = date('H:i:s');
+                                        //         $follow_q = sprintf("INSERT INTO `followalbum`(`idListener`, `idAlbum`, `FollowDate`, `FollowTime`) VALUES(%d, %d, '%s', '%s')", $listenerid, $albumid, $date, $time);
+                                        //         echo $follow_q;
+                                        //         $result = $mysqli->query($follow_q);
+                                        //         if (!$result) {
+                                        //             echo $mysqli->error;
+                                        //         } else {
+                                        //             header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
+                                        //         }
+                                        //     } else {
+                                        //         $unfollow_q = sprintf("DELETE FROM `followalbum` WHERE `idListener` = %d AND `idAlbum` = %d", $listenerid, $albumid);
+                                        //         echo $unfollow_q;
+                                        //         $result = $mysqli->query($unfollow_q);
+                                        //         if (!$result) {
+                                        //             echo $mysqli->error;
+                                        //         } else {
+                                        //             header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid);
+                                        //         }
+                                        //     }
+                                        // }
                                         ?>
                                     </div>
 

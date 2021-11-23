@@ -7,6 +7,17 @@ $query = "SELECT `PlaylistName` FROM `playlist` WHERE idPlaylist = " . $id_playl
 $result = $mysqli->query($query);
 $pl = $result->fetch_array();
 
+if (isset($_POST['delete-playlist'])) {
+    $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
+    $result = $mysqli->query($delete);
+    // echo $delete;
+    if ($result) {
+        header("Location: Listener-Playlist-Page.php");
+    } else {
+        echo $mysqli->error;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -135,18 +146,7 @@ $pl = $result->fetch_array();
                                 </div>
                                 <p></p>
                                 <div class="row g-0">
-                                    <?php
-                                    if (isset($_POST['delete-playlist'])) {
-                                        $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
-                                        $result = $mysqli->query($delete);
-                                        // echo $delete;
-                                        if ($result) {
-                                            header("Location: Listener-Playlist-Page.php");
-                                        } else {
-                                            echo $mysqli->error;
-                                        }
-                                    }
-                                    ?>
+                                    
                                     <div class="col FollowButton ">
                                         <form action="#del" method="post">
                                             <button type="submit" name="delete-playlist" style="background-color: #DC143C; border: none; padding: 10px 30px; border-radius: 10px;">- Delete This Playlist</button>
