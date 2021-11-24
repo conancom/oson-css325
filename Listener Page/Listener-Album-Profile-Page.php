@@ -33,7 +33,6 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -173,7 +172,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                 $data = $result->fetch_array();
                                                 echo ' <form action="#fllw" method="post">';
                                                 echo '<input type="hidden" name="start-play-id" value="' . $data['idAlbum'] . '">';
-                                                echo '<button type="submit" name="startplay" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">Play';
+                                                echo '<button type="submit" name="startplay" class="FollowBtn" style="margin-top: 15px;border: none; padding: 10px 30px; border-radius: 10px;">Play';
                                                 echo '</button>';
                                                 echo '</form>';
                                             }
@@ -301,7 +300,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         ?>
                                         <form action="#" method="post">
                                             <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
-                                            <button type="submit" name="first-hit" class="AddToPlaylistButton">+PL</button>
+                                            <button class="AddToPlaylist" type="submit" name="first-hit" class="AddToPlaylistButton">Add to Playlist</button>
                                         </form>
 
                                         <?php
@@ -318,7 +317,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                     <form action="##" method="post">
                                                         <input type="hidden" name="id-playlist" value=<?php echo $row['idPlaylist'] ?>>
                                                         <input type="hidden" name="add-id-song-2-pl" value=<?php echo $_POST['add-id-song'] ?>>
-                                                        <button name="add-to-playlist" type="submit">
+                                                        <button class="AddToPlaylistClicked" name="add-to-playlist" type="submit">
                                                             <p><?php echo $row['PlaylistName'] ?></p>
                                                         </button>
                                                     </form>
@@ -340,7 +339,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
                         <!---------------------------------------------------------------------------------------------------->
 
-                        <!---------------------------------------------------------------------------------------------------->
+                        <!--------------------------------------------------------------------------------------------------
 
                         <div class="row">
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
@@ -348,7 +347,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                             <div class="col-md-3"><img src="Images/Jam&Butterfly.JPG" alt="Album Picture"></div>
                         </div>
-
+-->
                     </div>
                 </div>
             </div>
