@@ -123,12 +123,11 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
             ?>
         </h1>
         <h2>
-            <label class="subheader" style="font-family: 'Kanit', sans-serif;">
-                1.6k currently listening. </label>
+           
             <label class="subheader" style="font-family: 'Kanit', sans-serif;">
                 <?php
                 echo  $data['AmountOfFollowers'];
-                ?> follows </label>
+                ?> followers </label>
         </h2>
     </div>
 
@@ -247,7 +246,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                             $x = 0;
                             echo ' <div class="donations" style="font-family: "Kanit", sans-serif;">' . $x . ' $ worth of Donations</div>';
                         } else {
-                            echo ' <div class="donations" style="font-family: "Kanit", sans-serif;">' . $data['SUM(`donatetoartist`.`amount`)'] . ' $ worth of Donations</div>';
+                            $amount = number_format((float)$data['SUM(`donatetoartist`.`amount`)'], 2, '.', '');
+                            echo ' <div class="donations" style="font-family: "Kanit", sans-serif;">' . $amount . ' $ worth of Donations</div>';
                         }
                     }
                 }
