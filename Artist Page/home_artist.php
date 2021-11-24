@@ -175,12 +175,12 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
             if (isset($_SESSION['id-artist'])) {
 
                 $query = "SELECT count(DISTINCT `ListenToSongid`)
-            FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
-            WHERE `ListenToSong`.`idSong` = `song`.`idSong`
-            AND `song`.`idSong`  = `createsong`.`idSong`
-            AND `createsong`.`idArtist` = `artist`.`idArtist`
-            AND `artist`.`idArtist` = $id
-            AND YEARWEEK(`ListenTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);";
+                FROM `listener`, `song`, `createsong`, `ListenToSong`, `artist` 
+                WHERE `ListenToSong`.`idSong` = `song`.`idSong`
+                AND `song`.`idSong`  = `createsong`.`idSong`
+                AND `createsong`.`idArtist` = `artist`.`idArtist`
+                AND `artist`.`idArtist` = $id
+                AND YEARWEEK(`ListenTimeStamp`, 1) = YEARWEEK(CURDATE(), 1);";
 
                 // print($query); 
                 $result = $mysqli->query($query);
