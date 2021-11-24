@@ -6,11 +6,13 @@ if ($mysqli->connect_errno) {
 }
 if (isset($_SESSION['id-listener'])) {
     $listenerid = $_SESSION['id-listener'];
-    $query = "SELECT `idListener`, `UserEmail`, `Gender`, `UserName`, `UserDateOfBirth`, `PreferredGenre`, `Country`, `profile_url` FROM `listener` WHERE `idListener` = " . $listenerid;
+    $query = "SELECT `idListener`, `UserEmail`, `Gender`, `UserName`, `UserDateOfBirth`, `PreferredGenre`, `Country`FROM `listener` WHERE `idListener` = " . $listenerid;
     $result = $mysqli->query($query);
     if ($result) {
         $data = $result->fetch_array();
         //print_r($data);
+    }else{
+        echo $mysqli->error;
     }
 }
 if (isset($_POST['submit-edit']) and isset($_SESSION['id-listener'])) {
