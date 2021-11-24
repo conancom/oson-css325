@@ -522,38 +522,44 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
 
                 $query = "SELECT `song`.*, `artist`.`ArtistName`
-                FROM `artist`, `song`, `createsong`, `ListenToSong`, `album`
-                WHERE `artist`.`idArtist` = `createsong`.`idArtist`
-                 AND  `album`.`idAlbum` = `ConsistAlbum`.`idAlbum`
-                 AND `ConsistAlbum`.`idSong` = `ConsistAlbum`.`idSong`
+                FROM `artist`, `song`, `album`,`ConsistAlbum`
+                 WHERE  `album`.`idAlbum` = `ConsistAlbum`.`idAlbum`
+                 AND `ConsistAlbum`.`idSong` = `Song`.`idSong`
                  AND  `album`.`idAlbum`= '$playalbum'
-                AND `createsong`.`idSong` = `song`.`idSong` 
-                AND `ListenToSong`.`idSong` = `song`.`idSong` 
-                GROUP BY `song`.`idSong` ";
+               	AND `artist`.`idArtist` = `album`.`idArtist`
+                GROUP BY `song`.`idSong`
+                ";
 
                 $result = $mysqli->query($query);
                 if (!$result) {
                     echo $mysqli->error;
                 } else {
                     if (mysqli_num_rows($result) > 0) {
+                        $numrows = mysqli_num_rows($result);
+                        $x = 1;
+                        while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                            echo '{';
+                            echo 'name: "' . $data['Name'] . ' |",';
+                            echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                            echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                            echo 'singer: "| ' . $data['ArtistName'] . '"';
+                            if ($x < $numrows) {
+                                echo '},';
+                            } else {
+                                echo '}';
+                            }
 
-                        $data = $result->fetch_array();
-                        echo '{';
-                        echo 'name: "' . $data['Name'] . ' |",';
-                        echo 'path: "song/' . $data['idSong'] . '.mp3",';
-                        echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
-                        echo 'singer: "| ' . $data['ArtistName'] . '"';
-                        echo '}';
-
-                        $song = $data['idSong'];
+                            $song = $data['idSong'];
 
 
 
-                        $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+                            $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
 VALUES ('$listenerid', '$song', '1.0') ";
-                        $result2 = $mysqli->query($query2);
-                        if (!$result2) {
-                            echo $mysqli->error;
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            }
+                            $x++;
                         }
                     }
                 }
