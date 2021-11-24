@@ -42,7 +42,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 <head>
 
     <link rel="Stylesheet" type="text/css" href="Listener-Main-Page-Styling.css">
-    <link rel="Stylesheet" href="Listener-Album-Profile-Styling.css">
+    <link rel="Stylesheet" type="text/css" href="Listener-Album-Profile-Styling.css">
     <link rel="Stylesheet" type="text/css" href="Trackbar-Styling.css">
 
     <!--Bootstrap-->
@@ -300,7 +300,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         ?>
                                         <form action="#" method="post">
                                             <input type="hidden" name="add-id-song" value=<?php echo $song['idSong']; ?>>
-                                            <button class="AddToPlaylist" type="submit" name="first-hit" class="AddToPlaylistButton">Add to Playlist</button>
+                                            <button  type="submit" name="first-hit" class="AddToPlaylist" style="border-radius: 10px;">Add to Playlist</button>
                                         </form>
 
                                         <?php

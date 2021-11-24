@@ -148,16 +148,28 @@ clip-path: circle(36.9% at 50% 50%);
     padding-bottom: 180px;
 }
 
-.AddToPlaylistButton {
+.AddToPlaylist {
+    background-color: #FF7315;
     border: none;
-    background-color: rgba(255, 115, 21, 1);
-    padding: 4px;
-    margin: 4px;
+    padding: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s;
 }
 
-.AddToPlaylistButton:hover {
-    background-color: rgb(196, 78, 0);
+.AddToPlaylist:hover,
+.AddToPlaylistClicked:hover {
+    background-color: #b84a02;
+}
+
+.AddToPlaylistClicked {
+    background-color: #FF7315;
+    border: none;
+    padding: 2px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    height: 30px;
+    width: 150px;
+    margin: 15px;
 }
 
 .FollowButton .Donate,
