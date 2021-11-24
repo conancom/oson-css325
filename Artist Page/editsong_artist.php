@@ -10,8 +10,8 @@ if ($mysqli->connect_errno) {
 }
 
 if (isset($_POST['submit-edit']) and isset($_SESSION['id-artist'])) {
-
-
+    $songId  = $_GET['id'];
+    $idartist = $_SESSION['id-artist'];
     $songname = $_POST['songname'];
     $genre = $_POST['genre'];
     $explicity = $_POST['Explicity'];
@@ -174,9 +174,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
 
 
             <?php
-            if (isset($_SESSION['id-artist'])) {
+            if (isset($_SESSION['id-artist']) and isset($_GET['id'])) {
                 $idartist = $_SESSION['id-artist'];
-
+                $songId  = $_GET['id'];
+                
                 $query = "SELECT * FROM `song` WHERE `idSong` = '$songId'";
                 // print($query); 
                 $result = $mysqli->query($query);
@@ -184,8 +185,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     echo $mysqli->error;
                 } else {
                     if (mysqli_num_rows($result) > 0) {
-                        $data = $result->fetch_array();
-                        echo '<h1 style="text-align: center; margin-bottom: 19px;"> Edit ' . $data['Name'] . ' </h1>';
+                        $data1 = $result->fetch_array();
+                        echo '<h1 style="text-align: center; margin-bottom: 19px;"> Edit ' . $data1['Name'] . ' </h1>';
                     }
                 }
             }
@@ -197,7 +198,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
                     <div id="text_wrapper">
                         <label id="songname">Song Name</label>
                     </div>
-                    <input type="text" name="songname" id="text_field" placeholder=" Song Name" step="padding-bottom: 15px;"><br>
+                    <input type="text" name="songname" id="text_field" placeholder=" Song Name" step="padding-bottom: 15px;" value=<?php
+                    echo '"'. $data1['Name'].'"'
+                    
+                    ?>><br>
 
                     <label style="padding-right: 155px; padding-bottom: 29px; ">Genre</label>
                     <label style="padding-bottom: 19px;">Explicity</label><br>

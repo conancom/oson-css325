@@ -17,7 +17,8 @@ if (!empty($_POST)) {
     $name =  $_POST['name'];
     $amount =  $_POST['amount'];
     $details = $number . '-' . $name;
-    $insert_donate = "INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES ('$listenerid', '$artistid', '$amount', '$details')";
+    $insert_donate = "INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) 
+    VALUES ('$listenerid', '$artistid', '$amount', '$details')";
     $result = $mysqli->query($insert_donate);
     if (!$result) {
         echo $mysqli->error;

@@ -276,7 +276,8 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                 $if_exist = $result->fetch_array();
 
                                                 if ($if_exist['SONG_EXIST'] == 0) {
-                                                    $insert = sprintf("INSERT INTO `consistplaylist`(`idSong`, `idPlaylist`, `CreationTimeStamp`) VALUES (%d, %d, NOW())", $_POST['add-id-song-2-pl'], $_POST['id-playlist']);
+                                                    $insert = sprintf("INSERT INTO `consistplaylist`(`idSong`, `idPlaylist`, `CreationTimeStamp`) 
+                                                    VALUES (%d, %d, NOW())", $_POST['add-id-song-2-pl'], $_POST['id-playlist']);
                                                     $result = $mysqli->query($insert);
                                                     if ($result) {
                                                         echo "ADDED TOPLAYLIST";
@@ -415,14 +416,14 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
             if (!isset($_POST['startplay'])) {
                 $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
-                    FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-                    WHERE `listener`.`idListener` = '$listenerid'
-                    AND `listener`.`idListener` = `ListenToSong`.`idListener`
-                    AND `artist`.`idArtist` = `createsong`.`idArtist` 
-                    AND `createsong`.`idSong` = `song`.`idSong` 
-                    AND `ListenToSong`.`idSong` = `song`.`idSong`  
-                    ORDER BY `ListenToSongId` DESC
-                    LIMIT 0, 10;";
+                FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                WHERE `listener`.`idListener` = '$listenerid'
+                AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                AND `createsong`.`idSong` = `song`.`idSong` 
+                AND `ListenToSong`.`idSong` = `song`.`idSong`  
+                ORDER BY `ListenToSongId` DESC
+                LIMIT 0, 10;";
                 $result = $mysqli->query($query);
                 if (!$result) {
                     echo $mysqli->error;
@@ -511,9 +512,9 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
                 $query = "SELECT `song`.*, `artist`.`ArtistName`
                 FROM `artist`, `song`, `album`,`ConsistAlbum`
-                 WHERE  `album`.`idAlbum` = `ConsistAlbum`.`idAlbum`
-                 AND `ConsistAlbum`.`idSong` = `Song`.`idSong`
-                 AND  `album`.`idAlbum`= '$playalbum'
+                WHERE  `album`.`idAlbum` = `ConsistAlbum`.`idAlbum`
+                AND `ConsistAlbum`.`idSong` = `Song`.`idSong`
+                AND  `album`.`idAlbum`= '$playalbum'
                	AND `artist`.`idArtist` = `album`.`idArtist`
                 GROUP BY `song`.`idSong`
                 ";
@@ -542,7 +543,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
 
                             $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
-VALUES ('$listenerid', '$song', '1.0') ";
+                            VALUES ('$listenerid', '$song', '1.0') ";
                             $result2 = $mysqli->query($query2);
                             if (!$result2) {
                                 echo $mysqli->error;

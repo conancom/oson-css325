@@ -416,15 +416,9 @@ if (isset($_POST["submit-register"])) {
 			</div>
 			<br>
 
-<<<<<<< HEAD
-			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number"><br>
-			<label style="color: white;">Select Image to upload:</label><br><br>
-			<input type="file" name="my_file"  style="color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;"> 
-=======
 			<input type="text" name="banknumber" class="text_field" placeholder=" Bank Account Number" style="font-family: 'Kanit', sans-serif;"><br>
 			<label style="color: white; font-family: 'Kanit', sans-serif;">Select Image to upload:</label><br><br>
 			<input type="file" name="my_file" style="font-family: 'Kanit', sans-serif; color: white; position:relative; margin-left: auto; margin-right: auto; left: 20%;">
->>>>>>> 283ed4599e122d7f16be0af55053691197ec20f0
 			<div class="button">
 				<input type="submit" name="submit-register" value="Register" class="button_orange artist_register_button" style=" font-family: 'Kanit', sans-serif;cursor: pointer;">
 			</div>
