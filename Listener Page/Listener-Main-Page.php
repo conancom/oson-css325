@@ -78,15 +78,15 @@ $listenerid = $_SESSION['id-listener'];
             <div class="row">
                 <?php
                 $query = "SELECT `artist`.*
-                            FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
-                            WHERE `listener`.`idListener` = '$listenerid' 
-                            AND `listener`.`idListener` = `ListenToSong`.`idListener`
-                            AND `artist`.`idArtist` = `createsong`.`idArtist` 
-                            AND `createsong`.`idSong` = `song`.`idSong` 
-                            AND `ListenToSong`.`idSong` = `song`.`idSong` 
-                            GROUP BY `artist`.`idArtist` 
-                            ORDER BY `ListenToSongId` DESC 
-                            LIMIT 0,3;";
+                FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
+                WHERE `listener`.`idListener` = '$listenerid' 
+                AND `listener`.`idListener` = `ListenToSong`.`idListener`
+                AND `artist`.`idArtist` = `createsong`.`idArtist` 
+                AND `createsong`.`idSong` = `song`.`idSong` 
+                AND `ListenToSong`.`idSong` = `song`.`idSong` 
+                GROUP BY `artist`.`idArtist` 
+                ORDER BY `ListenToSongId` DESC 
+                LIMIT 0,3;";
                 $result = $mysqli->query($query);
                 if (!$result) {
                     echo $mysqli->error;
@@ -276,11 +276,11 @@ $listenerid = $_SESSION['id-listener'];
                                     <?php
                                     //AND `listener`.`idListener` = '$listenerid' 
                                     $query = "SELECT `artist`.* 
-                            FROM `artist`, `song`, `listener`
-                            WHERE `listener`.`idListener` = '$listenerid' 
-                            AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
-                            GROUP BY `artist`.`idArtist` 
-                            LIMIT 0,3;";
+                                    FROM `artist`, `song`, `listener`
+                                    WHERE `listener`.`idListener` = '$listenerid' 
+                                    AND `listener`.`PreferredGenre` = `artist`.`ArtistGenre` 
+                                    GROUP BY `artist`.`idArtist` 
+                                    LIMIT 0,3;";
                                     $result = $mysqli->query($query);
                                     if (!$result) {
                                         echo $mysqli->error;

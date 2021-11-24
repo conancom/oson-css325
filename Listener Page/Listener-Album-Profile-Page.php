@@ -218,18 +218,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                                 Donate
                                             </button>
                                         </form>
-                                        <?php
-                                        if (isset($_POST['donate'])) {
-                                            // echo 'idArtist =====' . $data['idArtist'];
-                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $data['idArtist'], 9.99, "VISA-xxx09436552");
-                                            // echo $insert_donate;
-                                            $result = $mysqli->query($insert_donate);
-                                            if (!$result) {
-                                                echo $mysqli->error;
-                                            }
-                                            // else { header("Location: Listener-Album-Profile-Page.php?idAlbum=" . $albumid); }
-                                        }
-                                        ?>
+                                       
                                     </div>-->
                                 </div>
                             </div>

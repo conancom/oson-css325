@@ -105,7 +105,9 @@ if (isset($_POST['delete-playlist'])) {
                                 <div class="row">
                                     <?php
                                     if (isset($_POST['input-pl-name'])) {
-                                        $update = sprintf("UPDATE `playlist` SET `PlaylistName`= '%s' WHERE idPlaylist = %d  AND idListener = %d", $_POST['input-pl-name'], $id_playlist, $listenerid);
+                                        $update = sprintf("UPDATE `playlist` SET `PlaylistName`= '%s' 
+                                        WHERE idPlaylist = %d  
+                                        AND idListener = %d", $_POST['input-pl-name'], $id_playlist, $listenerid);
                                         $result = $mysqli->query($update);
                                         if (!$result) {
                                             echo "You are not the owner of this playlist.";
