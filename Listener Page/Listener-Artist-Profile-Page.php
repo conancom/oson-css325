@@ -231,13 +231,13 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                             // echo 'SONG EXIST ====' . $if_exist['SONG_EXIST']; 
                                             if ($if_exist['SONG_EXIST'] == 0) {
                                                 $insert = sprintf("INSERT INTO `consistplaylist`(`idSong`, `idPlaylist`, `CreationTimeStamp`) VALUES (%d, %d, NOW())", $_POST['add-id-song-2-pl'], $_POST['id-playlist']);
-                                                echo $insert;
+                                                // echo $insert;
                                                 $result = $mysqli->query($insert);
                                                 if ($result) {
-                                                    echo "ADDED TOPLAYLIST";
+                                                    // echo "ADDED TOPLAYLIST";
                                                 }
                                             } else {
-                                                echo "XXXXX already in pl";
+                                                echo "already in pl";
                                             }
                                         }
                                     }

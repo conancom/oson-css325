@@ -8,12 +8,19 @@ $result = $mysqli->query($query);
 $pl = $result->fetch_array();
 
 if (isset($_POST['delete-playlist'])) {
-    $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
-    $result = $mysqli->query($delete);
-    // echo $delete;
-    if ($result) {
-        header("Location: Listener-Playlist-Page.php");
-    } else {
+    $delete_consist_playlist = sprintf("DELETE FROM consistplaylist WHERE idPlaylist = %d", $id_playlist);
+    $result = $mysqli->query($delete_consist_playlist);
+    if($result) {
+        $delete = sprintf("DELETE FROM playlist WHERE idListener = %d AND idPlaylist = %d", $listenerid, $id_playlist);
+        $result = $mysqli->query($delete);
+        // echo $delete;
+        if ($result) {
+            header("Location: Listener-Playlist-Page.php");
+        } else {
+            echo $mysqli->error;
+        }
+    }
+    else {
         echo $mysqli->error;
     }
 }
