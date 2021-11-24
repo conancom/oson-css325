@@ -152,21 +152,15 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                     </div>
 
                                     <div class="col FollowButton ">
-                                        <form action="#don" method="post">
-                                            <button class="DonateBtn" name="donate" style="margin-left: -500px;">
+                                        <form method="post">
+                                            <button type="button" class="DonateBtn" name="donate" style="margin-left: -500px;" 
+                                            <?php echo "onclick=\"location.href='Donation-Gateway.php?idArtist=".$artistid."'\">"; ?>
+                                             
+                                             
                                                 Donate
                                             </button>
                                         </form>
-                                        <?php
-                                        if (isset($_POST['donate'])) {
-
-                                            $insert_donate = sprintf("INSERT INTO `donatetoartist`(`idListener`, `idArtist`, `Amount`, `CreditCardInformatio`) VALUES (%d, %d, %f, '%s')", $listenerid, $artistid, 9.99, "VISA-xxx09436552");
-                                            $result = $mysqli->query($insert_donate);
-                                            if (!$result) {
-                                                echo $mysqli->error;
-                                            }
-                                        }
-                                        ?>
+                                       
                                     </div>
                                 </div>
                             </div>
