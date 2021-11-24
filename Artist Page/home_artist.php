@@ -328,9 +328,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,83,9,1) 26%, rgba
         }
         ?>
 
-
-
-
     </div>
 
     </div>
