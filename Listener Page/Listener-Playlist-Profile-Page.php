@@ -151,6 +151,27 @@ if (isset($_POST['delete-playlist'])) {
                                             <button type="submit" name="delete-playlist" class="DeletePlaylistButton">Delete This Playlist</button>
                                         </form>
                                     </div>
+                                    <?php
+                                    $id_playlist = $_GET['idPlaylist'];
+                                    $query = "SELECT * FROM `playlist` WHERE idPlaylist = " . $id_playlist;
+
+                                    $result = $mysqli->query($query);
+                                    if (!$result) {
+                                        echo $mysqli->error;
+                                    } else {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            $data = $result->fetch_array();
+                                            echo ' <form action="#fllw" method="post">';
+                                            echo '<input type="hidden" name="start-play-id" value="' . $data['idPlaylist'] . '">';
+                                            echo '<button type="submit" name="startplay" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">Play';
+                                            echo '</button>';
+                                            echo '</form>';
+                                        }
+                                    }
+
+
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -315,8 +336,8 @@ if (isset($_POST['delete-playlist'])) {
         //All songs list
         let All_song = [
             <?php
-
-            $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
+            if (!isset($_POST['startplay'])) {
+                $query = "SELECT DISTINCT `song`.*, `artist`.`ArtistName`
                     FROM `artist`, `song`, `createsong`, `ListenToSong`, `listener`
                     WHERE `listener`.`idListener` = '$listenerid'
                     AND `listener`.`idListener` = `ListenToSong`.`idListener`
@@ -325,41 +346,41 @@ if (isset($_POST['delete-playlist'])) {
                     AND `ListenToSong`.`idSong` = `song`.`idSong`  
                     ORDER BY `ListenToSongId` DESC
                     LIMIT 0, 10;";
-            $result = $mysqli->query($query);
-            if (!$result) {
-                echo $mysqli->error;
-            } else {
-                if (mysqli_num_rows($result) > 0) {
-                    $numrows = mysqli_num_rows($result);
-                    $x = 1;
-                    while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
-                        echo '{';
-                        echo 'name: "' . $data['Name'] . ' |",';
-                        echo 'path: "song/' . $data['idSong'] . '.mp3",';
-                        echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
-                        echo 'singer: "| ' . $data['ArtistName'] . '"';
-                        if ($x < $numrows) {
-                            echo '},';
-                        } else {
-                            echo '}';
-                        }
-
-                        $song = $data['idSong'];
-
-
-
-                        $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
-            VALUES ('$listenerid', '$song', '1.0') ";
-                        $result2 = $mysqli->query($query2);
-                        if (!$result2) {
-                            echo $mysqli->error;
-                        }
-
-
-                        $x++;
-                    }
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
                 } else {
-                    $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
+                    if (mysqli_num_rows($result) > 0) {
+                        $numrows = mysqli_num_rows($result);
+                        $x = 1;
+                        while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                            echo '{';
+                            echo 'name: "' . $data['Name'] . ' |",';
+                            echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                            echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                            echo 'singer: "| ' . $data['ArtistName'] . '"';
+                            if ($x < $numrows) {
+                                echo '},';
+                            } else {
+                                echo '}';
+                            }
+
+                            $song = $data['idSong'];
+
+
+
+                            $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+            VALUES ('$listenerid', '$song', '1.0') ";
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            }
+
+
+                            $x++;
+                        }
+                    } else {
+                        $query1 = "SELECT `song`.*, `artist`.`ArtistName`, COUNT(`ListenToSong`.`ListenToSongId`) 
                             FROM `artist`, `song`, `createsong`, `ListenToSong` 
                             WHERE `artist`.`idArtist` = `createsong`.`idArtist` 
                             AND `createsong`.`idSong` = `song`.`idSong` 
@@ -367,39 +388,90 @@ if (isset($_POST['delete-playlist'])) {
                             GROUP BY `song`.`idSong` 
                             ORDER BY COUNT(`ListenToSong`.`ListenToSongId`) DESC 
                             LIMIT 0, 10; ";
-                    $result1 = $mysqli->query($query1);
-                    if (!$result1) {
-                        echo $mysqli->error;
-                    } else {
-                        if (mysqli_num_rows($result1) > 0) {
-                            $numrows = mysqli_num_rows($result1);
-                            $x = 1;
-                            while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
-                                echo '{';
-                                echo 'name: "' . $data1['Name'] . ' |",';
-                                echo 'path: "song/' . $data1['idSong'] . '.mp3",';
-                                echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
-                                echo 'singer: "| ' . $data1['ArtistName'] . '"';
-                                if ($x < $numrows) {
-                                    echo '},';
-                                } else {
-                                    echo '}';
-                                }
+                        $result1 = $mysqli->query($query1);
+                        if (!$result1) {
+                            echo $mysqli->error;
+                        } else {
+                            if (mysqli_num_rows($result1) > 0) {
+                                $numrows = mysqli_num_rows($result1);
+                                $x = 1;
+                                while ($data1 = $result1->fetch_array(MYSQLI_ASSOC)) {
+                                    echo '{';
+                                    echo 'name: "' . $data1['Name'] . ' |",';
+                                    echo 'path: "song/' . $data1['idSong'] . '.mp3",';
+                                    echo 'img: "songimg/' . $data1['idSong'] . '.jpg",';
+                                    echo 'singer: "| ' . $data1['ArtistName'] . '"';
+                                    if ($x < $numrows) {
+                                        echo '},';
+                                    } else {
+                                        echo '}';
+                                    }
 
 
-                                $song = $data1['idSong'];
+                                    $song = $data1['idSong'];
 
 
 
-                                $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+                                    $query3 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
                                         VALUES ('$listenerid', '$song', '1.0') ";
-                                $result3 = $mysqli->query($query3);
-                                if (!$result3) {
-                                    echo $mysqli->error;
-                                }
+                                    $result3 = $mysqli->query($query3);
+                                    if (!$result3) {
+                                        echo $mysqli->error;
+                                    }
 
-                                $x++;
+                                    $x++;
+                                }
                             }
+                        }
+                    }
+                }
+            } else {
+
+
+
+                $playlist = $_POST['start-play-id'];
+
+
+                $query = "SELECT `song`.*, `artist`.`ArtistName`
+                FROM `artist`, `song`, `playlist`,`ConsistPlaylist`, `createsong`
+                 WHERE  `playlist`.`idPlaylist` = `ConsistPlaylist`.`idPlaylist`
+                 AND `ConsistPlaylist`.`idSong` = `Song`.`idSong`
+                 AND  `playlist`.`idPlaylist`= '$playlist'
+                 AND `artist`.`idArtist` = `createsong`.`idArtist`
+                 AND `createsong`.`idSong` = `song`.`idSong`
+                GROUP BY `song`.`idSong`;
+            ";
+
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo $mysqli->error;
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        $numrows = mysqli_num_rows($result);
+                        $x = 1;
+                        while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+                            echo '{';
+                            echo 'name: "' . $data['Name'] . ' |",';
+                            echo 'path: "song/' . $data['idSong'] . '.mp3",';
+                            echo 'img: "songimg/' . $data['idSong'] . '.jpg",';
+                            echo 'singer: "| ' . $data['ArtistName'] . '"';
+                            if ($x < $numrows) {
+                                echo '},';
+                            } else {
+                                echo '}';
+                            }
+
+                            $song = $data['idSong'];
+
+
+
+                            $query2 = "INSERT INTO `listentosong` (`idListener`, `idSong`, `DurationListenedTo`) 
+VALUES ('$listenerid', '$song', '1.0') ";
+                            $result2 = $mysqli->query($query2);
+                            if (!$result2) {
+                                echo $mysqli->error;
+                            }
+                            $x++;
                         }
                     }
                 }
