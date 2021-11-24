@@ -4,6 +4,10 @@
     --main-color-orange: rgba(255, 115, 21, 1);
 }
 
+* {
+    font-family: 'Kanit', sans-serif;
+}
+
 body {
     background-color: rgba(44, 38, 38, 1);
     display: flex;
