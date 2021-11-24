@@ -266,3 +266,15 @@ i:before {
     width: 150px;
     margin: 15px;
 }
+
+.PressedSong {
+    border: none;
+    background-color: #372F2F;
+    color: white;
+    transition: color 0.3s;
+}
+
+.PressedSong:hover {
+    color: #FF7315;
+    background-color: #372F2F;
+}

@@ -153,7 +153,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
 
                                     <div class="col FollowButton ">
                                         <form method="post">
-                                            <button type="button" class="DonateBtn" name="donate" style="margin-left: -500px;" 
+                                            <button type="button" class="DonateBtn" name="donate" style="margin-left: -400px;" 
                                             <?php echo "onclick=\"location.href='Donation-Gateway.php?idArtist=".$artistid."'\">"; ?>
                                              
                                              
@@ -204,7 +204,7 @@ if (isset($_POST['follow-album']) && isset($_POST['is-follow'])) {
                                         echo '<form action="#" method="post">';
                                         $songid = $song['idSong'];
                                         echo '<input type="hidden" name="play-id-song" value="' . $songid . '">';
-                                        echo '<button type="submit" name="pressedsong">' . $songname . '</button>';
+                                        echo '<button class="PressedSong" type="submit" name="pressedsong">' . $songname . '</button>';
                                         echo '</form>';
 
                                         ?></p>

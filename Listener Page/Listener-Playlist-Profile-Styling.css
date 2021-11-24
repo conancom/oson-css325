@@ -246,3 +246,16 @@ i:before {
 .DeletePlaylistButton:hover {
     background-color: #b30124;
 }
+
+.PlayAllBtn {
+    background-color: white;
+    transition: background-color 0.3s;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.PlayAllBtn:hover {
+    background-color: #FF7315;
+}

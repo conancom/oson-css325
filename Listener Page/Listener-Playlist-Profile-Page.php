@@ -163,14 +163,11 @@ if (isset($_POST['delete-playlist'])) {
                                             $data = $result->fetch_array();
                                             echo ' <form action="#fllw" method="post">';
                                             echo '<input type="hidden" name="start-play-id" value="' . $data['idPlaylist'] . '">';
-                                            echo '<button type="submit" name="startplay" class="FollowBtn" style="border: none; padding: 10px 30px; border-radius: 10px;">Play';
+                                            echo '<button type="submit" name="startplay" class="PlayAllBtn">Play';
                                             echo '</button>';
                                             echo '</form>';
                                         }
                                     }
-
-
-
                                     ?>
                                 </div>
                             </div>
