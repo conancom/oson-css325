@@ -1,6 +1,6 @@
 # Oson-Music Streaming
 
-This is a music player webapp, for the CSS 325 class.
+This is a music player webapp made by 3 sophomore students, studying relational databases.
 
 ## General Info
 
@@ -9,6 +9,11 @@ Back End : PHP
 Front End : Vanilla CSS & Bootstrap & JS
 
 Database : MySQL
+
+## ER Diagram
+
+![ภาพ](https://user-images.githubusercontent.com/79465272/177006722-490688d0-80ea-4cc7-b86e-a8897a321226.png)
+
 
 ## Implementations
 
